@@ -1,0 +1,7 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "inset-ui",
+  "homepage": "https://inset-ui.com",
+  "registryDependencies": ["button"],
+  "items": []
+}
