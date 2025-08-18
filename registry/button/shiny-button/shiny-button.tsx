@@ -31,7 +31,7 @@ export function ShinyButton({
         className="relative flex flex-row items-center justify-center gap-2"
         style={{
           maskImage:
-            "linear-gradient(-75deg, black calc(var(--x) + 20%), transparent calc(var(--x) + 30%), black calc(var(--x) + 100%))",
+            "linear-gradient(-75deg, black calc(var(--x) + 20%), transparent calc(var(--x) + 30%), purple calc(var(--x) + 100%))",
         }}
       >
         {children}
