@@ -2,6 +2,20 @@
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "inset-ui",
   "homepage": "https://inset-ui.com",
-  "registryDependencies": ["button"],
-  "items": []
+  "items": [
+    {
+      "name": "shiny-button",
+      "type": "registry:component",
+      "title": "Shiny Button",
+      "description": "A shiny button component",
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "components/inset-ui/shiny-button.tsx",
+          "label": "Shiny Button",
+          "type": "registry:component"
+        }
+      ]
+    }
+  ]
 }
