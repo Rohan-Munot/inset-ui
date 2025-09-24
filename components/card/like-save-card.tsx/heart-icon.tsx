@@ -14,7 +14,7 @@ export const HeartIcon = (props: MotionProps) => {
       fill: "#ff6360",
       stroke: "#ff6360",
       scale: [1, 1.08, 1],
-      rotate: [0, -10, 10, -10, 10, 0],
+      rotate: [0, -10, 10, -4, 4, 0],
       x: 0,
       transition: {
         fill: {
@@ -23,7 +23,7 @@ export const HeartIcon = (props: MotionProps) => {
         stroke: {
           duration: 0,
         },
-        duration: 0.4,
+        duration: 0.5,
         ease: "linear",
         times: [0, 0.2, 0.4, 0.6, 0.8, 1],
       },

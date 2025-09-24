@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 const LikeSaveCard = () => {
   const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
-  const [likeCount, setLikeCount] = useState(5555);
+  const [likeCount, setLikeCount] = useState(3211);
 
   return (
     <div
@@ -27,7 +27,7 @@ const LikeSaveCard = () => {
             aria-label={isLiked ? "Unlike" : "Like"}
             onClick={() => {
               setIsLiked(!isLiked);
-              setLikeCount(likeCount + 1);
+              setLikeCount(isLiked ? likeCount - 1 : likeCount + 1);
             }}
           >
             <HeartIcon animate={isLiked ? "liked" : "unliked"} />
