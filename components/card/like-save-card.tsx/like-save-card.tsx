@@ -12,11 +12,11 @@ const LikeSaveCard = () => {
   return (
     <div
       className={cn(
-        "flex w-full max-w-sm flex-col gap-3 rounded-3xl bg-card p-6 text-card-foreground",
+        "flex w-full max-w-sm flex-col gap-3 rounded-4xl bg-card p-6 text-card-foreground",
         "shadow-[0_1px_1px_rgba(0,0,0,0.05),0_4px_6px_rgba(34,42,53,0.04),0_24px_68px_rgba(48,48,55,0.05),0_2px_3px_rgba(0,0,0,0.05)]"
       )}
     >
-      <div className="flex h-48 flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-muted-foreground/40 bg-muted/30 text-center" />
+      <div className="flex h-48 flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-muted-foreground/40 bg-muted/30 text-center" />
 
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-2">
