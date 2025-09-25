@@ -30,86 +30,26 @@ type TaskList = {
   tasks: Task[];
 };
 
-const initialTaskList: TaskList = {
-  id: "product-experiments",
-  title: "Product Experiments",
-  summary: "Shortlist the experiments that need quick access for standups.",
-  tasks: [
-    {
-      id: "task-1",
-      title: "Revamp onboarding milestones",
-      description:
-        "Audit the current onboarding flow, highlight friction, and define key success milestones.",
-      stage: "In progress",
-      due: "Due in 2 days",
-      pinned: true,
-      owner: {
-        name: "Mia Wallace",
-        initials: "MW",
-        role: "Product Design",
-      },
-    },
-    {
-      id: "task-2",
-      title: "Instrument activation dashboards",
-      description:
-        "Pair with data to baseline existing activation metrics and prototype the new dashboard layout.",
-      stage: "Review",
-      due: "Review tomorrow",
-      pinned: false,
-      owner: {
-        name: "James Carter",
-        initials: "JC",
-        role: "Analytics",
-      },
-    },
-    {
-      id: "task-3",
-      title: "Experiment brief: power user invites",
-      description:
-        "Outline hypotheses and guardrails for the invite flow experiment. Identify required instrumentation.",
-      stage: "Backlog",
-      due: "Needs grooming",
-      pinned: true,
-      owner: {
-        name: "Priya Desai",
-        initials: "PD",
-        role: "Product",
-      },
-    },
-    {
-      id: "task-4",
-      title: "Customer loops synthesis",
-      description:
-        "Sum up qualitative signals from last week's interviews and pull the themes into the experiment backlog.",
-      stage: "Ready",
-      due: "ETA Friday",
-      pinned: false,
-      owner: {
-        name: "Leo Ortega",
-        initials: "LO",
-        role: "Research",
-      },
-    },
-  ],
-};
+const PinList = ({ taskList }: { taskList: TaskList }) => {
+  const [taskListState, setTaskListState] = useState<TaskList>(taskList);
 
-const PinList = () => {
-  const [taskList, setTaskList] = useState<TaskList>(initialTaskList);
-
-  const orderedTasks = useMemo(() => {
-    return [...taskList.tasks].sort(
-      (a, b) => Number(b.pinned) - Number(a.pinned)
+  const { tasks: orderedTasks, count: pinnedCount } = useMemo(() => {
+    return taskListState.tasks.reduce(
+      (acc, task) => {
+        if (task.pinned) {
+          acc.tasks.unshift(task);
+          acc.count++;
+        } else {
+          acc.tasks.push(task);
+        }
+        return acc;
+      },
+      { tasks: [] as Task[], count: 0 }
     );
-  }, [taskList.tasks]);
-
-  const pinnedCount = useMemo(
-    () => taskList.tasks.filter((task) => task.pinned).length,
-    [taskList.tasks]
-  );
+  }, [taskListState.tasks]);
 
   const handlePinToggle = (taskId: string) => {
-    setTaskList((current) => ({
+    setTaskListState((current) => ({
       ...current,
       tasks: current.tasks.map((task) =>
         task.id === taskId ? { ...task, pinned: !task.pinned } : task
@@ -143,7 +83,7 @@ const PinList = () => {
       </header>
 
       <LayoutGroup id={`${taskList.id}-group`}>
-        <ul className="flex h-full flex-col gap-4 overflow-y-auto p-2 [scrollbar-width:thin]">
+        <ul className="flex h-full flex-col gap-4 overflow-y-auto p-2 [scrollbar-width:none]">
           {orderedTasks.map((task) => {
             const isPinned = task.pinned;
 
@@ -159,6 +99,7 @@ const PinList = () => {
                 className={cn(
                   "group relative flex flex-col gap-3 rounded-2xl border border-border/50 bg-muted/30 p-4 transition-colors duration-200",
                   "hover:bg-muted/40",
+                  "shadow-[0_1px_1px_rgba(0,0,0,0.05),0_4px_6px_rgba(34,42,53,0.04),0_24px_68px_rgba(48,48,55,0.05),0_2px_3px_rgba(0,0,0,0.05)]",
                   isPinned && "border-primary/50 bg-primary/5 shadow-xs"
                 )}
               >
@@ -192,11 +133,11 @@ const PinList = () => {
                   </motion.button>
                 </div>
 
-                <p className="pl-9 text-sm text-muted-foreground">
+                <p className="pl-8 text-sm text-muted-foreground">
                   {task.description}
                 </p>
 
-                <div className="ml-9 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
+                <div className="ml-8 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
                   <Badge variant="outline" className="rounded-full">
                     {task.stage}
                   </Badge>
