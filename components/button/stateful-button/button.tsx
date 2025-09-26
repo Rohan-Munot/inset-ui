@@ -16,7 +16,7 @@ interface StatefulButtonProps
 }
 
 const buttonVariants = cva(
-  "flex flex-row items-center justify-center gap-2 text-sm font-medium whitespace-nowrap outline-none select-none focus-visible:ring-zinc-300/50 focus-visible:ring-[4px] active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 text-white text-shadow-xs inset-shadow-[1px_1px_1px,0px_0px_2px] dark:inset-shadow-white/20 inset-shadow-neutral-100/50 h-8 px-4 relative rounded-full transition-all duration-300",
+  "flex flex-row items-center justify-center gap-2 text-sm font-medium whitespace-nowrap outline-none select-none focus-visible:ring-zinc-300/50 focus-visible:ring-[4px] active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 text-white text-shadow-xs inset-shadow-[1px_1px_1px,0px_0px_2px] dark:inset-shadow-white/20 inset-shadow-neutral-100/50 h-8 px-4 relative rounded-full",
   {
     variants: {
       size: {
@@ -25,25 +25,31 @@ const buttonVariants = cva(
         lg: "h-10  px-6 has-[>svg]:px-4",
         icon: "size-9",
       },
-      state: {
-        idle: "bg-gradient-to-b from-zinc-800 to-zinc-700 hover:to-zinc-600",
-        loading: "bg-gradient-to-b from-[#023e8a] to-[#0077b6]",
-        success:
-          "bg-gradient-to-b from-[#38b000] to-[#008000] hover:to-[#007200]",
-        error:
-          "bg-gradient-to-b from-[#a4161a] to-[#d00000] hover:to-[#ff002b]",
-        warning:
-          "bg-gradient-to-b from-[#ff7b00] to-[#ffa200] hover:to-[#ffc300]",
-        disabled:
-          "bg-gradient-to-b from-gray-400 to-gray-500 text-gray-300 cursor-not-allowed",
-      },
     },
     defaultVariants: {
       size: "default",
-      state: "idle",
     },
   }
 );
+
+const getBackgroundGradient = (state: string) => {
+  switch (state) {
+    case "idle":
+      return "linear-gradient(to bottom, #27272a, #3f3f46)";
+    case "loading":
+      return "linear-gradient(to bottom, #023e8a, #0077b6)";
+    case "success":
+      return "linear-gradient(to bottom, #38b000, #008000)";
+    case "error":
+      return "linear-gradient(to bottom, #a4161a, #d00000)";
+    case "warning":
+      return "linear-gradient(to bottom, #ff7b00, #ffa200)";
+    case "disabled":
+      return "linear-gradient(to bottom, #9ca3af, #6b7280)";
+    default:
+      return "linear-gradient(to bottom, #27272a, #3f3f46)";
+  }
+};
 
 const LoadingSpinner = () => (
   <motion.svg
@@ -139,6 +145,7 @@ function StatefulButton({
   ...props
 }: StatefulButtonProps & VariantProps<typeof buttonVariants>) {
   const isDisabled = disabled || state === "disabled";
+  const currentState = isDisabled ? "disabled" : state;
 
   const getContent = () => {
     switch (state) {
@@ -178,9 +185,16 @@ function StatefulButton({
   return (
     <motion.button
       data-slot="button"
-      className={cn(buttonVariants({ size, state }), className)}
+      className={cn(buttonVariants({ size }), className)}
       disabled={isDisabled}
       whileTap={!isDisabled ? { scale: 0.98 } : undefined}
+      animate={{
+        background: getBackgroundGradient(currentState),
+      }}
+      transition={{
+        duration: 0.3,
+        ease: "easeInOut",
+      }}
       {...(props as MotionProps)}
     >
       {getContent()}
