@@ -51,7 +51,7 @@ export default function Home() {
     },
     {
       title: "Launch",
-      text_1: "CTO",
+      text_1: "Customer",
       text_2: "Sep, 2025",
       card_contents: (
         <div className="w-full h-full bg-accent min-h-24 rounded-b-xl"></div>
