@@ -8,7 +8,7 @@ const animationProps = {
     repeat: Infinity,
     repeatType: "loop",
     repeatDelay: 0.5,
-    duration: 1.5,
+    duration: 4,
     ease: "linear",
   },
 } as MotionProps;

@@ -8,7 +8,7 @@ interface StatefulButtonProps
   className?: string;
   children: React.ReactNode;
   size?: "default" | "sm" | "lg" | "icon";
-  state?: "idle" | "loading" | "success" | "error" | "disabled" | "warning";
+  state?: "default" | "loading" | "success" | "error" | "disabled" | "warning";
   loadingText?: string;
   successText?: string;
   errorText?: string;
@@ -16,7 +16,7 @@ interface StatefulButtonProps
 }
 
 const buttonVariants = cva(
-  "flex flex-row items-center justify-center gap-2 text-sm font-medium whitespace-nowrap outline-none select-none focus-visible:ring-zinc-300/50 focus-visible:ring-[4px] active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 text-white text-shadow-xs inset-shadow-[1px_1px_1px,0px_0px_2px] dark:inset-shadow-white/20 inset-shadow-neutral-100/50 h-8 px-4 relative rounded-full",
+  "flex flex-row items-center justify-center gap-2 text-sm font-medium whitespace-nowrap outline-none select-none focus-visible:ring-zinc-300/50 focus-visible:ring-[4px] active:scale-[0.98] disabled:pointer-events-none disabled:opacity-60 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 text-white text-shadow-xs inset-shadow-[1px_1px_1px,0px_0px_2px] dark:inset-shadow-white/20 inset-shadow-neutral-100/50 h-8 px-4 relative rounded-full",
   {
     variants: {
       size: {
@@ -34,8 +34,6 @@ const buttonVariants = cva(
 
 const getBackgroundGradient = (state: string) => {
   switch (state) {
-    case "idle":
-      return "linear-gradient(to bottom, #27272a, #3f3f46)";
     case "loading":
       return "linear-gradient(to bottom, #023e8a, #0077b6)";
     case "success":
@@ -45,7 +43,7 @@ const getBackgroundGradient = (state: string) => {
     case "warning":
       return "linear-gradient(to bottom, #ff7b00, #ffa200)";
     case "disabled":
-      return "linear-gradient(to bottom, #9ca3af, #6b7280)";
+      return "linear-gradient(to bottom, #27272a, #3f3f46)";
     default:
       return "linear-gradient(to bottom, #27272a, #3f3f46)";
   }
@@ -135,7 +133,7 @@ const WarningIcon = () => (
 function StatefulButton({
   className,
   size,
-  state = "idle",
+  state = "default",
   children,
   loadingText = "Loading",
   successText = "Success",
