@@ -19,28 +19,43 @@ export default function Home() {
   const roadmapStepsData = [
     {
       title: "Planning",
-      description: "Define goals & strategy",
-      card_contents: <div>Hello World</div>,
+      text_1: "Intern",
+      text_2: "May, 2025",
+      card_contents: (
+        <div className="w-full h-full bg-accent min-h-24 rounded-b-xl"></div>
+      ),
     },
     {
       title: "Development",
-      description: "Build core features",
-      card_contents: <div>Hello World</div>,
+      text_1: "Junior",
+      text_2: "June, 2025",
+      card_contents: (
+        <div className="w-full h-full bg-accent min-h-24 rounded-b-xl"></div>
+      ),
     },
     {
       title: "Optimization",
-      description: "Performance & testing",
-      card_contents: <div>Hello World</div>,
+      text_1: "Senior",
+      text_2: "July, 2025",
+      card_contents: (
+        <div className="w-full h-full bg-accent min-h-24 rounded-b-xl"></div>
+      ),
     },
     {
       title: "Configuration",
-      description: "Setup & integration",
-      card_contents: <div>Hello World</div>,
+      text_1: "Lead",
+      text_2: "Aug, 2025",
+      card_contents: (
+        <div className="w-full h-full bg-accent min-h-24 rounded-b-xl"></div>
+      ),
     },
     {
       title: "Launch",
-      description: "Deploy & celebrate",
-      card_contents: <div>Hello World</div>,
+      text_1: "CTO",
+      text_2: "Sep, 2025",
+      card_contents: (
+        <div className="w-full h-full bg-accent min-h-24 rounded-b-xl"></div>
+      ),
     },
   ];
   return (
