@@ -1,21 +1,23 @@
 "use client";
 import Roadmap from "@/components/roadmap/roadmap";
+import { useState, useEffect } from "react";
+import StatefulButton from "@/components/button/stateful-button/button";
 
 export default function Home() {
-  // const [buttonState, setButtonState] = useState<
-  //   "default" | "loading" | "success" | "error" | "warning"
-  // >("default");
-  // const states = ["default", "loading", "success", "error", "warning"];
+  const [buttonState, setButtonState] = useState<
+    "default" | "loading" | "success" | "error" | "warning"
+  >("default");
+  const states = ["default", "loading", "success", "error", "warning"];
 
-  // useEffect(() => {
-  //   let current = 0;
-  //   setButtonState(states[current] as typeof buttonState);
-  //   const interval = setInterval(() => {
-  //     current = (current + 1) % states.length;
-  //     setButtonState(states[current] as typeof buttonState);
-  //   }, 3000);
-  //   return () => clearInterval(interval);
-  // }, []);
+  useEffect(() => {
+    let current = 0;
+    setButtonState(states[current] as typeof buttonState);
+    const interval = setInterval(() => {
+      current = (current + 1) % states.length;
+      setButtonState(states[current] as typeof buttonState);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
   const roadmapStepsData = [
     {
       title: "Planning",
@@ -51,7 +53,7 @@ export default function Home() {
     },
     {
       title: "Launch",
-      text_1: "Customer",
+      text_1: "yay",
       text_2: "Sep, 2025",
       card_contents: (
         <div className="w-full h-full bg-accent min-h-24 rounded-b-xl"></div>

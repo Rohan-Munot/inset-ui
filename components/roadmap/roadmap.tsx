@@ -62,7 +62,7 @@ const RoadmapStepCard: React.FC<RoadmapStepCardProps> = ({
       }}
     >
       <div className="flex flex-col h-full justify-between rounded-xl ">
-        <div className="flex flex-col justify-between items-start text-center p-3 rounded-t-xl space-y-0.5">
+        <div className="flex flex-col justify-between items-start text-center bg-background p-3 rounded-t-xl space-y-0.5">
           <h3 className="text-sm md:text-base font-bold leading-tight">
             {title}
           </h3>
@@ -107,7 +107,7 @@ const ExpandedCard: React.FC<ExpandedCardProps> = ({
     >
       <motion.div
         layoutId={layoutId}
-        className="relative w-full max-w-lg mx-4 bg-white rounded-xl border border-neutral-400 shadow-2xl"
+        className="relative w-full max-w-lg mx-4 bg-background rounded-xl border border-border"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex flex-col h-full rounded-xl">
