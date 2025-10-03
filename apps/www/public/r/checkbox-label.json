@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox-label",
+  "type": "registry:component",
+  "title": "Checkbox Label",
+  "description": "A label companion for the inset checkbox with strike-through animation",
+  "dependencies": [
+    "checkbox",
+    "class-variance-authority",
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/default/checkbox-label.tsx",
+      "content": "\"use client\";\nimport { CheckboxComponent } from \"@/components/checkbox/01_checkbox\";\nimport { Label } from \"@/components/ui/label\";\nimport { cn } from \"@/lib/utils\";\nimport { useState } from \"react\";\nimport { cva } from \"class-variance-authority\";\nimport { AnimatePresence, motion } from \"motion/react\";\n\nconst labelVariants = cva(\"transition-all duration-200\", {\n  variants: {\n    variant: {\n      default: \"\",\n      strike: \"\",\n    },\n    checked: {\n      true: \"\",\n      false: \"\",\n    },\n  },\n  compoundVariants: [\n    {\n      variant: \"strike\",\n      checked: true,\n      class: \"opacity-60\",\n    },\n  ],\n  defaultVariants: {\n    variant: \"default\",\n    checked: false,\n  },\n});\n\ninterface CheckboxLabelProps extends React.ComponentProps<typeof Label> {\n  id: string;\n  text: string;\n  disabled?: boolean;\n  variants?: \"strike\" | \"default\";\n}\n\nconst CheckboxLabel = ({\n  id,\n  text,\n  className,\n  disabled,\n  variants,\n  ...labelProps\n}: CheckboxLabelProps) => {\n  const [isChecked, setIsChecked] = useState(false);\n\n  return (\n    <div className=\"flex items-center gap-3\">\n      <CheckboxComponent\n        id={id}\n        disabled={disabled}\n        onCheckedChange={(checked) => setIsChecked(checked === true)}\n      />\n      <Label\n        htmlFor={id}\n        className={cn(\n          labelVariants({ variant: variants, checked: isChecked }),\n          className\n        )}\n        {...labelProps}\n      >\n        <span className=\"relative\">\n          {text}\n          <AnimatePresence>\n            {isChecked && variants === \"strike\" && (\n              <motion.div\n                className=\"absolute left-0 top-1/2 h-[1px] bg-current\"\n                initial={{ width: 0, opacity: 0 }}\n                animate={{\n                  width: \"100%\",\n                  opacity: 1,\n                }}\n                exit={{ width: 0, opacity: 0 }}\n                transition={{ duration: 0.3, ease: \"easeInOut\" }}\n              />\n            )}\n          </AnimatePresence>\n        </span>\n      </Label>\n    </div>\n  );\n};\n\nexport default CheckboxLabel;\n",
+      "type": "registry:component",
+      "target": "components/inset-ui/checkbox-label.tsx"
+    }
+  ]
+}

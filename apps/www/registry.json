@@ -4,59 +4,59 @@
   "homepage": "https://inset-ui.com",
   "items": [
     {
-      "name": "@registry/button/shiny-button",
+      "name": "shiny-button",
       "type": "registry:component",
       "title": "Shiny Button",
       "description": "A shiny button component",
       "dependencies": ["motion"],
       "files": [
         {
-          "path": "registry/button/shiny-button/shiny-button.tsx",
+          "path": "registry/default/shiny-button.tsx",
           "label": "Shiny Button",
           "type": "registry:component",
-          "target": "components/inset-ui/button/shiny-button.tsx"
+          "target": "components/inset-ui/shiny-button.tsx"
         }
       ]
     },
     {
-      "name": "@registry/button/simple-button",
+      "name": "simple-button",
       "type": "registry:component",
       "title": "Simple Button",
       "description": "A minimalist button component with variants",
       "dependencies": ["motion", "class-variance-authority"],
       "files": [
         {
-          "path": "registry/button/simple-button/simple-button.tsx",
+          "path": "registry/default/simple-button.tsx",
           "label": "Simple Button",
           "type": "registry:component",
-          "target": "components/inset-ui/button/simple-button.tsx"
+          "target": "components/inset-ui/simple-button.tsx"
         }
       ]
     },
     {
-      "name": "@registry/button/stateful-button",
+      "name": "stateful-button",
       "type": "registry:component",
       "title": "Stateful Button",
       "description": "A button component with built-in state visualisations",
       "dependencies": ["motion", "class-variance-authority"],
       "files": [
         {
-          "path": "registry/button/stateful-button/stateful-button.tsx",
+          "path": "registry/default/stateful-button.tsx",
           "label": "Stateful Button",
           "type": "registry:component",
-          "target": "components/inset-ui/button/stateful-button.tsx"
+          "target": "components/inset-ui/stateful-button.tsx"
         }
       ]
     },
     {
-      "name": "@registry/checkbox",
+      "name": "checkbox",
       "type": "registry:component",
       "title": "Checkbox",
       "description": "A motion-enhanced checkbox built on Radix UI",
       "dependencies": ["@radix-ui/react-checkbox", "lucide-react", "motion"],
       "files": [
         {
-          "path": "registry/checkbox/checkbox.tsx",
+          "path": "registry/default/checkbox.tsx",
           "label": "Checkbox",
           "type": "registry:component",
           "target": "components/inset-ui/checkbox.tsx"
@@ -64,18 +64,14 @@
       ]
     },
     {
-      "name": "@registry/checkbox-label",
+      "name": "checkbox-label",
       "type": "registry:component",
       "title": "Checkbox Label",
       "description": "A label companion for the inset checkbox with strike-through animation",
-      "dependencies": [
-        "@registry/checkbox",
-        "class-variance-authority",
-        "motion"
-      ],
+      "dependencies": ["checkbox", "class-variance-authority", "motion"],
       "files": [
         {
-          "path": "registry/checkbox-label/checkbox-label.tsx",
+          "path": "registry/default/checkbox-label.tsx",
           "label": "Checkbox Label",
           "type": "registry:component",
           "target": "components/inset-ui/checkbox-label.tsx"
@@ -83,14 +79,14 @@
       ]
     },
     {
-      "name": "@registry/icons/heart-icon",
+      "name": "heart-icon",
       "type": "registry:component",
       "title": "Heart Icon",
       "description": "An animated heart icon for like interactions",
       "dependencies": ["motion"],
       "files": [
         {
-          "path": "registry/icons/heart-icon.tsx",
+          "path": "registry/default/heart-icon.tsx",
           "label": "Heart Icon",
           "type": "registry:component",
           "target": "components/inset-ui/icons/heart-icon.tsx"
@@ -98,14 +94,14 @@
       ]
     },
     {
-      "name": "@registry/icons/save-icon",
+      "name": "save-icon",
       "type": "registry:component",
       "title": "Save Icon",
       "description": "An animated bookmark icon for save interactions",
       "dependencies": ["motion"],
       "files": [
         {
-          "path": "registry/icons/save-icon.tsx",
+          "path": "registry/default/save-icon.tsx",
           "label": "Save Icon",
           "type": "registry:component",
           "target": "components/inset-ui/icons/save-icon.tsx"
@@ -113,18 +109,14 @@
       ]
     },
     {
-      "name": "@registry/like-save-card",
+      "name": "like-save-card",
       "type": "registry:component",
       "title": "Like & Save Card",
       "description": "A social action card with animated like and save controls",
-      "dependencies": [
-        "@registry/icons/heart-icon",
-        "@registry/icons/save-icon",
-        "motion"
-      ],
+      "dependencies": ["heart-icon", "save-icon", "motion"],
       "files": [
         {
-          "path": "registry/like-save-card/like-save-card.tsx",
+          "path": "registry/default/like-save-card.tsx",
           "label": "Like & Save Card",
           "type": "registry:component",
           "target": "components/inset-ui/like-save-card.tsx"
@@ -132,14 +124,14 @@
       ]
     },
     {
-      "name": "@registry/pin-list",
+      "name": "pin-list",
       "type": "registry:component",
       "title": "Pin List",
       "description": "A pin-able task list with animated transitions",
-      "dependencies": ["@registry/checkbox-label", "lucide-react", "motion"],
+      "dependencies": ["checkbox-label", "lucide-react", "motion"],
       "files": [
         {
-          "path": "registry/pin-list/pin-list.tsx",
+          "path": "registry/default/pin-list.tsx",
           "label": "Pin List",
           "type": "registry:component",
           "target": "components/inset-ui/pin-list.tsx"
@@ -147,14 +139,14 @@
       ]
     },
     {
-      "name": "@registry/roadmap",
+      "name": "roadmap",
       "type": "registry:component",
       "title": "Roadmap",
       "description": "An interactive roadmap timeline with expandable cards",
       "dependencies": ["lucide-react", "motion"],
       "files": [
         {
-          "path": "registry/roadmap/roadmap.tsx",
+          "path": "registry/default/roadmap.tsx",
           "label": "Roadmap",
           "type": "registry:component",
           "target": "components/inset-ui/roadmap.tsx"

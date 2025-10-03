@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "save-icon",
+  "type": "registry:component",
+  "title": "Save Icon",
+  "description": "An animated bookmark icon for save interactions",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/default/save-icon.tsx",
+      "content": "import { motion, Variants, type MotionProps } from \"motion/react\";\r\n\r\nexport const BookmarkIcon = (props: MotionProps) => {\r\n  const { animate } = props;\r\n\r\n  const bookmarkVariants = {\r\n    unbookmarked: {\r\n      fill: \"none\",\r\n      stroke: \"currentColor\",\r\n      scale: [1, 0.92, 1],\r\n      transition: { duration: 0.2, ease: \"easeOut\" },\r\n    },\r\n    bookmarked: {\r\n      fill: \"currentColor\",\r\n      stroke: \"currentColor\",\r\n      y: [0, -35, 0],\r\n      scale: [1, 1.12, 1],\r\n      transition: {\r\n        duration: 0.3,\r\n        ease: \"easeInOut\",\r\n      },\r\n    },\r\n  };\r\n  return (\r\n    <motion.svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\">\r\n      <rect width=\"256\" height=\"256\" fill=\"none\" />\r\n      <motion.path\r\n        animate={animate}\r\n        variants={bookmarkVariants as Variants}\r\n        d=\"M192,224l-64-40L64,224V48a8,8,0,0,1,8-8H184a8,8,0,0,1,8,8Z\"\r\n        fill=\"none\"\r\n        stroke=\"currentColor\"\r\n        strokeLinecap=\"round\"\r\n        strokeLinejoin=\"round\"\r\n        strokeWidth=\"16\"\r\n      />\r\n    </motion.svg>\r\n  );\r\n};\r\n",
+      "type": "registry:component",
+      "target": "components/inset-ui/icons/save-icon.tsx"
+    }
+  ]
+}

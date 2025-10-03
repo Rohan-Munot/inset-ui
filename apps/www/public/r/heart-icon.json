@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "heart-icon",
+  "type": "registry:component",
+  "title": "Heart Icon",
+  "description": "An animated heart icon for like interactions",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/default/heart-icon.tsx",
+      "content": "import { motion, Variants, type MotionProps } from \"motion/react\";\r\n\r\nexport const HeartIcon = (props: MotionProps) => {\r\n  const { animate } = props;\r\n  const heartVariants = {\r\n    unliked: {\r\n      fill: \"none\",\r\n      stroke: \"currentColor\",\r\n      scale: [1, 0.92, 1],\r\n      x: 0,\r\n      transition: { duration: 0.2, ease: \"easeOut\" },\r\n    },\r\n    liked: {\r\n      fill: \"#ff6360\",\r\n      stroke: \"#ff6360\",\r\n      scale: [1, 1.08, 1],\r\n      rotate: [0, -10, 10, -4, 4, 0],\r\n      x: 0,\r\n      transition: {\r\n        fill: {\r\n          duration: 0,\r\n        },\r\n        stroke: {\r\n          duration: 0,\r\n        },\r\n        duration: 0.5,\r\n        ease: \"linear\",\r\n        times: [0, 0.2, 0.4, 0.6, 0.8, 1],\r\n      },\r\n    },\r\n  };\r\n\r\n  return (\r\n    <motion.svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\">\r\n      <rect width=\"256\" height=\"256\" fill=\"none\" />\r\n      <motion.path\r\n        animate={animate}\r\n        variants={heartVariants as Variants}\r\n        d=\"M128,224S24,168,24,102A54,54,0,0,1,78,48c22.59,0,41.94,12.31,50,32,8.06-19.69,27.41-32,50-32a54,54,0,0,1,54,54C232,168,128,224,128,224Z\"\r\n        fill=\"none\"\r\n        stroke=\"currentColor\"\r\n        strokeLinecap=\"round\"\r\n        strokeLinejoin=\"round\"\r\n        strokeWidth=\"16\"\r\n      />\r\n    </motion.svg>\r\n  );\r\n};\r\n",
+      "type": "registry:component",
+      "target": "components/inset-ui/icons/heart-icon.tsx"
+    }
+  ]
+}
