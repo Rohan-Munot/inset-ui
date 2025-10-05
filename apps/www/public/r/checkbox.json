@@ -4,11 +4,7 @@
   "type": "registry:component",
   "title": "Checkbox",
   "description": "A motion-enhanced checkbox built on Radix UI",
-  "dependencies": [
-    "@radix-ui/react-checkbox",
-    "lucide-react",
-    "motion"
-  ],
+  "dependencies": ["@radix-ui/react-checkbox", "lucide-react", "motion"],
   "files": [
     {
       "path": "registry/default/checkbox.tsx",

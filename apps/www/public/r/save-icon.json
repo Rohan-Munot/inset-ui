@@ -4,9 +4,7 @@
   "type": "registry:component",
   "title": "Save Icon",
   "description": "An animated bookmark icon for save interactions",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/default/save-icon.tsx",

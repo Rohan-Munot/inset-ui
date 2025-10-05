@@ -4,10 +4,7 @@
   "type": "registry:component",
   "title": "Roadmap",
   "description": "An interactive roadmap timeline with expandable cards",
-  "dependencies": [
-    "lucide-react",
-    "motion"
-  ],
+  "dependencies": ["lucide-react", "motion"],
   "files": [
     {
       "path": "registry/default/roadmap.tsx",

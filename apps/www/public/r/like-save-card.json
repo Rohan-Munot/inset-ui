@@ -4,11 +4,7 @@
   "type": "registry:component",
   "title": "Like & Save Card",
   "description": "A social action card with animated like and save controls",
-  "dependencies": [
-    "heart-icon",
-    "save-icon",
-    "motion"
-  ],
+  "dependencies": ["heart-icon", "save-icon", "motion"],
   "files": [
     {
       "path": "registry/default/like-save-card.tsx",

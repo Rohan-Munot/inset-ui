@@ -1,23 +1,23 @@
-"use client";
-import { Check, X } from "lucide-react";
-import React, { useState } from "react";
+'use client'
+import { Check, X } from 'lucide-react'
+import React, { useState } from 'react'
 import {
   motion,
   useMotionValue,
   useTransform,
   animate,
   AnimatePresence,
-} from "motion/react";
+} from 'motion/react'
 
 interface RoadmapStepCardProps {
-  title: string;
-  text_1: string;
-  text_2: string;
-  card_contents: React.ReactNode;
-  position: "top" | "bottom";
-  className?: string;
-  layoutId: string;
-  onClick: () => void;
+  title: string
+  text_1: string
+  text_2: string
+  card_contents: React.ReactNode
+  position: 'top' | 'bottom'
+  className?: string
+  layoutId: string
+  onClick: () => void
 }
 
 const RoadmapStepCard: React.FC<RoadmapStepCardProps> = ({
@@ -26,49 +26,49 @@ const RoadmapStepCard: React.FC<RoadmapStepCardProps> = ({
   text_2,
   card_contents,
   position,
-  className = "",
+  className = '',
   layoutId,
   onClick,
 }) => {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
 
-  const rotateZ = useTransform(x, [-100, 100], [-12, 12]);
-  const translateX = useTransform(x, [-100, 100], [-30, 30]);
+  const rotateZ = useTransform(x, [-100, 100], [-12, 12])
+  const translateX = useTransform(x, [-100, 100], [-30, 30])
   function handleMouse(event: React.MouseEvent<HTMLDivElement>) {
-    const rect = event.currentTarget.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
+    const rect = event.currentTarget.getBoundingClientRect()
+    const centerX = rect.left + rect.width / 2
+    const centerY = rect.top + rect.height / 2
     animate(x, event.clientX - centerX, {
-      type: "spring",
+      type: 'spring',
       damping: 13,
-    });
+    })
     animate(y, event.clientY - centerY, {
-      type: "spring",
+      type: 'spring',
       damping: 20,
-    });
+    })
   }
 
   return (
     <motion.div
       layoutId={layoutId}
-      className={`-ml-6 md:-ml-9 absolute flex flex-col w-36 cursor-pointer md:w-44 rounded-xl border border-neutral-400 shadow-[0_1px_1px_rgba(0,0,0,0.05),0_4px_6px_rgba(34,42,53,0.04),0_24px_68px_rgba(48,48,55,0.05),0_2px_3px_rgba(0,0,0,0.05)] ${className}`}
+      className={`absolute -ml-6 flex w-36 cursor-pointer flex-col rounded-xl border border-neutral-400 shadow-[0_1px_1px_rgba(0,0,0,0.05),0_4px_6px_rgba(34,42,53,0.04),0_24px_68px_rgba(48,48,55,0.05),0_2px_3px_rgba(0,0,0,0.05)] md:-ml-9 md:w-44 ${className}`}
       onMouseMove={handleMouse}
       onClick={onClick}
       style={{
-        [position]: "115px",
+        [position]: '115px',
         x: translateX,
         rotateZ: rotateZ,
       }}
     >
-      <div className="flex flex-col h-full justify-between rounded-xl ">
-        <div className="flex flex-col justify-between items-start text-center bg-background p-3 rounded-t-xl space-y-0.5">
-          <h3 className="text-sm md:text-base font-bold leading-tight">
+      <div className="flex h-full flex-col justify-between rounded-xl">
+        <div className="bg-background flex flex-col items-start justify-between space-y-0.5 rounded-t-xl p-3 text-center">
+          <h3 className="text-sm leading-tight font-bold md:text-base">
             {title}
           </h3>
-          <div className="flex items-center w-full justify-between">
+          <div className="flex w-full items-center justify-between">
             <p className="text-xs leading-tight whitespace-nowrap">{text_1}</p>
-            <p className="text-xs leading-tight text-muted-foreground whitespace-nowrap">
+            <p className="text-muted-foreground text-xs leading-tight whitespace-nowrap">
               {text_2}
             </p>
           </div>
@@ -77,16 +77,16 @@ const RoadmapStepCard: React.FC<RoadmapStepCardProps> = ({
         {card_contents}
       </div>
     </motion.div>
-  );
-};
+  )
+}
 
 interface ExpandedCardProps {
-  title: string;
-  text_1: string;
-  text_2: string;
-  card_contents: React.ReactNode;
-  layoutId: string;
-  onClose: () => void;
+  title: string
+  text_1: string
+  text_2: string
+  card_contents: React.ReactNode
+  layoutId: string
+  onClose: () => void
 }
 
 const ExpandedCard: React.FC<ExpandedCardProps> = ({
@@ -107,23 +107,23 @@ const ExpandedCard: React.FC<ExpandedCardProps> = ({
     >
       <motion.div
         layoutId={layoutId}
-        className="relative w-full max-w-lg mx-4 bg-background rounded-xl border border-border"
+        className="bg-background border-border relative mx-4 w-full max-w-lg rounded-xl border"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex flex-col h-full rounded-xl">
-          <div className="flex flex-col justify-between items-start p-4 rounded-t-xl space-y-2">
-            <div className="flex items-center justify-between w-full">
-              <h3 className="text-xl font-bold leading-tight">{title}</h3>
+        <div className="flex h-full flex-col rounded-xl">
+          <div className="flex flex-col items-start justify-between space-y-2 rounded-t-xl p-4">
+            <div className="flex w-full items-center justify-between">
+              <h3 className="text-xl leading-tight font-bold">{title}</h3>
               <button
                 onClick={onClose}
-                className="p-1 rounded-full hover:bg-gray-100 transition-colors"
+                className="rounded-full p-1 transition-colors hover:bg-gray-100"
               >
                 <X className="size-5" />
               </button>
             </div>
-            <div className="flex items-center w-full justify-between">
+            <div className="flex w-full items-center justify-between">
               <p className="text-sm leading-tight">{text_1}</p>
-              <p className="text-sm leading-tight text-muted-foreground">
+              <p className="text-muted-foreground text-sm leading-tight">
                 {text_2}
               </p>
             </div>
@@ -133,37 +133,37 @@ const ExpandedCard: React.FC<ExpandedCardProps> = ({
         </div>
       </motion.div>
     </motion.div>
-  );
-};
+  )
+}
 
 interface roadmapProps {
   roadmapSteps: Array<{
-    title: string;
-    text_1: string;
-    text_2: string;
-    card_contents: React.ReactNode;
-  }>;
+    title: string
+    text_1: string
+    text_2: string
+    card_contents: React.ReactNode
+  }>
 }
 
 const Roadmap = ({ roadmapSteps }: roadmapProps) => {
-  const [selectedCard, setSelectedCard] = useState<number | null>(null);
+  const [selectedCard, setSelectedCard] = useState<number | null>(null)
 
   const handleCardClick = (index: number) => {
-    setSelectedCard(index);
-  };
+    setSelectedCard(index)
+  }
 
   const handleCloseExpanded = () => {
-    setSelectedCard(null);
-  };
+    setSelectedCard(null)
+  }
 
   return (
     <>
-      <div className="space-x-1 flex items-center">
+      <div className="flex items-center space-x-1">
         {roadmapSteps.map((step, index) => (
-          <div key={index} className="relative flex items-center py-16 w-full">
+          <div key={index} className="relative flex w-full items-center py-16">
             {selectedCard !== index && (
               <RoadmapStepCard
-                position={index % 2 === 0 ? "bottom" : "top"}
+                position={index % 2 === 0 ? 'bottom' : 'top'}
                 title={step.title}
                 text_1={step.text_1}
                 text_2={step.text_2}
@@ -172,9 +172,9 @@ const Roadmap = ({ roadmapSteps }: roadmapProps) => {
                 onClick={() => handleCardClick(index)}
               />
             )}
-            <Check className="size-8 p-1.5 rounded-full relative bg-muted aspect-square flex-shrink-0" />
+            <Check className="bg-muted relative aspect-square size-8 flex-shrink-0 rounded-full p-1.5" />
             {index < roadmapSteps.length - 1 && (
-              <div className="-mr-1 h-0.5 w-14 duration-300 sm:hidden md:block md:w-24 lg:w-28 xl:w-44 bg-neutral-200"></div>
+              <div className="-mr-1 h-0.5 w-14 bg-neutral-200 duration-300 sm:hidden md:block md:w-24 lg:w-28 xl:w-44"></div>
             )}
           </div>
         ))}
@@ -193,7 +193,7 @@ const Roadmap = ({ roadmapSteps }: roadmapProps) => {
         )}
       </AnimatePresence>
     </>
-  );
-};
+  )
+}
 
-export default Roadmap;
+export default Roadmap

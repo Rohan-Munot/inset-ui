@@ -1,27 +1,27 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence, useInView } from "motion/react";
-import { cn } from "@/lib/utils";
+'use client'
+import React, { useState, useEffect } from 'react'
+import { motion, AnimatePresence, useInView } from 'motion/react'
+import { cn } from '@/lib/utils'
 
 export const FlipText = ({
   textArray,
-  className = "",
+  className = '',
 }: {
-  textArray: string[];
-  className?: string;
+  textArray: string[]
+  className?: string
 }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0)
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % textArray.length);
-    }, 2500);
+      setCurrentIndex((prev) => (prev + 1) % textArray.length)
+    }, 2500)
 
-    return () => clearInterval(interval);
-  }, [textArray.length]);
+    return () => clearInterval(interval)
+  }, [textArray.length])
 
-  const currentText = textArray[currentIndex];
-  const splittedText = currentText.split("");
+  const currentText = textArray[currentIndex]
+  const splittedText = currentText.split('')
 
   const pullupVariant = {
     initial: { y: 10, opacity: 0 },
@@ -32,10 +32,10 @@ export const FlipText = ({
         delay: i * 0.05,
       },
     }),
-  };
+  }
 
-  const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const ref = React.useRef(null)
+  const isInView = useInView(ref, { once: true })
 
   return (
     <AnimatePresence mode="wait">
@@ -46,17 +46,17 @@ export const FlipText = ({
             ref={ref}
             variants={pullupVariant}
             initial="initial"
-            animate={isInView ? "animate" : ""}
+            animate={isInView ? 'animate' : ''}
             custom={i}
             className={cn(
-              "text-xl text-center sm:text-4xl font-bold tracking-tighter md:text-6xl md:leading-[4rem]",
+              'text-center text-xl font-bold tracking-tighter sm:text-4xl md:text-6xl md:leading-[4rem]',
               className
             )}
           >
-            {current === " " ? <span>&nbsp;</span> : current}
+            {current === ' ' ? <span>&nbsp;</span> : current}
           </motion.div>
         ))}
       </div>
     </AnimatePresence>
-  );
-};
+  )
+}

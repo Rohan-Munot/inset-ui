@@ -1,18 +1,18 @@
-import { cn } from "@/lib/utils";
-import React from "react";
-import { motion, type MotionProps } from "motion/react";
-import { cva, VariantProps } from "class-variance-authority";
+import { cn } from '@/lib/utils'
+import React from 'react'
+import { motion, type MotionProps } from 'motion/react'
+import { cva, VariantProps } from 'class-variance-authority'
 
 interface StatefulButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  className?: string;
-  children: React.ReactNode;
-  size?: "default" | "sm" | "lg" | "icon";
-  state?: "default" | "loading" | "success" | "error" | "disabled" | "warning";
-  loadingText?: string;
-  successText?: string;
-  errorText?: string;
-  warningText?: string;
+  className?: string
+  children: React.ReactNode
+  size?: 'default' | 'sm' | 'lg' | 'icon'
+  state?: 'default' | 'loading' | 'success' | 'error' | 'disabled' | 'warning'
+  loadingText?: string
+  successText?: string
+  errorText?: string
+  warningText?: string
 }
 
 const buttonVariants = cva(
@@ -20,45 +20,45 @@ const buttonVariants = cva(
   {
     variants: {
       size: {
-        default: "h-8 px-4 has-[>svg]:px-3",
-        sm: "h-8  gap-1.5 px-3 has-[>svg]:px-2.5",
-        lg: "h-10  px-6 has-[>svg]:px-4",
-        icon: "size-9",
+        default: 'h-8 px-4 has-[>svg]:px-3',
+        sm: 'h-8  gap-1.5 px-3 has-[>svg]:px-2.5',
+        lg: 'h-10  px-6 has-[>svg]:px-4',
+        icon: 'size-9',
       },
     },
     defaultVariants: {
-      size: "default",
+      size: 'default',
     },
   }
-);
+)
 
 const getBackgroundGradient = (state: string) => {
   switch (state) {
-    case "loading":
-      return "linear-gradient(to bottom, #023e8a, #0077b6)";
-    case "success":
-      return "linear-gradient(to bottom, #38b000, #008000)";
-    case "error":
-      return "linear-gradient(to bottom, #a4161a, #d00000)";
-    case "warning":
-      return "linear-gradient(to bottom, #ff7b00, #ffa200)";
-    case "disabled":
-      return "linear-gradient(to bottom, #27272a, #3f3f46)";
+    case 'loading':
+      return 'linear-gradient(to bottom, #023e8a, #0077b6)'
+    case 'success':
+      return 'linear-gradient(to bottom, #38b000, #008000)'
+    case 'error':
+      return 'linear-gradient(to bottom, #a4161a, #d00000)'
+    case 'warning':
+      return 'linear-gradient(to bottom, #ff7b00, #ffa200)'
+    case 'disabled':
+      return 'linear-gradient(to bottom, #27272a, #3f3f46)'
     default:
-      return "linear-gradient(to bottom, #27272a, #3f3f46)";
+      return 'linear-gradient(to bottom, #27272a, #3f3f46)'
   }
-};
+}
 
 const LoadingSpinner = () => (
   <motion.svg
-    className="w-4 h-4"
+    className="h-4 w-4"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 256 256"
     animate={{ rotate: 360 }}
     transition={{
       duration: 1,
       repeat: Infinity,
-      ease: "linear",
+      ease: 'linear',
     }}
   >
     <rect width="256" height="256" fill="none" />
@@ -71,17 +71,17 @@ const LoadingSpinner = () => (
       strokeWidth="16"
     />
   </motion.svg>
-);
+)
 
 const CheckIcon = () => (
   <motion.svg
-    className="w-4 h-4"
+    className="h-4 w-4"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
     initial={{ scale: 0, opacity: 0 }}
     animate={{ scale: 1, opacity: 1 }}
-    transition={{ duration: 0.2, ease: "easeOut" }}
+    transition={{ duration: 0.2, ease: 'easeOut' }}
   >
     <path
       strokeLinecap="round"
@@ -90,17 +90,17 @@ const CheckIcon = () => (
       d="M5 13l4 4L19 7"
     />
   </motion.svg>
-);
+)
 
 const ErrorIcon = () => (
   <motion.svg
-    className="w-4 h-4"
+    className="h-4 w-4"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
     initial={{ scale: 0, opacity: 0 }}
     animate={{ scale: 1, opacity: 1 }}
-    transition={{ duration: 0.2, ease: "easeOut" }}
+    transition={{ duration: 0.2, ease: 'easeOut' }}
   >
     <path
       strokeLinecap="round"
@@ -109,17 +109,17 @@ const ErrorIcon = () => (
       d="M6 18L18 6M6 6l12 12"
     />
   </motion.svg>
-);
+)
 
 const WarningIcon = () => (
   <motion.svg
-    className="w-4 h-4"
+    className="h-4 w-4"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
     initial={{ scale: 0, opacity: 0 }}
     animate={{ scale: 1, opacity: 1 }}
-    transition={{ duration: 0.2, ease: "easeOut" }}
+    transition={{ duration: 0.2, ease: 'easeOut' }}
   >
     <path
       strokeLinecap="round"
@@ -128,57 +128,57 @@ const WarningIcon = () => (
       d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
     />
   </motion.svg>
-);
+)
 
 function StatefulButton({
   className,
   size,
-  state = "default",
+  state = 'default',
   children,
-  loadingText = "Loading",
-  successText = "Success",
-  errorText = "Error",
-  warningText = "Warning",
+  loadingText = 'Loading',
+  successText = 'Success',
+  errorText = 'Error',
+  warningText = 'Warning',
   disabled,
   ...props
 }: StatefulButtonProps & VariantProps<typeof buttonVariants>) {
-  const isDisabled = disabled || state === "disabled";
-  const currentState = isDisabled ? "disabled" : state;
+  const isDisabled = disabled || state === 'disabled'
+  const currentState = isDisabled ? 'disabled' : state
 
   const getContent = () => {
     switch (state) {
-      case "loading":
+      case 'loading':
         return (
           <>
             <LoadingSpinner />
             {loadingText}
           </>
-        );
-      case "success":
+        )
+      case 'success':
         return (
           <>
             <CheckIcon />
             {successText}
           </>
-        );
-      case "error":
+        )
+      case 'error':
         return (
           <>
             <ErrorIcon />
             {errorText}
           </>
-        );
-      case "warning":
+        )
+      case 'warning':
         return (
           <>
             <WarningIcon />
             {warningText}
           </>
-        );
+        )
       default:
-        return children;
+        return children
     }
-  };
+  }
 
   return (
     <motion.button
@@ -191,13 +191,13 @@ function StatefulButton({
       }}
       transition={{
         duration: 0.3,
-        ease: "easeInOut",
+        ease: 'easeInOut',
       }}
       {...(props as MotionProps)}
     >
       {getContent()}
     </motion.button>
-  );
+  )
 }
 
-export default StatefulButton;
+export default StatefulButton

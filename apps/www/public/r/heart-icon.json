@@ -4,9 +4,7 @@
   "type": "registry:component",
   "title": "Heart Icon",
   "description": "An animated heart icon for like interactions",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/default/heart-icon.tsx",

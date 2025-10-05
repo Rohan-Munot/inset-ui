@@ -4,10 +4,7 @@
   "type": "registry:component",
   "title": "Simple Button",
   "description": "A minimalist button component with variants",
-  "dependencies": [
-    "motion",
-    "class-variance-authority"
-  ],
+  "dependencies": ["motion", "class-variance-authority"],
   "files": [
     {
       "path": "registry/default/simple-button.tsx",

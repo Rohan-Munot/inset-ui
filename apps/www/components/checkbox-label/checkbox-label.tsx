@@ -1,40 +1,40 @@
-"use client";
-import { CheckboxComponent } from "@/components/checkbox/01_checkbox";
-import { Label } from "@/components/ui/label";
-import { cn } from "@/lib/utils";
-import { useState } from "react";
-import { cva } from "class-variance-authority";
-import { AnimatePresence, motion } from "motion/react";
+'use client'
+import { CheckboxComponent } from '@/components/checkbox/01_checkbox'
+import { Label } from '@/components/ui/label'
+import { cn } from '@/lib/utils'
+import { useState } from 'react'
+import { cva } from 'class-variance-authority'
+import { AnimatePresence, motion } from 'motion/react'
 
-const labelVariants = cva("transition-all duration-200", {
+const labelVariants = cva('transition-all duration-200', {
   variants: {
     variant: {
-      default: "",
-      strike: "",
+      default: '',
+      strike: '',
     },
     checked: {
-      true: "",
-      false: "",
+      true: '',
+      false: '',
     },
   },
   compoundVariants: [
     {
-      variant: "strike",
+      variant: 'strike',
       checked: true,
-      class: "opacity-60",
+      class: 'opacity-60',
     },
   ],
   defaultVariants: {
-    variant: "default",
+    variant: 'default',
     checked: false,
   },
-});
+})
 
 interface CheckboxLabelProps extends React.ComponentProps<typeof Label> {
-  id: string;
-  text: string;
-  disabled?: boolean;
-  variants?: "strike" | "default";
+  id: string
+  text: string
+  disabled?: boolean
+  variants?: 'strike' | 'default'
 }
 
 const CheckboxLabel = ({
@@ -45,7 +45,7 @@ const CheckboxLabel = ({
   variants,
   ...labelProps
 }: CheckboxLabelProps) => {
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(false)
 
   return (
     <div className="flex items-center gap-3">
@@ -65,23 +65,23 @@ const CheckboxLabel = ({
         <span className="relative">
           {text}
           <AnimatePresence>
-            {isChecked && variants === "strike" && (
+            {isChecked && variants === 'strike' && (
               <motion.div
-                className="absolute left-0 top-1/2 h-[1px] bg-current"
+                className="absolute top-1/2 left-0 h-[1px] bg-current"
                 initial={{ width: 0, opacity: 0 }}
                 animate={{
-                  width: "100%",
+                  width: '100%',
                   opacity: 1,
                 }}
                 exit={{ width: 0, opacity: 0 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
               />
             )}
           </AnimatePresence>
         </span>
       </Label>
     </div>
-  );
-};
+  )
+}
 
-export default CheckboxLabel;
+export default CheckboxLabel

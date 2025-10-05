@@ -1,18 +1,18 @@
-import { motion, Variants, type MotionProps } from "motion/react";
+import { motion, Variants, type MotionProps } from 'motion/react'
 
 export const HeartIcon = (props: MotionProps) => {
-  const { animate } = props;
+  const { animate } = props
   const heartVariants = {
     unliked: {
-      fill: "none",
-      stroke: "currentColor",
+      fill: 'none',
+      stroke: 'currentColor',
       scale: [1, 0.92, 1],
       x: 0,
-      transition: { duration: 0.2, ease: "easeOut" },
+      transition: { duration: 0.2, ease: 'easeOut' },
     },
     liked: {
-      fill: "#ff6360",
-      stroke: "#ff6360",
+      fill: '#ff6360',
+      stroke: '#ff6360',
       scale: [1, 1.08, 1],
       rotate: [0, -10, 10, -4, 4, 0],
       x: 0,
@@ -24,11 +24,11 @@ export const HeartIcon = (props: MotionProps) => {
           duration: 0,
         },
         duration: 0.5,
-        ease: "linear",
+        ease: 'linear',
         times: [0, 0.2, 0.4, 0.6, 0.8, 1],
       },
     },
-  };
+  }
 
   return (
     <motion.svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
@@ -44,5 +44,5 @@ export const HeartIcon = (props: MotionProps) => {
         strokeWidth="16"
       />
     </motion.svg>
-  );
-};
+  )
+}

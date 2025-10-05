@@ -4,9 +4,7 @@
   "type": "registry:component",
   "title": "Shiny Button",
   "description": "A shiny button component",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/default/shiny-button.tsx",

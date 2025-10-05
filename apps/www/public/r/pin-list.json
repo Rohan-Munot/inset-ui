@@ -4,11 +4,7 @@
   "type": "registry:component",
   "title": "Pin List",
   "description": "A pin-able task list with animated transitions",
-  "dependencies": [
-    "checkbox-label",
-    "lucide-react",
-    "motion"
-  ],
+  "dependencies": ["checkbox-label", "lucide-react", "motion"],
   "files": [
     {
       "path": "registry/default/pin-list.tsx",

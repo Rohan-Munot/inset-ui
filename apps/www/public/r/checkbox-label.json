@@ -4,11 +4,7 @@
   "type": "registry:component",
   "title": "Checkbox Label",
   "description": "A label companion for the inset checkbox with strike-through animation",
-  "dependencies": [
-    "checkbox",
-    "class-variance-authority",
-    "motion"
-  ],
+  "dependencies": ["checkbox", "class-variance-authority", "motion"],
   "files": [
     {
       "path": "registry/default/checkbox-label.tsx",

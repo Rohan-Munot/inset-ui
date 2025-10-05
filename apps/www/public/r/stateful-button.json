@@ -4,10 +4,7 @@
   "type": "registry:component",
   "title": "Stateful Button",
   "description": "A button component with built-in state visualisations",
-  "dependencies": [
-    "motion",
-    "class-variance-authority"
-  ],
+  "dependencies": ["motion", "class-variance-authority"],
   "files": [
     {
       "path": "registry/default/stateful-button.tsx",

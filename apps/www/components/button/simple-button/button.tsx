@@ -1,10 +1,10 @@
-import { cn } from "@/lib/utils";
-import React from "react";
-import { cva, VariantProps } from "class-variance-authority";
+import { cn } from '@/lib/utils'
+import React from 'react'
+import { cva, VariantProps } from 'class-variance-authority'
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  className?: string;
-  children: React.ReactNode;
-  size?: "default" | "sm" | "lg" | "icon";
+  className?: string
+  children: React.ReactNode
+  size?: 'default' | 'sm' | 'lg' | 'icon'
 }
 
 const buttonVariants = cva(
@@ -12,17 +12,17 @@ const buttonVariants = cva(
   {
     variants: {
       size: {
-        default: "h-9 px-4 py-2 has-[>svg]:px-3",
-        sm: "h-8  gap-1.5 px-3 has-[>svg]:px-2.5",
-        lg: "h-10  px-6 has-[>svg]:px-4",
-        icon: "size-9",
+        default: 'h-9 px-4 py-2 has-[>svg]:px-3',
+        sm: 'h-8  gap-1.5 px-3 has-[>svg]:px-2.5',
+        lg: 'h-10  px-6 has-[>svg]:px-4',
+        icon: 'size-9',
       },
       defaultVariants: {
-        size: "default",
+        size: 'default',
       },
     },
   }
-);
+)
 function SimpleButton({
   className,
   size,
@@ -30,7 +30,7 @@ function SimpleButton({
   ...props
 }: ButtonProps &
   VariantProps<typeof buttonVariants> & {
-    asChild?: boolean;
+    asChild?: boolean
   }) {
   return (
     <button
@@ -38,7 +38,7 @@ function SimpleButton({
       className={cn(buttonVariants({ size }), className)}
       {...props}
     />
-  );
+  )
 }
 
-export default SimpleButton;
+export default SimpleButton
