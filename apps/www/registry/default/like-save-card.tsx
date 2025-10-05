@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
-import { HeartIcon } from '@/components/icons/heart-icon'
-import { BookmarkIcon } from '@/components/icons/save-icon'
+import { HeartIcon } from '@/components/demo/icons/heart-icon'
+import { BookmarkIcon } from '@/components/demo/icons/save-icon'
 import { cn } from '@/lib/utils'
 
 const LikeSaveCard = () => {
