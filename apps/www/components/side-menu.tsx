@@ -4,24 +4,12 @@ import React, { useState } from 'react'
 import { COMPONENT_SECTIONS } from '@/lib/constants'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ChevronRightIcon } from 'lucide-react'
-import { motion, AnimatePresence } from 'motion/react'
+import { ChevronRightIcon, Heart } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { Button } from './ui/button'
 
 const SideMenu = () => {
   const pathname = usePathname()
-  const [expandedSections, setExpandedSections] = useState<string[]>([
-    'Buttons',
-  ])
-
-  const toggleSection = (sectionTitle: string) => {
-    setExpandedSections((prev) =>
-      prev.includes(sectionTitle)
-        ? prev.filter((title) => title !== sectionTitle)
-        : [...prev, sectionTitle]
-    )
-  }
-
   const isActiveLink = (href: string) => {
     return pathname === href
   }
@@ -36,60 +24,36 @@ const SideMenu = () => {
       </div>
 
       {/* Navigation */}
-      <div className="flex-1 overflow-y-auto">
+      <div className="flex-1 overflow-y-auto [scrollbar-width:none]">
         <div className="space-y-2 p-2">
           <div className="pt-2">
-            <h3 className="text-muted-foreground px-2 py-2 text-xs font-semibold tracking-wide uppercase">
-              Components
-            </h3>
             <div className="space-y-1">
               {COMPONENT_SECTIONS.map((section) => (
                 <div key={section.title}>
-                  <button
-                    onClick={() => toggleSection(section.title)}
-                    className="text-foreground hover:bg-accent hover:text-accent-foreground flex w-full items-center justify-between rounded-md px-2 py-2 text-sm font-medium transition-colors"
+                  <Button
+                    variant="ghost"
+                    className="flex w-full justify-start px-3 text-white"
                   >
-                    <span>{section.title}</span>
-                    <motion.div
-                      animate={{
-                        rotate: expandedSections.includes(section.title)
-                          ? 90
-                          : 0,
-                      }}
-                      transition={{ duration: 0.3, ease: 'easeInOut' }}
-                    >
-                      <ChevronRightIcon className="h-4 w-4" />
-                    </motion.div>
-                  </button>
+                    <span className="text-sm font-medium">{section.title}</span>
+                    {/* <ChevronRightIcon className="h-4 w-4 rotate-90" /> */}
+                  </Button>
 
-                  <AnimatePresence>
-                    {expandedSections.includes(section.title) && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: 'easeInOut' }}
-                        className="overflow-hidden"
+                  <div className={cn('ml-4 border-l border-zinc-700')}>
+                    {section.items.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className={cn(
+                          'group flex max-w-[13rem] flex-col rounded-xs px-3 py-1 text-sm transition-colors',
+                          isActiveLink(item.href)
+                            ? 'border-l border-white text-white transition-colors duration-300 ease-in-out'
+                            : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
+                        )}
                       >
-                        <div className="ml-2 space-y-1 py-1">
-                          {section.items.map((item) => (
-                            <Link
-                              key={item.href}
-                              href={item.href}
-                              className={cn(
-                                'group flex flex-col px-3 py-2 text-sm transition-colors',
-                                isActiveLink(item.href)
-                                  ? 'bg-primary/10 text-primary border-primary border-l-2'
-                                  : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
-                              )}
-                            >
-                              <span className="font-medium">{item.name}</span>
-                            </Link>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                        <span className="text-sm font-normal">{item.name}</span>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>

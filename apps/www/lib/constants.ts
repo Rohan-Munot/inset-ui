@@ -3,18 +3,18 @@ export const COMPONENT_SECTIONS = [
     title: 'Buttons',
     items: [
       {
-        name: 'Shiny Button',
-        href: '/docs/components/shiny-button',
-        description: 'An animated button with a shiny effect',
+        name: 'Shimmer Button',
+        href: '/components/shimmer-button',
+        description: 'An animated button with a shimmer effect',
       },
       {
         name: 'Simple Button',
-        href: '/docs/components/simple-button',
+        href: '/components/simple-button',
         description: 'A clean and simple button component',
       },
       {
         name: 'Stateful Button',
-        href: '/docs/components/stateful-button',
+        href: '/components/stateful-button',
         description: 'A button with different states',
       },
     ],
@@ -24,12 +24,12 @@ export const COMPONENT_SECTIONS = [
     items: [
       {
         name: 'Checkbox',
-        href: '/docs/components/checkbox',
+        href: '/components/checkbox',
         description: 'An animated checkbox component',
       },
       {
         name: 'Checkbox Label',
-        href: '/docs/components/checkbox-label',
+        href: '/components/checkbox-label',
         description: 'A checkbox with integrated label',
       },
     ],
@@ -39,12 +39,12 @@ export const COMPONENT_SECTIONS = [
     items: [
       {
         name: 'Heart Icon',
-        href: '/docs/components/heart-icon',
+        href: '/components/heart-icon',
         description: 'An animated heart icon for likes',
       },
       {
         name: 'Save Icon',
-        href: '/docs/components/save-icon',
+        href: '/components/save-icon',
         description: 'An animated save icon',
       },
     ],
@@ -54,7 +54,7 @@ export const COMPONENT_SECTIONS = [
     items: [
       {
         name: 'Flip Text',
-        href: '/docs/components/flip-text',
+        href: '/components/flip-text',
         description: 'Animated text that flips between different words',
       },
     ],
@@ -64,17 +64,17 @@ export const COMPONENT_SECTIONS = [
     items: [
       {
         name: 'Like Save Card',
-        href: '/docs/components/like-save-card',
+        href: '/components/like-save-card',
         description: 'A card component with like and save functionality',
       },
       {
         name: 'Pin List',
-        href: '/docs/components/pin-list',
+        href: '/components/pin-list',
         description: 'A list component for pinned items',
       },
       {
         name: 'Roadmap',
-        href: '/docs/components/roadmap',
+        href: '/components/roadmap',
         description: 'A roadmap visualization component',
       },
     ],

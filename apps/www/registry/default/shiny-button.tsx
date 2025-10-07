@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { motion, type MotionProps } from 'motion/react'
 
@@ -13,7 +14,7 @@ const animationProps = {
   },
 } as MotionProps
 
-export function ShinyButton({
+export function ShimmerButton({
   children,
   className,
   ...props
