@@ -4,7 +4,7 @@ import { HeartIcon } from '../icons/heart-icon'
 import { BookmarkIcon } from '../icons/save-icon'
 import { cn } from '@/lib/utils'
 
-const LikeSaveCard = () => {
+const LikeSaveCard = ({ children }: { children: React.ReactNode }) => {
   const [isLiked, setIsLiked] = useState(false)
   const [isBookmarked, setIsBookmarked] = useState(false)
   const [likeCount, setLikeCount] = useState(3211)
@@ -16,7 +16,9 @@ const LikeSaveCard = () => {
         'shadow-[0_1px_1px_rgba(0,0,0,0.05),0_4px_6px_rgba(34,42,53,0.04),0_24px_68px_rgba(48,48,55,0.05),0_2px_3px_rgba(0,0,0,0.05)]'
       )}
     >
-      <div className="border-muted-foreground/40 bg-muted/30 flex h-48 flex-col items-center justify-center gap-2 rounded-2xl border border-dashed text-center" />
+      <div className="border-muted-foreground/40 bg-muted/30 flex h-48 flex-col items-center justify-center gap-2 rounded-2xl border border-dashed text-center">
+        {children}
+      </div>
 
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-2">

@@ -9,7 +9,6 @@ import { Badge } from '../../ui/badge'
 
 type TaskOwner = {
   name: string
-  initials: string
   role?: string
 }
 
@@ -50,6 +49,12 @@ const PinList = ({ taskList }: { taskList: TaskList }) => {
       ),
     }))
   }
+  const getInitials = (name: string) => {
+    const words = name.split(' ')
+    const firstInitial = words[0]?.charAt(0) || ''
+    const lastInitial = words[1]?.charAt(0) || ''
+    return firstInitial + lastInitial
+  }
 
   return (
     <LayoutGroup id={`${taskList.id}-group`}>
@@ -85,7 +90,7 @@ const PinList = ({ taskList }: { taskList: TaskList }) => {
                 <motion.button
                   type="button"
                   className={cn(
-                    'bg-background flex size-9 items-center justify-center rounded-full border border-transparent',
+                    'bg-background flex size-8 items-center justify-center rounded-full border border-transparent',
                     'hover:bg-muted focus-visible:outline-primary hover:scale-105 focus-visible:outline-offset-2 focus-visible:outline-dashed active:scale-95',
                     'opacity-0 group-hover:opacity-100',
                     isPinned && 'opacity-100'
@@ -104,7 +109,7 @@ const PinList = ({ taskList }: { taskList: TaskList }) => {
                 </motion.button>
               </div>
 
-              <p className="text-muted-foreground pl-8 text-sm">
+              <p className="text-muted-foreground pl-8 text-start text-sm">
                 {task.description}
               </p>
               {/* footer of pinlist card */}
@@ -116,7 +121,7 @@ const PinList = ({ taskList }: { taskList: TaskList }) => {
                 {task.owner && (
                   <span className="inline-flex items-center gap-2">
                     <span className="bg-muted text-foreground/80 inline-flex size-6 items-center justify-center rounded-full text-[0.65rem] font-semibold">
-                      {task.owner.initials}
+                      {getInitials(task.owner.name)}
                     </span>
                     <span className="text-foreground/80 text-xs font-medium">
                       {task.owner.name}
