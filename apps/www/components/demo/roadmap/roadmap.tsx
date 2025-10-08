@@ -33,19 +33,32 @@ const RoadmapStepCard: React.FC<RoadmapStepCardProps> = ({
   const x = useMotionValue(0)
   const y = useMotionValue(0)
 
-  const rotateZ = useTransform(x, [-100, 100], [-12, 12])
-  const translateX = useTransform(x, [-100, 100], [-30, 30])
+  const rotateZ = useTransform(x, [-1, 1], [-8, 8])
+  const translateX = useTransform(x, [-1, 1], [-12, 12])
+
   function handleMouse(event: React.MouseEvent<HTMLDivElement>) {
     const rect = event.currentTarget.getBoundingClientRect()
     const centerX = rect.left + rect.width / 2
     const centerY = rect.top + rect.height / 2
-    animate(x, event.clientX - centerX, {
-      type: 'spring',
-      damping: 13,
-    })
-    animate(y, event.clientY - centerY, {
+
+    const normalizedX = Math.max(
+      -1,
+      Math.min(1, (event.clientX - centerX) / (rect.width / 2))
+    )
+    const normalizedY = Math.max(
+      -1,
+      Math.min(1, (event.clientY - centerY) / (rect.height / 2))
+    )
+
+    animate(x, normalizedX, {
       type: 'spring',
       damping: 20,
+      stiffness: 300,
+    })
+    animate(y, normalizedY, {
+      type: 'spring',
+      damping: 20,
+      stiffness: 300,
     })
   }
 
@@ -102,7 +115,7 @@ const ExpandedCard: React.FC<ExpandedCardProps> = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+      className="absolute z-50 flex h-full w-full items-center justify-center backdrop-blur-sm"
       onClick={onClose}
     >
       <motion.div
@@ -116,7 +129,7 @@ const ExpandedCard: React.FC<ExpandedCardProps> = ({
               <h3 className="text-xl leading-tight font-bold">{title}</h3>
               <button
                 onClick={onClose}
-                className="rounded-full p-1 transition-colors hover:bg-gray-100"
+                className="hover:bg-accent rounded-full p-1 transition-colors"
               >
                 <X className="size-5" />
               </button>
@@ -157,7 +170,7 @@ const Roadmap = ({ roadmapSteps }: roadmapProps) => {
   }
 
   return (
-    <>
+    <div className="flex w-full flex-col items-start justify-start overflow-hidden py-32 md:items-center md:justify-center md:pt-32">
       <div className="flex items-center space-x-1">
         {roadmapSteps.map((step, index) => (
           <div key={index} className="relative flex w-full items-center py-16">
@@ -192,7 +205,7 @@ const Roadmap = ({ roadmapSteps }: roadmapProps) => {
           />
         )}
       </AnimatePresence>
-    </>
+    </div>
   )
 }
 

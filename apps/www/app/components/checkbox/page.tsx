@@ -1,86 +1,60 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import Roadmap from '@/components/demo/roadmap/roadmap'
-import { CheckCircle, Clock, Target, Users, Zap, Shield } from 'lucide-react'
+import { CheckboxComponent } from '@/registry/default/checkbox'
+import { CheckIcon, Star, Heart } from 'lucide-react'
 import CodeBlock from '@/components/code-block'
 
-const registryPath = '/r/roadmap.json'
-
-const sampleRoadmapSteps = [
-  {
-    title: 'Foundation',
-    text_1: 'Q1 2024',
-    text_2: 'Planning',
-    card_contents: (
-      <div className="bg-muted/30 rounded-b-xl p-3">
-        <div className="space-y-2">
-          <div className="flex items-center gap-2">
-            <Target className="size-4 text-blue-500" />
-            <span className="text-xs font-medium">Project Setup</span>
-          </div>
-          <p className="text-muted-foreground text-xs">
-            Establish infrastructure for the product development cycle.
-          </p>
-        </div>
-      </div>
-    ),
-  },
-  {
-    title: 'Development',
-    text_1: 'Q2 2024',
-    text_2: 'Building',
-    card_contents: (
-      <div className="bg-muted/30 rounded-b-xl p-3">
-        <div className="space-y-2">
-          <div className="flex items-center gap-2">
-            <Zap className="size-4 text-green-500" />
-            <span className="text-xs font-medium">Core Features</span>
-          </div>
-          <p className="text-muted-foreground text-xs">
-            Implement essential functionality and user interface components.
-          </p>
-        </div>
-      </div>
-    ),
-  },
-  {
-    title: 'Testing',
-    text_1: 'Q3 2024',
-    text_2: 'Quality',
-    card_contents: (
-      <div className="bg-muted/30 rounded-b-xl p-3">
-        <div className="space-y-2">
-          <div className="flex items-center gap-2">
-            <Shield className="size-4 text-purple-500" />
-            <span className="text-xs font-medium">QA Process</span>
-          </div>
-          <p className="text-muted-foreground text-xs">
-            Comprehensive testing and bug fixes to ensure product stability.
-          </p>
-        </div>
-      </div>
-    ),
-  },
-]
+const registryPath = '/r/checkbox.json'
 
 const demos = [
   {
-    title: 'Product roadmap',
+    title: 'Default',
+    description: 'Clean checkbox with smooth animations and accessible states.',
+    code: '<CheckboxComponent />',
+    element: <CheckboxComponent />,
+  },
+  {
+    title: 'With Label',
     description:
-      'Interactive timeline showing project phases with expandable details.',
-    code: `<Roadmap roadmapSteps={roadmapSteps} />`,
-    element: <Roadmap roadmapSteps={sampleRoadmapSteps} />,
+      'Pair with a label for better accessibility and user experience.',
+    code: `<div className="flex items-center space-x-2">
+  <CheckboxComponent id="terms" />
+  <label htmlFor="terms" className="text-sm text-white/80">
+    Accept terms and conditions
+  </label>
+</div>`,
+    element: (
+      <div className="flex items-center space-x-2">
+        <CheckboxComponent id="terms" />
+        <label htmlFor="terms" className="text-sm text-white/80">
+          Accept terms and conditions
+        </label>
+      </div>
+    ),
+  },
+  {
+    title: 'Disabled State',
+    description: 'Non-interactive state for read-only or unavailable options.',
+    code: '<CheckboxComponent disabled />',
+    element: <CheckboxComponent disabled />,
   },
 ]
 
 const propsData = [
   {
-    name: 'roadmapSteps',
-    type: 'Array<RoadmapStep>',
+    name: 'className',
+    type: 'string',
     defaultsTo: '—',
     description:
-      'Array of roadmap step objects containing title, text, and content.',
+      'Utility classes for further tweaking appearance, spacing, or layout.',
+  },
+  {
+    name: '...props',
+    type: 'React.ComponentProps<typeof CheckboxPrimitive.Root>',
+    defaultsTo: '—',
+    description:
+      'All props from Radix UI CheckboxPrimitive.Root including checked, disabled, onCheckedChange, etc.',
   },
 ]
 
@@ -128,18 +102,36 @@ const Page = () => {
     <div className="shadow-[inset_0_2px_7px_0_rgba(255,255, 255,0.08)] flex-1 overflow-y-auto rounded-s-xs rounded-e-xl bg-neutral-900 p-8 backdrop-blur-lg [scrollbar-width:none]">
       <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-12">
         <header className="relative overflow-hidden rounded-[18px] border border-white/10 bg-gradient-to-br from-neutral-950 via-neutral-900/70 to-neutral-950 px-8 py-10 shadow-[0_24px_70px_-35px_rgba(0,0,0,0.65)] sm:px-12 sm:py-12 md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,360px)] md:items-center md:gap-12">
+          <div
+            aria-hidden
+            className="absolute inset-y-0 -right-2 hidden w-1/2 bg-[radial-gradient(circle_at_center,rgba(150,150,150,0.18),transparent_55%)] md:block"
+          />
           <div className="relative flex flex-col gap-6">
             <span className="text-xs tracking-[0.35em] text-white/50 uppercase">
               Component
             </span>
             <div className="space-y-3">
               <h1 className="text-4xl leading-tight font-semibold text-white">
-                Roadmap
+                Checkbox
               </h1>
               <p className="max-w-xl text-base leading-relaxed text-white/70">
-                An interactive roadmap timeline with expandable cards, smooth
-                animations, and hover effects for project visualization.
+                An accessible checkbox component with smooth animations, focus
+                states, and built-in form validation support.
               </p>
+            </div>
+          </div>
+          <div className="relative mt-10 grid place-items-center md:mt-0">
+            <div
+              aria-hidden
+              className="absolute inset-0 rounded-[18px] bg-gradient-to-br from-white/15 via-white/5 to-transparent blur-2xl"
+            />
+            <div className="relative flex w-full max-w-sm flex-col items-center gap-6 rounded-[18px] border border-white/10 bg-neutral-950/80 p-8 text-center shadow-[0_20px_60px_-40px_rgba(0,0,0,0.8)] backdrop-blur">
+              <div className="flex items-center space-x-2">
+                <CheckboxComponent />
+                <span className="text-sm text-white/80">
+                  Enable notifications
+                </span>
+              </div>
             </div>
           </div>
         </header>
@@ -155,8 +147,7 @@ const Page = () => {
                 Installation
               </h2>
               <p className="max-w-2xl text-sm text-white/60">
-                Install directly from the registry using your preferred package
-                manager.
+                Install with the shadcn CLI just like any other registry entry.
               </p>
             </div>
             <div className="flex flex-col gap-2">
@@ -187,7 +178,7 @@ const Page = () => {
           <div className="flex flex-col gap-3">
             <h2 className="text-2xl font-semibold text-white">Usage</h2>
           </div>
-          <div className="grid gap-6 md:grid-cols-1">
+          <div className="grid gap-6 md:grid-cols-3">
             {demos.map((demo) => (
               <div
                 key={demo.title}
@@ -203,10 +194,8 @@ const Page = () => {
                 </div>
                 <div className="flex flex-col gap-5">
                   <div className="rounded-xl border border-dashed border-white/10 bg-white/5 p-4">
-                    <div className="flex w-full items-center justify-center overflow-hidden">
-                      <div className="relative mx-4 h-full w-full overflow-x-auto">
-                        {demo.element}
-                      </div>
+                    <div className="flex items-center justify-center">
+                      {demo.element}
                     </div>
                   </div>
                   <CodeBlock language="jsx">{demo.code}</CodeBlock>
@@ -220,8 +209,8 @@ const Page = () => {
           <div className="flex flex-col gap-2">
             <h2 className="text-2xl font-semibold text-white">Props</h2>
             <p className="text-sm text-white/60">
-              Interactive timeline component with expandable cards and smooth
-              animations.
+              Built on Radix UI primitives with full accessibility support and
+              flexible customization options.
             </p>
           </div>
           <div className="overflow-hidden rounded-[18px] border border-white/10 bg-neutral-950/80 shadow-[0_16px_45px_-35px_rgba(0,0,0,0.75)]">
@@ -253,31 +242,6 @@ const Page = () => {
                 ))}
               </tbody>
             </table>
-          </div>
-        </section>
-
-        <section className="space-y-6">
-          <div className="flex flex-col gap-2">
-            <h2 className="text-2xl font-semibold text-white">
-              Data Structure
-            </h2>
-            <p className="text-sm text-white/60">
-              The RoadmapStep interface defines the structure for timeline data.
-            </p>
-          </div>
-          <div className="overflow-hidden rounded-[18px] border border-white/10 bg-neutral-950/80 shadow-[0_16px_45px_-35px_rgba(0,0,0,0.75)]">
-            <div className="p-6">
-              <CodeBlock language="typescript">{`interface RoadmapStep {
-  title: string
-  text_1: string
-  text_2: string
-  card_contents: React.ReactNode
-}
-
-interface RoadmapProps {
-  roadmapSteps: RoadmapStep[]
-}`}</CodeBlock>
-            </div>
           </div>
         </section>
       </div>
