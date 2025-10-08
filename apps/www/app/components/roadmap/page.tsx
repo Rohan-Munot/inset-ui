@@ -1,29 +1,170 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import PinList from '@/components/demo/pin-list/pin-list'
-import { initialTaskList } from '@/lib/pin-list-data'
+import Roadmap from '@/components/demo/roadmap/roadmap'
+import { CheckCircle, Clock, Target, Users, Zap, Shield } from 'lucide-react'
 import CodeBlock from '@/components/code-block'
 
-const registryPath = '/r/pin-list.json'
+const registryPath = '/r/roadmap.json'
+
+const sampleRoadmapSteps = [
+  {
+    title: 'Foundation',
+    text_1: 'Q1 2024',
+    text_2: 'Planning',
+    card_contents: (
+      <div className="bg-muted/30 rounded-b-xl p-3">
+        <div className="space-y-2">
+          <div className="flex items-center gap-2">
+            <Target className="size-4 text-blue-500" />
+            <span className="text-xs font-medium">Project Setup</span>
+          </div>
+          <p className="text-muted-foreground text-xs">
+            Establish core infrastructure and team structure for the product
+            development cycle.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: 'Development',
+    text_1: 'Q2 2024',
+    text_2: 'Building',
+    card_contents: (
+      <div className="bg-muted/30 rounded-b-xl p-3">
+        <div className="space-y-2">
+          <div className="flex items-center gap-2">
+            <Zap className="size-4 text-green-500" />
+            <span className="text-xs font-medium">Core Features</span>
+          </div>
+          <p className="text-muted-foreground text-xs">
+            Implement essential functionality and user interface components.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: 'Testing',
+    text_1: 'Q3 2024',
+    text_2: 'Quality',
+    card_contents: (
+      <div className="bg-muted/30 rounded-b-xl p-3">
+        <div className="space-y-2">
+          <div className="flex items-center gap-2">
+            <Shield className="size-4 text-purple-500" />
+            <span className="text-xs font-medium">QA Process</span>
+          </div>
+          <p className="text-muted-foreground text-xs">
+            Comprehensive testing and bug fixes to ensure product stability.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: 'Launch',
+    text_1: 'Q4 2024',
+    text_2: 'Release',
+    card_contents: (
+      <div className="bg-muted/30 rounded-b-xl p-3">
+        <div className="space-y-2">
+          <div className="flex items-center gap-2">
+            <CheckCircle className="size-4 text-orange-500" />
+            <span className="text-xs font-medium">Go Live</span>
+          </div>
+          <p className="text-muted-foreground text-xs">
+            Public release and initial user onboarding with support systems.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+]
 
 const demos = [
   {
-    title: 'Task management',
+    title: 'Product roadmap',
     description:
-      'Interactive task list with pinning functionality and smooth animations.',
-    code: `<PinList taskList={taskList} />`,
-    element: <PinList taskList={initialTaskList} />,
+      'Interactive timeline showing project phases with expandable details.',
+    code: `<Roadmap roadmapSteps={roadmapSteps} />`,
+    element: <Roadmap roadmapSteps={sampleRoadmapSteps} />,
+  },
+  {
+    title: 'Feature timeline',
+    description: 'Track feature development progress with visual milestones.',
+    code: `<Roadmap roadmapSteps={featureSteps} />`,
+    element: (
+      <Roadmap
+        roadmapSteps={[
+          {
+            title: 'Research',
+            text_1: 'Week 1-2',
+            text_2: 'Discovery',
+            card_contents: (
+              <div className="bg-muted/30 rounded-b-xl p-3">
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <Users className="size-4 text-blue-500" />
+                    <span className="text-xs font-medium">User Research</span>
+                  </div>
+                  <p className="text-muted-foreground text-xs">
+                    Conduct interviews and analyze user needs.
+                  </p>
+                </div>
+              </div>
+            ),
+          },
+          {
+            title: 'Design',
+            text_1: 'Week 3-4',
+            text_2: 'Prototyping',
+            card_contents: (
+              <div className="bg-muted/30 rounded-b-xl p-3">
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <Target className="size-4 text-green-500" />
+                    <span className="text-xs font-medium">Wireframes</span>
+                  </div>
+                  <p className="text-muted-foreground text-xs">
+                    Create mockups and interactive prototypes.
+                  </p>
+                </div>
+              </div>
+            ),
+          },
+          {
+            title: 'Build',
+            text_1: 'Week 5-8',
+            text_2: 'Development',
+            card_contents: (
+              <div className="bg-muted/30 rounded-b-xl p-3">
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <Zap className="size-4 text-purple-500" />
+                    <span className="text-xs font-medium">Implementation</span>
+                  </div>
+                  <p className="text-muted-foreground text-xs">
+                    Code the feature and integrate with existing systems.
+                  </p>
+                </div>
+              </div>
+            ),
+          },
+        ]}
+      />
+    ),
   },
 ]
 
 const propsData = [
   {
-    name: 'taskList',
-    type: 'TaskList',
+    name: 'roadmapSteps',
+    type: 'Array<RoadmapStep>',
     defaultsTo: '—',
     description:
-      'Object containing the task list data with tasks array and metadata.',
+      'Array of roadmap step objects containing title, text, and content.',
   },
 ]
 
@@ -81,11 +222,11 @@ const Page = () => {
             </span>
             <div className="space-y-3">
               <h1 className="text-4xl leading-tight font-semibold text-white">
-                Pin List
+                Roadmap
               </h1>
               <p className="max-w-xl text-base leading-relaxed text-white/70">
-                A pin-able task list with animated transitions, priority
-                management, and team collaboration features.
+                An interactive roadmap timeline with expandable cards, smooth
+                animations, and hover effects for project visualization.
               </p>
             </div>
           </div>
@@ -94,28 +235,33 @@ const Page = () => {
               aria-hidden
               className="absolute inset-0 rounded-[18px] bg-gradient-to-br from-white/15 via-white/5 to-transparent blur-2xl"
             />
-            <div className="relative flex w-full max-w-sm flex-col items-center gap-6 rounded-[18px] border border-white/10 bg-neutral-950/80 p-4 text-center shadow-[0_20px_60px_-40px_rgba(0,0,0,0.8)] backdrop-blur">
-              <PinList
-                taskList={{
-                  id: 'demo-header',
-                  title: 'Demo Tasks',
-                  summary: 'Sample tasks for demonstration',
-                  tasks: [
-                    {
-                      id: 'demo-header-1',
-                      title: 'Task-1',
-                      description: 'Task description',
-                      stage: 'In progress',
-                      due: 'Due tomorrow',
-                      pinned: true,
-                      owner: {
-                        name: 'Rohan',
-                        role: 'Manager',
-                      },
-                    },
-                  ],
-                }}
+            <div className="relative flex w-full max-w-lg flex-col items-center gap-6 rounded-[18px] border border-white/10 bg-neutral-950/80 p-8 text-center shadow-[0_20px_60px_-40px_rgba(0,0,0,0.8)] backdrop-blur">
+              {/* <div className="w-full overflow-x-auto"> */}
+              <Roadmap
+                roadmapSteps={[
+                  {
+                    title: 'Phase 1',
+                    text_1: 'Q1',
+                    text_2: 'Start',
+                    card_contents: (
+                      <div className="bg-muted/30 rounded-b-xl p-3">
+                        <div className="space-y-2">
+                          <div className="flex items-center gap-2">
+                            <Clock className="size-4 text-blue-500" />
+                            <span className="text-xs font-medium">
+                              Planning
+                            </span>
+                          </div>
+                          <p className="text-muted-foreground text-xs">
+                            Initial project setup and requirements gathering.
+                          </p>
+                        </div>
+                      </div>
+                    ),
+                  },
+                ]}
               />
+              {/* </div> */}
             </div>
           </div>
         </header>
@@ -180,7 +326,7 @@ const Page = () => {
                 <div className="flex flex-col gap-5">
                   <div className="rounded-xl border border-dashed border-white/10 bg-white/5 p-4">
                     <div className="flex h-96 w-full items-center justify-center overflow-hidden">
-                      <div className="h-full w-full max-w-md overflow-y-auto">
+                      <div className="h-full w-full overflow-x-auto">
                         {demo.element}
                       </div>
                     </div>
@@ -196,8 +342,8 @@ const Page = () => {
           <div className="flex flex-col gap-2">
             <h2 className="text-2xl font-semibold text-white">Props</h2>
             <p className="text-sm text-white/60">
-              Comprehensive task management with pinning, animations, and team
-              collaboration features.
+              Interactive timeline component with expandable cards and smooth
+              animations.
             </p>
           </div>
           <div className="overflow-hidden rounded-[18px] border border-white/10 bg-neutral-950/80 shadow-[0_16px_45px_-35px_rgba(0,0,0,0.75)]">
@@ -238,33 +384,20 @@ const Page = () => {
               Data Structure
             </h2>
             <p className="text-sm text-white/60">
-              The TaskList interface defines the structure for task management
-              data.
+              The RoadmapStep interface defines the structure for timeline data.
             </p>
           </div>
           <div className="overflow-hidden rounded-[18px] border border-white/10 bg-neutral-950/80 shadow-[0_16px_45px_-35px_rgba(0,0,0,0.75)]">
             <div className="p-6">
-              <CodeBlock language="typescript">{`interface TaskList {
-  id: string
+              <CodeBlock language="typescript">{`interface RoadmapStep {
   title: string
-  summary: string
-  tasks: Task[]
+  text_1: string
+  text_2: string
+  card_contents: React.ReactNode
 }
 
-interface Task {
-  id: string
-  title: string
-  description: string
-  stage: string
-  due: string
-  pinned: boolean
-  owner?: TaskOwner
-}
-
-interface TaskOwner {
-  name: string
-  initials: string
-  role?: string
+interface RoadmapProps {
+  roadmapSteps: RoadmapStep[]
 }`}</CodeBlock>
             </div>
           </div>

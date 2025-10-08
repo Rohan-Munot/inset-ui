@@ -49,16 +49,16 @@ export const COMPONENT_SECTIONS = [
       },
     ],
   },
-  {
-    title: 'Text & Typography',
-    items: [
-      {
-        name: 'Flip Text',
-        href: '/components/flip-text',
-        description: 'Animated text that flips between different words',
-      },
-    ],
-  },
+  // {
+  //   title: 'Text & Typography',
+  //   items: [
+  //     {
+  //       name: 'Flip Text',
+  //       href: '/components/flip-text',
+  //       description: 'Animated text that flips between different words',
+  //     },
+  //   ],
+  // },
   {
     title: 'Layout & Cards',
     items: [

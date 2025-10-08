@@ -62,7 +62,6 @@ const PinList = ({ taskList }: { taskList: TaskList }) => {
         {orderedList.map((task) => {
           const isPinned = task.pinned
           return (
-            // complete card component
             <motion.div
               key={task.id}
               layout
@@ -72,14 +71,14 @@ const PinList = ({ taskList }: { taskList: TaskList }) => {
                 opacity: { duration: 0.3 },
               }}
               className={cn(
-                'group border-border/50 bg-muted/30 relative flex flex-col gap-3 rounded-2xl border p-4 transition-colors duration-200',
-                'hover:bg-muted/40',
-                'shadow-[0_1px_1px_rgba(0,0,0,0.05),0_4px_6px_rgba(34,42,53,0.04),0_24px_68px_rgba(48,48,55,0.05),0_2px_3px_rgba(0,0,0,0.05)]',
-                isPinned && 'border-primary/50 bg-primary/5 shadow-xs'
+                'group border-border/50 relative flex flex-col gap-3 overflow-visible rounded-2xl border bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d] to-[#1b1b1b] p-4 transition-colors duration-300',
+                'hover:from-[#0d0d0d]/90 hover:via-[#1b1b1b]/90 hover:to-[#1b1b1b]/90',
+                'shadow-[inset_0_1px_1px_rgba(0,0,0,0.3),inset_0_-1px_1px_rgba(255,255,255,0.1)]',
+                isPinned && 'border-border shadow-xs'
               )}
             >
               {/* Header of the card */}
-              <div className="flex items-center justify-between gap-3">
+              <div className="mt-1 flex items-center justify-between gap-3">
                 <CheckboxLabel
                   id={`${taskList.id}-${task.id}`}
                   text={task.title}
@@ -90,8 +89,8 @@ const PinList = ({ taskList }: { taskList: TaskList }) => {
                 <motion.button
                   type="button"
                   className={cn(
-                    'bg-background flex size-8 items-center justify-center rounded-full border border-transparent',
-                    'hover:bg-muted focus-visible:outline-primary hover:scale-105 focus-visible:outline-offset-2 focus-visible:outline-dashed active:scale-95',
+                    'bg-card flex size-8 items-center justify-center rounded-full border border-transparent',
+                    'hover:bg-card/90 focus-visible:outline-primary hover:scale-105 focus-visible:outline-offset-2 focus-visible:outline-dashed active:scale-95',
                     'opacity-0 group-hover:opacity-100',
                     isPinned && 'opacity-100'
                   )}
@@ -144,7 +143,7 @@ const PinList = ({ taskList }: { taskList: TaskList }) => {
                       opacity: 1,
                       y: 0,
                       scale: 1,
-                      backdropFilter: 'blur(10px)',
+                      backdropFilter: 'blur(20px)',
                     }}
                     exit={{
                       opacity: 0,
@@ -153,7 +152,7 @@ const PinList = ({ taskList }: { taskList: TaskList }) => {
                       backdropFilter: 'blur(0px)',
                     }}
                     transition={{ duration: 0.3, ease: 'easeOut' }}
-                    className="border-primary/50 bg-primary/10 text-primary absolute -top-2 left-4 z-20 inline-flex items-center gap-1 rounded-full border px-3 py-1 text-[0.65rem] font-semibold tracking-wide uppercase shadow-[0_6px_20px_rgba(53,64,82,0.18)]"
+                    className="border-border text-primary absolute -top-2 left-4 z-20 inline-flex items-center gap-1 rounded-full border bg-[#0d0d0d] px-3 py-1.5 text-[0.6rem] font-medium tracking-wider uppercase shadow-[0_6px_20px_rgba(53,64,82,0.18)]"
                   >
                     Pinned
                   </motion.span>

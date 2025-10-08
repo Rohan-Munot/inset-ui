@@ -2,9 +2,9 @@
 
 import { useMemo, useState } from 'react'
 import LikeSaveCard from '@/components/demo/like-save-card/like-save-card'
-import { Camera, Sparkles, Image, Video } from 'lucide-react'
+import { Camera, Video } from 'lucide-react'
 import CodeBlock from '@/components/code-block'
-
+import { ImageIcon } from '@phosphor-icons/react'
 const registryPath = '/r/like-save-card.json'
 
 const demos = [
@@ -14,14 +14,14 @@ const demos = [
       'Clean social action card with animated like and save controls.',
     code: `<LikeSaveCard>
   <div className="flex flex-col items-center gap-2 text-muted-foreground">
-    <Image className="size-8" />
+    <ImageIcon className="size-8" />
     <span className="text-sm">Image placeholder</span>
   </div>
 </LikeSaveCard>`,
     element: (
       <LikeSaveCard>
         <div className="text-muted-foreground flex flex-col items-center gap-2">
-          <Image className="size-8" />
+          <ImageIcon className="size-8" />
           <span className="text-sm">Image placeholder</span>
         </div>
       </LikeSaveCard>
@@ -55,6 +55,12 @@ const propsData = [
     defaultsTo: '—',
     description:
       'Content displayed in the card area (images, text, icons, etc.).',
+  },
+  {
+    name: 'className',
+    type: 'string',
+    defaultsTo: '—',
+    description: 'Additional className for the card.',
   },
 ]
 
@@ -124,14 +130,12 @@ const Page = () => {
               aria-hidden
               className="absolute inset-0 rounded-[18px] bg-gradient-to-br from-white/15 via-white/5 to-transparent blur-2xl"
             />
-            <div className="relative flex w-full max-w-md flex-col items-center gap-6 rounded-[18px] border border-white/10 bg-neutral-950/80 p-8 text-center shadow-[0_20px_60px_-40px_rgba(0,0,0,0.8)] backdrop-blur">
-              <LikeSaveCard>
-                <div className="text-muted-foreground flex flex-col items-center gap-2">
-                  <Camera className="size-8" />
-                  <span className="text-sm">Demo content</span>
-                </div>
-              </LikeSaveCard>
-            </div>
+            <LikeSaveCard className="border-border relative border shadow-[0_20px_40px_-40px_rgba(60,60,60,0.5)] backdrop-blur">
+              <div className="text-muted-foreground flex flex-col items-center gap-2">
+                <Camera className="size-8" />
+                <span className="text-sm">Demo content</span>
+              </div>
+            </LikeSaveCard>
           </div>
         </header>
 
@@ -193,7 +197,7 @@ const Page = () => {
                   </p>
                 </div>
                 <div className="flex flex-col gap-5">
-                  <div className="rounded-xl border border-dashed border-white/10 bg-white/5 p-4">
+                  <div className="rounded-4xl border-white/10 bg-zinc-950 p-4">
                     <div className="flex items-center justify-center">
                       {demo.element}
                     </div>
