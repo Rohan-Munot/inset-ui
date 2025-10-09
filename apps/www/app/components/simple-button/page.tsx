@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react'
 import SimpleButton from '@/components/demo/button'
 import { ArrowRight, Camera, Sparkles } from 'lucide-react'
 import CodeBlock from '@/components/code-block'
+import InstallTabs from '@/components/demo/install-tabs'
 
 const registryPath = '/r/simple-button.json'
 
@@ -70,7 +71,7 @@ const propsData = [
 
 const Page = () => {
   const registryDomain = (
-    process.env.NEXT_PUBLIC_REGISTRY_DOMAIN || 'https://inset-ui.com'
+    process.env.NEXT_PUBLIC_REGISTRY_DOMAIN as string
   ).replace(/\/$/, '')
   const registryUrl = `${registryDomain}${registryPath}`
 
@@ -99,15 +100,6 @@ const Page = () => {
     ],
     [registryUrl]
   )
-
-  const [activeManager, setActiveManager] = useState(
-    installOptions[0]?.id ?? 'pnpm'
-  )
-  const activeCommand =
-    installOptions.find((option) => option.id === activeManager)?.command ??
-    installOptions[0]?.command ??
-    ''
-
   return (
     <div className="shadow-[inset_0_2px_7px_0_rgba(255,255, 255,0.08)] flex-1 overflow-y-auto rounded-s-xs rounded-e-xl bg-neutral-900 p-8 backdrop-blur-lg [scrollbar-width:none]">
       <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-12">
@@ -154,11 +146,8 @@ const Page = () => {
               <h2 className="text-2xl font-semibold text-white">
                 Installation
               </h2>
-              <p className="max-w-2xl text-sm text-white/60">
-                Install with the shadcn CLI just like any other registry entry.
-              </p>
             </div>
-            <div className="flex flex-col gap-2">
+            {/* <div className="flex flex-col gap-2">
               <div className="flex flex-wrap gap-1.5">
                 {installOptions.map((option) => (
                   <button
@@ -178,7 +167,8 @@ const Page = () => {
               <div className="rounded-xl border border-white/10 bg-black/60 p-3">
                 <CodeBlock language="bash">{activeCommand}</CodeBlock>
               </div>
-            </div>
+            </div> */}
+            <InstallTabs options={installOptions} defaultOption="pnpm" />
           </div>
         </section>
 

@@ -146,9 +146,6 @@ const Page = () => {
               <h2 className="text-2xl font-semibold text-white">
                 Installation
               </h2>
-              <p className="max-w-2xl text-sm text-white/60">
-                Easy installation with shadcn CLI.
-              </p>
             </div>
             <div className="flex flex-col gap-2">
               <div className="flex flex-wrap gap-1.5">
