@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import LikeSaveCard from '@/components/demo/like-save-card/like-save-card'
+import LikeSaveCard from '@/components/demo/like-save-card'
 import { Camera, Video } from 'lucide-react'
 import CodeBlock from '@/components/code-block'
 import { ImageIcon } from '@phosphor-icons/react'

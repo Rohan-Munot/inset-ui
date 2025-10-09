@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { ShimmerButton } from '@/components/demo/button/shimmer-button/shimmer-button'
+import { ShimmerButton } from '@/components/demo/shimmer-button'
 import { ArrowBigUp, Camera, Sparkles } from 'lucide-react'
 import CodeBlock from '@/components/code-block'
 

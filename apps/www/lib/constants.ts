@@ -34,21 +34,21 @@ export const COMPONENT_SECTIONS = [
       },
     ],
   },
-  {
-    title: 'Icons',
-    items: [
-      {
-        name: 'Heart Icon',
-        href: '/components/heart-icon',
-        description: 'An animated heart icon for likes',
-      },
-      {
-        name: 'Save Icon',
-        href: '/components/save-icon',
-        description: 'An animated save icon',
-      },
-    ],
-  },
+  // {
+  //   title: 'Icons',
+  //   items: [
+  //     {
+  //       name: 'Heart Icon',
+  //       href: '/components/heart-icon',
+  //       description: 'An animated heart icon for likes',
+  //     },
+  //     {
+  //       name: 'Save Icon',
+  //       href: '/components/save-icon',
+  //       description: 'An animated save icon',
+  //     },
+  //   ],
+  // },
   // {
   //   title: 'Text & Typography',
   //   items: [

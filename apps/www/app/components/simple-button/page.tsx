@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import SimpleButton from '@/components/demo/button/simple-button/button'
+import SimpleButton from '@/components/demo/button'
 import { ArrowRight, Camera, Sparkles } from 'lucide-react'
 import CodeBlock from '@/components/code-block'
 

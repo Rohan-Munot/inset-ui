@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import PinList from '@/components/demo/pin-list/pin-list'
+import PinList from '@/components/demo/pin-list'
 import { initialTaskList } from '@/lib/pin-list-data'
 import CodeBlock from '@/components/code-block'
 

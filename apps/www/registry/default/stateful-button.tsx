@@ -6,7 +6,7 @@ import { cva, VariantProps } from 'class-variance-authority'
 interface StatefulButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string
-  children: React.ReactNode
+  children?: React.ReactNode
   size?: 'default' | 'sm' | 'lg' | 'icon'
   state?: 'default' | 'loading' | 'success' | 'error' | 'disabled' | 'warning'
   loadingText?: string
@@ -16,11 +16,11 @@ interface StatefulButtonProps
 }
 
 const buttonVariants = cva(
-  "flex flex-row items-center justify-center gap-2 text-sm font-medium whitespace-nowrap outline-none select-none focus-visible:ring-zinc-300/50 focus-visible:ring-[4px] active:scale-[0.98] disabled:pointer-events-none disabled:opacity-60 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 text-white text-shadow-xs inset-shadow-[1px_1px_1px,0px_0px_2px] dark:inset-shadow-white/20 inset-shadow-neutral-100/50 h-8 px-4 relative rounded-full",
+  "flex flex-row items-center justify-center gap-2 text-sm font-medium whitespace-nowrap outline-none select-none focus-visible:ring-zinc-300/50 focus-visible:ring-[4px] active:scale-[0.98] disabled:pointer-events-none disabled:opacity-60 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 text-white text-shadow-xs inset-shadow-[1px_1px_1px,0px_0px_2px] dark:inset-shadow-white/20 inset-shadow-neutral-100/50 h-8 px-4 py-4 relative rounded-full",
   {
     variants: {
       size: {
-        default: 'h-8 px-4 has-[>svg]:px-3',
+        default: 'h-9 px-4 has-[>svg]:px-3',
         sm: 'h-8  gap-1.5 px-3 has-[>svg]:px-2.5',
         lg: 'h-10  px-6 has-[>svg]:px-4',
         icon: 'size-9',

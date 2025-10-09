@@ -2,6 +2,12 @@
 import React from 'react'
 import { motion, type MotionProps } from 'motion/react'
 
+type ShimmerButtonProps = MotionProps &
+  React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    className?: string
+    children: React.ReactNode
+  }
+
 const animationProps = {
   initial: { '--x': '100%' },
   animate: { '--x': '-100%' },
@@ -16,12 +22,9 @@ const animationProps = {
 
 export function ShimmerButton({
   children,
-  className,
+  className = '',
   ...props
-}: {
-  children: React.ReactNode
-  className?: string
-}) {
+}: ShimmerButtonProps) {
   return (
     <motion.button
       {...props}

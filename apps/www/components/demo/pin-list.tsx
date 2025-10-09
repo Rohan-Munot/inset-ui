@@ -3,9 +3,9 @@
 import { useMemo, useState } from 'react'
 import { Pin, PinOff } from 'lucide-react'
 import { AnimatePresence, motion, LayoutGroup } from 'motion/react'
-import CheckboxLabel from '@/components/demo/checkbox-label/checkbox-label'
+import CheckboxLabel from '@/components/demo/checkbox-label'
 import { cn } from '@/lib/utils'
-import { Badge } from '../../ui/badge'
+import { Badge } from '@/components/ui/badge'
 
 type TaskOwner = {
   name: string

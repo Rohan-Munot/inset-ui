@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import Roadmap from '@/components/demo/roadmap/roadmap'
+import Roadmap from '@/components/demo/roadmap'
 import { CheckCircle, Clock, Target, Users, Zap, Shield } from 'lucide-react'
 import CodeBlock from '@/components/code-block'
 

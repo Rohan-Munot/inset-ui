@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import CheckboxLabel from '@/components/demo/checkbox-label/checkbox-label'
+import CheckboxLabel from '@/components/demo/checkbox-label'
 import { CheckIcon, Star, Heart } from 'lucide-react'
 import CodeBlock from '@/components/code-block'
 

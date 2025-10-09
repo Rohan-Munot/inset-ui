@@ -1,8 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { CheckboxComponent } from '@/registry/default/checkbox'
-import { CheckIcon, Star, Heart } from 'lucide-react'
+import { CheckboxComponent } from '@/components/demo/checkbox'
 import CodeBlock from '@/components/code-block'
 
 const registryPath = '/r/checkbox.json'

@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo, useState, useEffect } from 'react'
-import StatefulButton from '@/components/demo/button/stateful-button/button'
+import StatefulButton from '@/components/demo/stateful-button'
 import CodeBlock from '@/components/code-block'
 
 const registryPath = '/r/stateful-button.json'

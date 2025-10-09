@@ -1,5 +1,5 @@
 'use client'
-import { CheckboxComponent } from '@/components/demo/checkbox/01_checkbox'
+import { CheckboxComponent } from '@/components/demo/checkbox'
 import { Label } from '@/components/ui/label'
 import { cn } from '@/lib/utils'
 import { useState } from 'react'
