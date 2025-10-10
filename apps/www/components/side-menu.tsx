@@ -1,10 +1,9 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 import { COMPONENT_SECTIONS } from '@/lib/constants'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ChevronRightIcon, Heart } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Button } from './ui/button'
 

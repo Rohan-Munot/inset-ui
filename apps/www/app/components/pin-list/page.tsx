@@ -1,9 +1,10 @@
 'use client'
 
-import { useMemo, useState } from 'react'
-import PinList from '@/components/demo/pin-list'
+import PinList from '@/components/demo/pin-list-demo'
 import { initialTaskList } from '@/lib/pin-list-data'
 import CodeBlock from '@/components/code-block'
+import InstallTabs from '@/components/demo/install-tabs-demo'
+import { createRegistryUrl, createShadcnInstallOptions } from '@/lib/utils'
 
 const registryPath = '/r/pin-list.json'
 
@@ -28,44 +29,8 @@ const propsData = [
 ]
 
 const Page = () => {
-  const registryDomain = (
-    process.env.NEXT_PUBLIC_REGISTRY_DOMAIN || 'https://inset-ui.com'
-  ).replace(/\/$/, '')
-  const registryUrl = `${registryDomain}${registryPath}`
-
-  const installOptions = useMemo(
-    () => [
-      {
-        id: 'pnpm',
-        label: 'pnpm',
-        command: `pnpm dlx shadcn@latest add ${registryUrl}`,
-      },
-      {
-        id: 'npm',
-        label: 'npm',
-        command: `npx shadcn@latest add ${registryUrl}`,
-      },
-      {
-        id: 'yarn',
-        label: 'yarn',
-        command: `yarn shadcn@latest add ${registryUrl}`,
-      },
-      {
-        id: 'bun',
-        label: 'bun',
-        command: `bunx --bun shadcn@latest add ${registryUrl}`,
-      },
-    ],
-    [registryUrl]
-  )
-
-  const [activeManager, setActiveManager] = useState(
-    installOptions[0]?.id ?? 'pnpm'
-  )
-  const activeCommand =
-    installOptions.find((option) => option.id === activeManager)?.command ??
-    installOptions[0]?.command ??
-    ''
+  const registryUrl = createRegistryUrl(registryPath)
+  const installOptions = createShadcnInstallOptions(registryUrl)
 
   return (
     <div className="shadow-[inset_0_2px_7px_0_rgba(255,255, 255,0.08)] flex-1 overflow-y-auto rounded-s-xs rounded-e-xl bg-neutral-900 p-8 backdrop-blur-lg [scrollbar-width:none]">
@@ -131,27 +96,7 @@ const Page = () => {
                 Installation
               </h2>
             </div>
-            <div className="flex flex-col gap-2">
-              <div className="flex flex-wrap gap-1.5">
-                {installOptions.map((option) => (
-                  <button
-                    key={option.id}
-                    type="button"
-                    onClick={() => setActiveManager(option.id)}
-                    className={`rounded-sm border p-1 px-1.5 text-xs transition-colors ${
-                      option.id === activeManager
-                        ? 'bg-white/10 text-white shadow-[0_12px_30px_-20px_rgba(167,139,250,0.6)]'
-                        : 'border-white/10 bg-white/5 text-white/60 hover:border-white/40 hover:text-white'
-                    }`}
-                  >
-                    {option.label}
-                  </button>
-                ))}
-              </div>
-              <div className="rounded-xl border border-white/10 bg-black/60 p-3">
-                <CodeBlock language="bash">{activeCommand}</CodeBlock>
-              </div>
-            </div>
+            <InstallTabs options={installOptions} />
           </div>
         </section>
 

@@ -1,67 +1,69 @@
 'use client'
 
-import { CheckboxComponent } from '@/components/demo/checkbox-demo'
-import CodeBlock from '@/components/code-block'
 import InstallTabs from '@/components/demo/install-tabs-demo'
+import CodeBlock from '@/components/code-block'
 import { createRegistryUrl, createShadcnInstallOptions } from '@/lib/utils'
 
-const registryPath = '/r/checkbox.json'
+const registryPath = '/r/install-tabs.json'
 
 const demos = [
   {
-    title: 'Default',
-    description: 'Clean checkbox with smooth animations and accessible states.',
-    code: '<CheckboxComponent />',
-    element: <CheckboxComponent />,
-  },
-  {
-    title: 'With Label',
-    description:
-      'Pair with a label for better accessibility and user experience.',
-    code: `<div className="flex items-center space-x-2">
-  <CheckboxComponent id="terms" />
-  <label htmlFor="terms" className="text-sm text-white/80">
-    Accept terms and conditions
-  </label>
-</div>`,
+    title: 'Package Manager Selection',
+    code: `const installOptions = [
+  { id: 'npm', label: 'npm', command: 'npm install ' },
+  { id: 'pnpm', label: 'pnpm', command: 'pnpm add ' },
+  { id: 'yarn', label: 'yarn', command: 'yarn add ' },
+]
+
+<InstallTabs options={installOptions} />`,
     element: (
-      <div className="flex items-center space-x-2">
-        <CheckboxComponent id="terms" />
-        <label htmlFor="terms" className="text-sm text-white/80">
-          Accept terms and conditions
-        </label>
-      </div>
+      <InstallTabs
+        options={[
+          { id: 'npm', label: 'npm', command: 'npm install ' },
+          { id: 'pnpm', label: 'pnpm', command: 'pnpm add ' },
+          { id: 'yarn', label: 'yarn', command: 'yarn add ' },
+        ]}
+      />
     ),
-  },
-  {
-    title: 'Disabled State',
-    description: 'Non-interactive state for read-only or unavailable options.',
-    code: '<CheckboxComponent disabled />',
-    element: <CheckboxComponent disabled />,
   },
 ]
 
 const propsData = [
   {
-    name: 'className',
+    name: 'options',
+    type: 'InstallOption[]',
+    defaultsTo: '—',
+    description:
+      'Array of installation options with id, label, and command properties.',
+  },
+]
+
+const installOptionPropsData = [
+  {
+    name: 'id',
     type: 'string',
     defaultsTo: '—',
     description:
-      'Utility classes for further tweaking appearance, spacing, or layout.',
+      'Unique identifier for the option, used for state management and localStorage.',
   },
   {
-    name: '...props',
-    type: 'React.ComponentProps<typeof CheckboxPrimitive.Root>',
+    name: 'label',
+    type: 'string',
+    defaultsTo: '—',
+    description: 'Display text shown on the tab button.',
+  },
+  {
+    name: 'command',
+    type: 'string',
     defaultsTo: '—',
     description:
-      'All props from Radix UI CheckboxPrimitive.Root including checked, disabled, onCheckedChange, etc.',
+      'Command string displayed in the code block when the option is active.',
   },
 ]
 
 const Page = () => {
   const registryUrl = createRegistryUrl(registryPath)
   const installOptions = createShadcnInstallOptions(registryUrl)
-
   return (
     <div className="shadow-[inset_0_2px_7px_0_rgba(255,255, 255,0.08)] flex-1 overflow-y-auto rounded-s-xs rounded-e-xl bg-neutral-900 p-8 backdrop-blur-lg [scrollbar-width:none]">
       <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-12">
@@ -76,11 +78,12 @@ const Page = () => {
             </span>
             <div className="space-y-3">
               <h1 className="text-4xl leading-tight font-semibold text-white">
-                Checkbox
+                Install Tabs
               </h1>
               <p className="max-w-xl text-base leading-relaxed text-white/70">
-                An accessible checkbox component with smooth animations, focus
-                states, and built-in form validation support.
+                Interactive tabs for switching between different installation
+                methods with persistent user preferences and syntax-highlighted
+                code blocks.
               </p>
             </div>
           </div>
@@ -90,12 +93,20 @@ const Page = () => {
               className="absolute inset-0 rounded-[18px] bg-gradient-to-br from-white/15 via-white/5 to-transparent blur-2xl"
             />
             <div className="relative flex w-full max-w-sm flex-col items-center gap-6 rounded-[18px] border border-white/10 bg-neutral-950/80 p-8 text-center shadow-[0_20px_60px_-40px_rgba(0,0,0,0.8)] backdrop-blur">
-              <div className="flex items-center space-x-2">
-                <CheckboxComponent />
-                <span className="text-sm text-white/80">
-                  Enable notifications
-                </span>
-              </div>
+              <InstallTabs
+                options={[
+                  {
+                    id: 'npm',
+                    label: 'npm',
+                    command: 'npm install ',
+                  },
+                  {
+                    id: 'pnpm',
+                    label: 'pnpm',
+                    command: 'pnpm add ',
+                  },
+                ]}
+              />
             </div>
           </div>
         </header>
@@ -119,7 +130,7 @@ const Page = () => {
           <div className="flex flex-col gap-3">
             <h2 className="text-2xl font-semibold text-white">Usage</h2>
           </div>
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-1">
             {demos.map((demo) => (
               <div
                 key={demo.title}
@@ -129,15 +140,10 @@ const Page = () => {
                   <h3 className="text-lg font-medium text-white">
                     {demo.title}
                   </h3>
-                  <p className="text-sm leading-relaxed text-white/60">
-                    {demo.description}
-                  </p>
                 </div>
                 <div className="flex flex-col gap-5">
-                  <div className="rounded-xl border border-dashed border-white/10 bg-white/5 p-4">
-                    <div className="flex items-center justify-center">
-                      {demo.element}
-                    </div>
+                  <div className="flex items-center justify-center">
+                    {demo.element}
                   </div>
                   <CodeBlock language="jsx">{demo.code}</CodeBlock>
                 </div>
@@ -150,8 +156,8 @@ const Page = () => {
           <div className="flex flex-col gap-2">
             <h2 className="text-2xl font-semibold text-white">Props</h2>
             <p className="text-sm text-white/60">
-              Built on Radix UI primitives with full accessibility support and
-              flexible customization options.
+              Configure installation options and customize the tab behavior with
+              persistent preferences.
             </p>
           </div>
           <div className="overflow-hidden rounded-[18px] border border-white/10 bg-neutral-950/80 shadow-[0_16px_45px_-35px_rgba(0,0,0,0.75)]">
@@ -166,6 +172,48 @@ const Page = () => {
               </thead>
               <tbody className="divide-y divide-white/10">
                 {propsData.map((prop) => (
+                  <tr key={prop.name} className="align-top">
+                    <td className="px-6 py-4 font-mono text-sm text-violet-200">
+                      {prop.name}
+                    </td>
+                    <td className="px-6 py-4 font-mono text-xs text-sky-200">
+                      {prop.type}
+                    </td>
+                    <td className="px-6 py-4 text-xs tracking-[0.2em] text-white/40 uppercase">
+                      {prop.defaultsTo}
+                    </td>
+                    <td className="px-6 py-4 text-sm leading-relaxed text-white/70">
+                      {prop.description}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <div className="flex flex-col gap-2">
+            <h2 className="text-2xl font-semibold text-white">
+              InstallOption Interface
+            </h2>
+            <p className="text-sm text-white/60">
+              Structure for individual installation options within the options
+              array.
+            </p>
+          </div>
+          <div className="overflow-hidden rounded-[18px] border border-white/10 bg-neutral-950/80 shadow-[0_16px_45px_-35px_rgba(0,0,0,0.75)]">
+            <table className="min-w-full border-collapse text-left text-sm text-white/80">
+              <thead className="bg-white/5 text-xs tracking-[0.3em] text-white/50 uppercase">
+                <tr>
+                  <th className="px-6 py-4 font-medium">Property</th>
+                  <th className="px-6 py-4 font-medium">Type</th>
+                  <th className="px-6 py-4 font-medium">Default</th>
+                  <th className="px-6 py-4 font-medium">Description</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/10">
+                {installOptionPropsData.map((prop) => (
                   <tr key={prop.name} className="align-top">
                     <td className="px-6 py-4 font-mono text-sm text-violet-200">
                       {prop.name}

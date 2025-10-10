@@ -1,7 +1,7 @@
 'use client'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Check, Copy } from 'lucide-react'
 
 export function CodeBlock({
@@ -62,25 +62,39 @@ export interface InstallOption {
 
 interface InstallTabsProps {
   options: InstallOption[]
-  defaultOption?: string
 }
 
-const InstallTabs = ({ options, defaultOption }: InstallTabsProps) => {
-  const [activeManager, setActiveManager] = useState(
-    defaultOption || options[0]?.id || ''
-  )
+const STORAGE_KEY = 'inset-ui-preferred-package-manager'
+
+const InstallTabs = ({ options }: InstallTabsProps) => {
+  const [activeManager, setActiveManager] = useState('')
+
+  useEffect(() => {
+    const savedManager = localStorage.getItem(STORAGE_KEY)
+    const isValidOption =
+      savedManager && options.some((option) => option.id === savedManager)
+
+    if (isValidOption) {
+      setActiveManager(savedManager)
+    }
+  }, [options])
+
+  const handleManagerChange = (managerId: string) => {
+    setActiveManager(managerId)
+    localStorage.setItem(STORAGE_KEY, managerId)
+  }
 
   const activeCommand =
     options.find((option) => option.id === activeManager)?.command || ''
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex w-full flex-col gap-2">
       <div className="flex flex-wrap gap-1.5">
         {options.map((option) => (
           <button
             key={option.id}
             type="button"
-            onClick={() => setActiveManager(option.id)}
+            onClick={() => handleManagerChange(option.id)}
             className={`rounded-sm border p-1 px-1.5 text-xs transition-colors ${
               option.id === activeManager
                 ? 'bg-white/10 text-white shadow-[0_12px_30px_-20px_rgba(167,139,250,0.6)]'

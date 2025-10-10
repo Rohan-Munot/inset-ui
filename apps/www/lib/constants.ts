@@ -77,6 +77,11 @@ export const COMPONENT_SECTIONS = [
         href: '/components/roadmap',
         description: 'A roadmap visualization component',
       },
+      {
+        name: 'Install Tabs',
+        href: '/components/install-tabs',
+        description: 'A tabs component for installing packages',
+      },
     ],
   },
 ]
