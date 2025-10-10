@@ -60,7 +60,7 @@ export const COMPONENT_SECTIONS = [
   //   ],
   // },
   {
-    title: 'Layout & Cards',
+    title: 'Components',
     items: [
       {
         name: 'Like Save Card',
