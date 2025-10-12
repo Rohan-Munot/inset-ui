@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
+import { urlRegistry } from './constants'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -12,9 +13,7 @@ export interface InstallOption {
 }
 
 export function createRegistryUrl(registryPath: string): string {
-  const registryDomain = (
-    process.env.NEXT_PUBLIC_REGISTRY_DOMAIN as string
-  ).replace(/\/$/, '')
+  const registryDomain = urlRegistry.replace(/\/$/, '')
   return `${registryDomain}${registryPath}`
 }
 

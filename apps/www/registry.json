@@ -4,17 +4,17 @@
   "homepage": "https://inset-ui.com",
   "items": [
     {
-      "name": "shiny-button",
+      "name": "shimmer-button",
       "type": "registry:component",
-      "title": "Shiny Button",
-      "description": "A shiny button component",
+      "title": "Shimmer Button",
+      "description": "A shimmer button component",
       "dependencies": ["motion"],
       "files": [
         {
-          "path": "registry/default/shiny-button.tsx",
-          "label": "Shiny Button",
+          "path": "registry/default/shimmer-button.tsx",
+          "label": "Shimmer Button",
           "type": "registry:component",
-          "target": "components/inset-ui/shiny-button.tsx"
+          "target": "components/inset-ui/shimmer-button.tsx"
         }
       ]
     },
@@ -26,10 +26,10 @@
       "dependencies": ["motion", "class-variance-authority"],
       "files": [
         {
-          "path": "registry/default/simple-button.tsx",
+          "path": "registry/default/button.tsx",
           "label": "Simple Button",
           "type": "registry:component",
-          "target": "components/inset-ui/simple-button.tsx"
+          "target": "components/inset-ui/button.tsx"
         }
       ]
     },

@@ -34,8 +34,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <main className="h-[100dvh] flex-1 items-center justify-center">
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <main className="h-[100dvh] flex-1 items-center justify-center bg-[#0a0a0a]">
             <section className="border-border container mx-auto flex h-[100dvh] max-w-7xl items-center border-2 border-y-0 border-dashed">
               <div className="border-border flex h-[90dvh] w-full gap-1.5 rounded-[20px] border-2 border-x-0 border-dashed p-1.5">
                 <SideMenu />

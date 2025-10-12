@@ -40,7 +40,7 @@ export function CodeBlock({
         </SyntaxHighlighter>
         <button
           onClick={handleCopy}
-          className="absolute top-1/2 right-2 -translate-y-1/2 rounded-md bg-zinc-950 p-1.5 text-neutral-400 opacity-0 transition-colors duration-200 group-hover:opacity-100 hover:bg-zinc-700 hover:text-white"
+          className="absolute top-2 right-2 rounded-md bg-white/5 p-1.5 text-neutral-400 opacity-0 transition-colors duration-200 group-hover:opacity-100 hover:bg-white/10 hover:text-white"
           aria-label="Copy code"
         >
           {hasCopied ? (
@@ -67,7 +67,7 @@ interface InstallTabsProps {
 const STORAGE_KEY = 'inset-ui-preferred-package-manager'
 
 const InstallTabs = ({ options }: InstallTabsProps) => {
-  const [activeManager, setActiveManager] = useState(options[0]?.id || '')
+  const [activeManager, setActiveManager] = useState('')
 
   useEffect(() => {
     const savedManager = localStorage.getItem(STORAGE_KEY)

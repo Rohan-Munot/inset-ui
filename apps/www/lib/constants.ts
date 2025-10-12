@@ -85,3 +85,5 @@ export const COMPONENT_SECTIONS = [
     ],
   },
 ]
+
+export const urlRegistry = 'http://ui.rohanm.dev'
