@@ -76,6 +76,10 @@ const InstallTabs = ({ options }: InstallTabsProps) => {
 
     if (isValidOption) {
       setActiveManager(savedManager)
+    } else if (options.length > 0) {
+      const firstOption = options[0].id
+      setActiveManager(firstOption)
+      localStorage.setItem(STORAGE_KEY, firstOption)
     }
   }, [options])
 

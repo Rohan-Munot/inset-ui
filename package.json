@@ -8,7 +8,8 @@
     "build": "turbo run build",
     "check-types": "turbo run check-types",
     "lint": "turbo run lint",
-    "registry:build": "pnpm --filter=www registry:build"
+    "registry:build": "pnpm --filter=www registry:build",
+    "generate:demo": "pnpm --filter=www  generate:demo"
   },
   "devDependencies": {
     "turbo": "^2.5.8",
