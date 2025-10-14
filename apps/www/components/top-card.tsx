@@ -1,13 +1,21 @@
 import React from 'react'
+import { cn } from '@/lib/utils'
 
 interface TopCardProps {
   section: string
   name: string
   description: string
   children?: React.ReactNode
+  className?: string
 }
 
-const TopCard = ({ section, name, description, children }: TopCardProps) => {
+const TopCard = ({
+  section,
+  name,
+  description,
+  children,
+  className,
+}: TopCardProps) => {
   return (
     <header className="relative overflow-hidden rounded-[18px] border border-white/10 bg-gradient-to-br from-neutral-950 via-neutral-900/70 to-neutral-950 px-8 py-10 shadow-[0_24px_70px_-35px_rgba(0,0,0,0.65)] sm:px-12 sm:py-12 md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,360px)] md:items-center md:gap-12">
       {children && (
@@ -35,7 +43,12 @@ const TopCard = ({ section, name, description, children }: TopCardProps) => {
             aria-hidden
             className="absolute inset-0 rounded-[18px] bg-gradient-to-br from-white/15 via-white/5 to-transparent blur-2xl"
           />
-          <div className="relative flex w-full max-w-sm flex-col items-center gap-6 rounded-[18px] border border-white/10 bg-neutral-950/80 p-8 text-center shadow-[0_20px_60px_-40px_rgba(0,0,0,0.8)] backdrop-blur">
+          <div
+            className={cn(
+              'relative flex w-full max-w-sm flex-col items-center gap-6 rounded-[18px] border border-white/10 bg-neutral-950/80 p-8 text-center shadow-[0_20px_60px_-40px_rgba(0,0,0,0.8)] backdrop-blur',
+              className
+            )}
+          >
             {children}
           </div>
         </div>

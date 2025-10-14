@@ -13,15 +13,13 @@ const registryPath = '/r/checkbox-label.json'
 const demos: Demo[] = [
   {
     title: 'Default',
-    description:
-      'Checkbox with label for better accessibility and user experience.',
+    description: 'Default checkbox label behavior.',
     code: '<CheckboxLabel id="terms" text="Accept terms and conditions" />',
     element: <CheckboxLabel id="terms" text="Accept terms and conditions" />,
   },
   {
     title: 'Strike Variant',
-    description:
-      'Animated strike-through effect when checked for visual feedback.',
+    description: 'Animated strike-through effect when checked.',
     code: '<CheckboxLabel id="completed" text="Mark as completed" variants="strike" />',
     element: (
       <CheckboxLabel
@@ -91,7 +89,7 @@ const Page = () => {
         <TopCard
           section="Component"
           name="Checkbox Label"
-          description="A checkbox component with integrated label, animated variants, and built-in accessibility features for better user experience."
+          description="Checkbox witha label and variants."
         >
           <CheckboxLabel id="hero-demo" text="Enable notifications" />
         </TopCard>
@@ -103,10 +101,6 @@ const Page = () => {
         <section className="space-y-6">
           <div className="flex flex-col gap-2">
             <h2 className="text-2xl font-semibold text-white">Props</h2>
-            <p className="text-sm text-white/60">
-              Built with internal state management and animated variants for
-              enhanced user interaction feedback.
-            </p>
           </div>
           <div className="overflow-hidden rounded-[18px] border border-white/10 bg-neutral-950/80 shadow-[0_16px_45px_-35px_rgba(0,0,0,0.75)]">
             <table className="min-w-full border-collapse text-left text-sm text-white/80">

@@ -13,36 +13,36 @@ const registryPath = '/r/stateful-button.json'
 
 const demos: Demo[] = [
   {
-    title: 'Default action',
-    description: 'Polished gradient default state with tactile focus rings.',
+    title: 'Default',
+    description: 'Default behavior of the button',
     code: '<StatefulButton>Deploy</StatefulButton>',
     element: <StatefulButton>Deploy</StatefulButton>,
   },
   {
-    title: 'Loading feedback',
-    description: 'Instant progress feedback using the built-in loading state.',
+    title: 'Loading',
+    description: 'Progress feedback using loading state.',
     code: '<StatefulButton state="loading" loadingText="Processing" />',
     element: (
       <StatefulButton state="loading" loadingText="Processing"></StatefulButton>
     ),
   },
   {
-    title: 'Success confirmation',
-    description: 'Surface a cheerful confirmation while keeping layout steady.',
+    title: 'Success',
+    description: 'Success feedback using success state.',
     code: '<StatefulButton state="success" successText="Done" />',
     element: (
       <StatefulButton state="success" successText="Done"></StatefulButton>
     ),
   },
   {
-    title: 'Error feedback',
-    description: 'Surface a cheerful confirmation while keeping layout steady.',
+    title: 'Error',
+    description: 'Error feedback using error state.',
     code: '<StatefulButton state="error" errorText="Error" />',
     element: <StatefulButton state="error" errorText="Error"></StatefulButton>,
   },
   {
-    title: 'Warning feedback',
-    description: 'Surface a cheerful confirmation while keeping layout steady.',
+    title: 'Warning',
+    description: 'Warning feedback using warning state.',
     code: '<StatefulButton state="warning" warningText="Warning" />',
     element: (
       <StatefulButton state="warning" warningText="Warning"></StatefulButton>
@@ -138,7 +138,7 @@ const Page = () => {
         <TopCard
           section="Component"
           name="Stateful Button"
-          description="Motion-powered gradients that respond to loading, success, and alert states without swapping components."
+          description="Button component with built-in state visualizations."
         >
           <StatefulButton
             className="justify-center text-base font-semibold"
@@ -159,10 +159,6 @@ const Page = () => {
         <section className="space-y-6">
           <div className="flex flex-col gap-2">
             <h2 className="text-2xl font-semibold text-white">Props</h2>
-            <p className="text-sm text-white/60">
-              Blend motion states with native ergonomics—no extra plumbing
-              required.
-            </p>
           </div>
           <div className="overflow-hidden rounded-[18px] border border-white/10 bg-neutral-950/80 shadow-[0_16px_45px_-35px_rgba(0,0,0,0.75)]">
             <table className="min-w-full border-collapse text-left text-sm text-white/80">

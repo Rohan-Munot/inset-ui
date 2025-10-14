@@ -1,6 +1,6 @@
 export interface Demo {
   title: string
-  description?: string
+  description?: string | React.ReactNode
   code: string
   element: React.ReactNode
 }

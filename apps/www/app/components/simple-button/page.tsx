@@ -13,14 +13,14 @@ const registryPath = '/r/simple-button.json'
 
 const demos: Demo[] = [
   {
-    title: 'Default CTA',
-    description: 'Polished gradients and subtle depth for everyday actions.',
+    title: 'Default',
+    description: 'Default behavior of the button',
     code: '<SimpleButton>Launch</SimpleButton>',
     element: <SimpleButton>Launch</SimpleButton>,
   },
   {
-    title: 'Icon with copy',
-    description: 'Pair it with an icon for contextual affordance.',
+    title: 'With Icon',
+    description: 'Pair button with an icon for contextuality.',
     code: '<SimpleButton className="gap-2"><Camera className="size-4" />Capture</SimpleButton>',
     element: (
       <SimpleButton className="gap-2">
@@ -30,7 +30,7 @@ const demos: Demo[] = [
     ),
   },
   {
-    title: 'Icon only',
+    title: 'Icon Only',
     description: 'Compact expressive action using the icon size variant.',
     code: '<SimpleButton size="icon"><Sparkles className="size-4" /></SimpleButton>',
     element: (
@@ -81,7 +81,7 @@ const Page = () => {
         <TopCard
           section="Component"
           name="Simple Button"
-          description="A versatile button with soft gradients, tactile depth, and crisp focus states that adapts to most UI surfaces."
+          description="Button component with some styling"
         >
           <SimpleButton className="w-full justify-center px-6 py-5 text-base font-semibold">
             Quick Start
@@ -96,10 +96,6 @@ const Page = () => {
         <section className="space-y-6">
           <div className="flex flex-col gap-2">
             <h2 className="text-2xl font-semibold text-white">Props</h2>
-            <p className="text-sm text-white/60">
-              Designed to stay flexible with native button props and the size
-              variants you expect.
-            </p>
           </div>
           <div className="overflow-hidden rounded-[18px] border border-white/10 bg-neutral-950/80 shadow-[0_16px_45px_-35px_rgba(0,0,0,0.75)]">
             <table className="min-w-full border-collapse text-left text-sm text-white/80">

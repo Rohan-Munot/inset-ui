@@ -13,14 +13,24 @@ const registryPath = '/r/checkbox.json'
 const demos: Demo[] = [
   {
     title: 'Default',
-    description: 'Clean checkbox with smooth animations and accessible states.',
+    description: 'Default checkbox behavior.',
     code: '<CheckboxComponent />',
     element: <CheckboxComponent />,
   },
   {
     title: 'With Label',
-    description:
-      'Pair with a label for better accessibility and user experience.',
+    description: (
+      <>
+        Can be paired with a label. Though checkout{' '}
+        <a
+          href="/components/checkbox-label"
+          className="text-sky-400/80 underline transition-colors hover:text-sky-400"
+        >
+          Checkbox Label
+        </a>
+        .
+      </>
+    ),
     code: `<div className="flex items-center space-x-2">
   <CheckboxComponent id="terms" />
   <label htmlFor="terms" className="text-sm text-white/80">
@@ -71,11 +81,10 @@ const Page = () => {
         <TopCard
           section="Component"
           name="Checkbox"
-          description="An accessible checkbox component with smooth animations, focus states, and built-in form validation support."
+          description="Accessible checkbox with custom styling, focus states. Built on top of Radix UI primitives."
         >
           <div className="flex items-center space-x-2">
             <CheckboxComponent />
-            <span className="text-sm text-white/80">Enable notifications</span>
           </div>
         </TopCard>
         <InstallSection>
@@ -86,10 +95,6 @@ const Page = () => {
         <section className="space-y-6">
           <div className="flex flex-col gap-2">
             <h2 className="text-2xl font-semibold text-white">Props</h2>
-            <p className="text-sm text-white/60">
-              Built on Radix UI primitives with full accessibility support and
-              flexible customization options.
-            </p>
           </div>
           <div className="overflow-hidden rounded-[18px] border border-white/10 bg-neutral-950/80 shadow-[0_16px_45px_-35px_rgba(0,0,0,0.75)]">
             <table className="min-w-full border-collapse text-left text-sm text-white/80">

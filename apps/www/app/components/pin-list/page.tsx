@@ -14,7 +14,7 @@ const registryPath = '/r/pin-list.json'
 
 const demos: Demo[] = [
   {
-    title: 'Task management',
+    title: 'Task List',
     description:
       'Interactive task list with pinning functionality and smooth animations.',
     code: `<PinList taskList={taskList} />`,
@@ -42,7 +42,8 @@ const Page = () => {
         <TopCard
           section="Component"
           name="Pin List"
-          description="A pin-able task list with animated transitions, priority management, and team collaboration features."
+          description="A pin-able list with animations."
+          className="p-4"
         >
           <PinList
             taskList={{
@@ -74,10 +75,6 @@ const Page = () => {
         <section className="space-y-6">
           <div className="flex flex-col gap-2">
             <h2 className="text-2xl font-semibold text-white">Props</h2>
-            <p className="text-sm text-white/60">
-              Comprehensive task management with pinning, animations, and team
-              collaboration features.
-            </p>
           </div>
           <div className="overflow-hidden rounded-[18px] border border-white/10 bg-neutral-950/80 shadow-[0_16px_45px_-35px_rgba(0,0,0,0.75)]">
             <table className="min-w-full border-collapse text-left text-sm text-white/80">

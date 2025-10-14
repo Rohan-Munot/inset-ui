@@ -99,7 +99,7 @@ const Page = () => {
         <TopCard
           section="Component"
           name="Roadmap"
-          description="An interactive roadmap timeline with expandable cards, smooth animations, and hover effects for project visualization."
+          description="An interactive roadmap timeline with expandable cards."
         ></TopCard>
         <InstallSection>
           <InstallTabs options={installOptions} />
@@ -109,10 +109,6 @@ const Page = () => {
         <section className="space-y-6">
           <div className="flex flex-col gap-2">
             <h2 className="text-2xl font-semibold text-white">Props</h2>
-            <p className="text-sm text-white/60">
-              Interactive timeline component with expandable cards and smooth
-              animations.
-            </p>
           </div>
           <div className="overflow-hidden rounded-[18px] border border-white/10 bg-neutral-950/80 shadow-[0_16px_45px_-35px_rgba(0,0,0,0.75)]">
             <table className="min-w-full border-collapse text-left text-sm text-white/80">

@@ -13,15 +13,14 @@ const registryPath = '/r/shimmer-button.json'
 
 const demos: Demo[] = [
   {
-    title: 'Default CTA',
-    description:
-      'A drop-in call-to-action with subtle depth and a looping shimmer.',
+    title: 'Default',
+    description: 'A default button with a looping shimmer.',
     code: '<ShimmerButton>Get Started</ShimmerButton>',
     element: <ShimmerButton>Get Started</ShimmerButton>,
   },
   {
-    title: 'Icon with text',
-    description: 'Pair with an icon, it works the same.',
+    title: 'With Icon',
+    description: 'Pair with an icon for contextuality.',
     code: '<ShimmerButton className="gap-1.5"><Camera className="size-4" />Scan</ShimmerButton>',
     element: (
       <ShimmerButton className="gap-1.5">
@@ -31,8 +30,8 @@ const demos: Demo[] = [
     ),
   },
   {
-    title: 'Icon only',
-    description: 'Or just an icon, is fine too.',
+    title: 'Icon Only',
+    description: "Or just an icon, it's fine too.",
     code: '<ShimmerButton className="gap-1.5"><ArrowBigUp className="size-4" /></ShimmerButton>',
     element: (
       <ShimmerButton className="gap-1.5">
@@ -89,10 +88,6 @@ const Page = () => {
         <section className="space-y-6">
           <div className="flex flex-col gap-2">
             <h2 className="text-2xl font-semibold text-white">Props</h2>
-            <p className="text-sm text-white/60">
-              Motion props stay forward-compatible, so you can blend entrance or
-              exit transitions without rewiring the core.
-            </p>
           </div>
           <div className="overflow-hidden rounded-[18px] border border-white/10 bg-neutral-950/80 shadow-[0_16px_45px_-35px_rgba(0,0,0,0.75)]">
             <table className="min-w-full border-collapse text-left text-sm text-white/80">

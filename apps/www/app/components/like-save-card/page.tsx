@@ -1,7 +1,7 @@
 'use client'
 
 import LikeSaveCard from '@/components/demo/like-save-card-demo'
-import { Camera, Video } from 'lucide-react'
+import { Camera } from 'lucide-react'
 import { ImageIcon } from '@phosphor-icons/react'
 import InstallTabs from '@/components/demo/install-tabs-demo'
 import { createRegistryUrl, createShadcnInstallOptions } from '@/lib/utils'
@@ -13,9 +13,9 @@ const registryPath = '/r/like-save-card.json'
 
 const demos: Demo[] = [
   {
-    title: 'Default card',
+    title: 'Card ',
     description:
-      'Clean social action card with animated like and save controls.',
+      'Social action card with animated like and save controls. Render images or videos or any other content.',
     code: `<LikeSaveCard>
   <div className="flex flex-col items-center gap-2 text-muted-foreground">
     <ImageIcon className="size-8" />
@@ -26,26 +26,7 @@ const demos: Demo[] = [
       <LikeSaveCard>
         <div className="text-muted-foreground flex flex-col items-center gap-2">
           <ImageIcon className="size-8" />
-          <span className="text-sm">Image placeholder</span>
-        </div>
-      </LikeSaveCard>
-    ),
-  },
-  {
-    title: 'Video content',
-    description:
-      'Perfect for showcasing video content with engagement metrics.',
-    code: `<LikeSaveCard>
-  <div className="flex flex-col items-center gap-2 text-muted-foreground">
-    <Video className="size-8" />
-    <span className="text-sm">Video placeholder</span>
-  </div>
-</LikeSaveCard>`,
-    element: (
-      <LikeSaveCard>
-        <div className="text-muted-foreground flex flex-col items-center gap-2">
-          <Video className="size-8" />
-          <span className="text-sm">Video placeholder</span>
+          <span className="text-sm">Placeholder</span>
         </div>
       </LikeSaveCard>
     ),
@@ -95,10 +76,6 @@ const Page = () => {
         <section className="space-y-6">
           <div className="flex flex-col gap-2">
             <h2 className="text-2xl font-semibold text-white">Props</h2>
-            <p className="text-sm text-white/60">
-              Simple props interface with flexible content area for any React
-              children.
-            </p>
           </div>
           <div className="overflow-hidden rounded-[18px] border border-white/10 bg-neutral-950/80 shadow-[0_16px_45px_-35px_rgba(0,0,0,0.75)]">
             <table className="min-w-full border-collapse text-left text-sm text-white/80">
