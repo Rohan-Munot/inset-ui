@@ -49,7 +49,7 @@ export const initialTaskList = {
   id: faker.string.uuid(),
   title: faker.company.buzzPhrase(),
   summary: faker.lorem.sentence(),
-  tasks: Array.from({ length: 12 }, (_, index) =>
+  tasks: Array.from({ length: 4 }, (_, index) =>
     generateTask(`task-${index + 1}`)
   ),
 }
