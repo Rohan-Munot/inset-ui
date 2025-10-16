@@ -84,7 +84,7 @@ const Page = () => {
   const installOptions = createShadcnInstallOptions(registryUrl)
 
   return (
-    <div className="shadow-[inset_0_2px_7px_0_rgba(255,255, 255,0.08)] flex-1 overflow-y-auto rounded-s-xs rounded-e-xl bg-neutral-900 p-8 backdrop-blur-lg [scrollbar-width:none]">
+    <div className="flex-1 overflow-y-auto rounded-s-xs rounded-e-xl bg-neutral-900 p-8 shadow-[inset_0_2px_7px_0_rgba(255,255,255,0.08)] backdrop-blur-sm [scrollbar-width:none]">
       <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-12">
         <TopCard
           section="Component"

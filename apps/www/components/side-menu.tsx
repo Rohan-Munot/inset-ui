@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import { Button } from './ui/button'
 import { motion, Variants } from 'motion/react'
-import Icon from './icon'
+import { Icon } from './icon'
 import { GithubLogoIcon } from '@phosphor-icons/react'
 
 const SideMenu = () => {
@@ -15,51 +15,21 @@ const SideMenu = () => {
   const isActiveLink = (href: string) => {
     return pathname === href
   }
-  const text = 'Inset Ui'
-  const sentence: Variants = {
-    hidden: { opacity: 1 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delay: 0.2,
-        staggerChildren: 0.04,
-      },
-    },
-  }
 
-  const letter: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.3,
-        ease: 'easeInOut',
-      },
-    },
-  }
   return (
     <div className="flex w-[16rem] flex-col rounded-s-xl rounded-e-xs border bg-neutral-900 shadow-[inset_0_2px_7px_0_rgba(255,255,255,0.08)] backdrop-blur-sm">
       {/* Header */}
-      <div className="flex items-center justify-start gap-2 border-b p-3">
+      <Link
+        href="/"
+        className="flex items-center justify-start gap-2 border-b p-3"
+      >
         <div className="size-5">
           <Icon />
         </div>
-        <motion.h2
-          className="text-foreground text-xl font-normal tracking-normal"
-          variants={sentence}
-          initial="hidden"
-          animate="visible"
-        >
-          {text.split('').map((char, index) => {
-            return (
-              <motion.span key={char + '-' + index} variants={letter}>
-                {char}
-              </motion.span>
-            )
-          })}
-        </motion.h2>
-      </div>
+        <h2 className="text-foreground text-xl font-normal tracking-normal">
+          Inset Ui
+        </h2>
+      </Link>
 
       {/* Navigation */}
       <div className="flex-1 overflow-y-auto [scrollbar-width:none]">
