@@ -1,4 +1,47 @@
-export const COMPONENT_SECTIONS = [
+interface ComponentSection {
+  title: string
+  items: {
+    name: string
+    href: string
+    description: string
+  }[]
+}
+export const COMPONENT_SECTIONS: ComponentSection[] = [
+  {
+    title: 'Backgrounds',
+    items: [
+      {
+        name: 'CPPN Lava',
+        href: '/components/cppn-lava',
+        description: 'A CPPN Lava component',
+      },
+      {
+        name: 'CPPN Gradient',
+        href: '/components/cppn-gradient',
+        description: 'A CPPN Gradient component',
+      },
+      {
+        name: 'Glitch Bands',
+        href: '/components/glitch-bands',
+        description: 'A Glitch Bands component',
+      },
+      {
+        name: 'Grainy Liquid',
+        href: '/components/grainy-liquid',
+        description: 'A Grainy Liquid component',
+      },
+      {
+        name: 'Interactive Grid',
+        href: '/components/interactive-grid',
+        description: 'An Interactive Grid component',
+      },
+      {
+        name: 'Beams',
+        href: '/components/beams',
+        description: 'A Beams component',
+      },
+    ],
+  },
   {
     title: 'Buttons',
     items: [
