@@ -37,7 +37,7 @@ const noiseGLSL = `
     float amplitude = 0.5;
     float frequency = 1.0;
     
-    for(int i = 0; i < 4; i++) {
+    for(int i = 0; i < 3; i++) {
       value += amplitude * noise(p * frequency);
       frequency *= 2.0;
       amplitude *= 0.5;
@@ -110,48 +110,11 @@ const fragmentShader = `
     color = mix(color, color8, smoothstep(0.60, 0.78, gradientMix + n3 * 0.12));
     color = mix(color, color9, smoothstep(0.70, 0.90, gradientMix + n4 * 0.15));
 
-    // --- Modified Masking for expanded bottom shape ---
-    
-    // 1. Dark Center (widened and moved down slightly)
-    // vec2 center = vec2(0.5, 0.4); // Shift center down slightly
-    // float centerDist = distance(vUv, center);
-    // float centerMask = smoothstep(0.3, 0.5, centerDist); // Wider falloff
-
-    // 2. Black Top (remains similar to keep top dark)
-    // float topMask = 1.0 - smoothstep(0.3, 0.6, vUv.y); // Start darkening a bit lower
-
-    // 3. Bottom Expansion Mask (new addition for a fuller bottom)
-    // float bottomExpansion = smoothstep(0.0, 0.5, vUv.y); // Gradient that is brighter towards the bottom
-    // bottomExpansion *= smoothstep(0.8, 0.3, centerDist); // Combined with centerDist to give a rounded bottom
-    
-    // Combine masks, using the bottomExpansion to fill out the lower area
-    // float finalMask = mix(centerMask * topMask, bottomExpansion, smoothstep(0.2, 0.7, vUv.y)); // Blend the new bottom mask
-    // finalMask = clamp(finalMask, 0.0, 1.0); // Ensure mask is within valid range
-
-    // --- New Simple Mask: Dark from Middle to Top ---
-    // This creates a mask that is fully bright at the bottom (y < 0.4)
-    // and fades to fully dark at the top (y > 0.7).
     float finalMask = smoothstep(0.7, 0.4, vUv.y); 
 
     vec3 finalColor = color * finalMask;
-
-    // --- Matte finish effect ---
-    // Reduce saturation slightly for matte appearance
-    float luminance = dot(finalColor, vec3(0.299, 0.587, 0.114));
-    finalColor = mix(vec3(luminance), finalColor, 0.85);
-    
-    // Soft vignette for depth
-    float vignette = smoothstep(0.8, 0.2, length(uv - 0.5));
-    finalColor *= 0.7 + vignette * 0.3;
-
-    // --- Add Enhanced Grain for matte texture ---
     float grain = hash(gl_FragCoord.xy + fract(time)) * 2.0 - 1.0;
-    float grain2 = hash(gl_FragCoord.xy * 2.0 + fract(time * 0.5)) * 2.0 - 1.0;
-    finalColor += (grain * 0.5 + grain2 * 0.5) * uGrainIntensity * 0.04;
-    
-    // Clamp color
-    finalColor = clamp(finalColor, 0.0, 1.0);
-
+    finalColor += (grain * 0.5 ) * uGrainIntensity * 0.04;
     gl_FragColor = vec4(finalColor, 1.0);
   }
 `
@@ -217,7 +180,7 @@ export default function CPPNGradient(props: CPPNGradientProps) {
   )
 
   return (
-    <div className="fixed inset-0 -z-10 h-full w-full">
+    <div className="h-full w-full">
       <Canvas
         camera={camera}
         gl={{

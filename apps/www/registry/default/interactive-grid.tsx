@@ -25,7 +25,6 @@ type InteractiveGridProps = {
   lightScheme?: Partial<ColorScheme>
   darkScheme?: Partial<ColorScheme>
   className?: string
-  style?: React.CSSProperties
 }
 
 const defaultLightScheme: ColorScheme = {
@@ -321,8 +320,7 @@ export default function InteractiveGrid({
   pointerFollowSpeed = 8,
   lightScheme,
   darkScheme,
-  className = 'fixed inset-0 -z-10 pointer-events-none',
-  style,
+  className = 'h-full w-full pointer-events-none',
 }: InteractiveGridProps) {
   const prefersDark = usePrefersDarkMode()
   const reducedMotion = usePrefersReducedMotion()
@@ -407,7 +405,7 @@ export default function InteractiveGrid({
   const animationStrength = reducedMotion ? 0.2 : 1
 
   return (
-    <div ref={containerRef} className={className} style={style}>
+    <div ref={containerRef} className={className}>
       <Canvas
         dpr={1}
         frameloop="always"
