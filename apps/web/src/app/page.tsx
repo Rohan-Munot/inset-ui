@@ -7,7 +7,7 @@ import {
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <Accordion className="w-full">
+      <Accordion className="w-full max-w-md">
         <AccordionItem value="item-1">
           <AccordionTrigger>Is it accessible?</AccordionTrigger>
           <AccordionContent>
