@@ -5,6 +5,6 @@
     "composite": true,
     "outDir": "dist"
   },
-  "include": ["components"],
+  "include": ["components", "lib"],
   "exclude": ["node_modules", "dist"]
 }
