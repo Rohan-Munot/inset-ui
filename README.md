@@ -1,4 +1,4 @@
-# inset-ui
+# inset
 
 To install dependencies:
 

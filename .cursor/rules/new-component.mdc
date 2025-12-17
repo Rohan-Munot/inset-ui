@@ -151,7 +151,7 @@ links:
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add https://inset-ui.com/r/component-name.json
+npx shadcn@latest add https://inset.com/r/component-name.json
 ```
 
 </TabsContent>

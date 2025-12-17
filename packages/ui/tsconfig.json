@@ -1,0 +1,10 @@
+{
+  "extends": "@inset/typescript-config/react-library.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "composite": true,
+    "outDir": "dist"
+  },
+  "include": ["components"],
+  "exclude": ["node_modules", "dist"]
+}
