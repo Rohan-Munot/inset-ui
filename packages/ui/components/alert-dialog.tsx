@@ -88,17 +88,13 @@ function AlertDialogPopup({
         <AlertDialogPrimitive.Popup
           className={cn(
             "absolute bottom-0 sm:bottom-1/2 left-1/2 -translate-x-1/2 sm:-translate-y-[calc(1.05rem*var(--nested-dialogs))]",
-            "w-full max-w-md p-5 will-change-transform",
+            "w-full max-w-md p-5 will-change-transform bg-clip-border",
             "bg-card text-card-foreground",
-            "border border-border/50 rounded-none sm:rounded-xl",
+            "border border-border/90 rounded-none sm:rounded-xl",
             "shadow-2xl shadow-black/10",
             "transition-[scale,translate,opacity] duration-200 ease-in-out",
             "data-ending-style:translate-y-1/2 data-ending-style:opacity-0 sm:data-ending-style:scale-50 data-nested-dialog-open:origin-top scale-[calc(1-0.01*var(--nested-dialogs))] sm:scale-[calc(1-0.08*var(--nested-dialogs))]",
             "data-starting-style:translate-y-1/2 data-starting-style:opacity-0 sm:data-starting-style:scale-50",
-            "before:absolute before:inset-0 before:rounded-[inherit] before:pointer-events-none",
-            "before:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15)] dark:before:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]",
-            "after:absolute after:inset-0 after:rounded-[inherit] after:pointer-events-none",
-            "after:shadow-[0_0_0_1px_rgba(0,0,0,0.05)]",
             className
           )}
           data-slot="alert-dialog-popup"
@@ -151,7 +147,7 @@ function AlertDialogClose({
         "inline-flex items-center justify-center rounded-sm px-4 py-1.5 text-sm font-medium",
         "bg-secondary text-secondary-foreground",
         "hover:bg-secondary/30",
-        "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
+        "focus-visible:outline-1 focus-visible:outline-dashed focus-visible:outline-ring outline-offset-2",
         "transition-all duration-200 ease-in-out",
         className
       )}
