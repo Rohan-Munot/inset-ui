@@ -24,7 +24,7 @@ function AlertDialogTrigger({
     <AlertDialogPrimitive.Trigger
       className={cn(
         "inline-flex items-center justify-center rounded-sm px-3 py-2 text-sm font-medium",
-        "bg-primary text-primary-foreground",
+        "bg-primary text-primary-foreground border border-border",
         "shadow-[inset_0_1px_0_0_rgba(255,255,255,0.16)]",
         "dark:shadow-[inset_0_1px_0_0_rgba(0,0,0,0.08)]",
         "drop-shadow-sm",
@@ -87,13 +87,18 @@ function AlertDialogPopup({
       <AlertDialogViewport>
         <AlertDialogPrimitive.Popup
           className={cn(
-            "absolute bottom-0 sm:bottom-1/2 left-1/2 -translate-x-1/2 sm:translate-y-1/2 ",
-            "w-full max-w-md p-5",
+            "absolute bottom-0 sm:bottom-1/2 left-1/2 -translate-x-1/2 sm:-translate-y-[calc(1.05rem*var(--nested-dialogs))]",
+            "w-full max-w-md p-5 will-change-transform",
             "bg-card text-card-foreground",
             "border border-border/50 rounded-none sm:rounded-xl",
-            "transition-all duration-200 ease-in-out",
-            "data-ending-style:translate-y-1/2 data-ending-style:opacity-0 sm:data-ending-style:scale-50",
+            "shadow-2xl shadow-black/10",
+            "transition-[scale,translate,opacity] duration-200 ease-in-out",
+            "data-ending-style:translate-y-1/2 data-ending-style:opacity-0 sm:data-ending-style:scale-50 data-nested-dialog-open:origin-top scale-[calc(1-0.01*var(--nested-dialogs))] sm:scale-[calc(1-0.08*var(--nested-dialogs))]",
             "data-starting-style:translate-y-1/2 data-starting-style:opacity-0 sm:data-starting-style:scale-50",
+            "before:absolute before:inset-0 before:rounded-[inherit] before:pointer-events-none",
+            "before:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15)] dark:before:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]",
+            "after:absolute after:inset-0 after:rounded-[inherit] after:pointer-events-none",
+            "after:shadow-[0_0_0_1px_rgba(0,0,0,0.05)]",
             className
           )}
           data-slot="alert-dialog-popup"

@@ -18,6 +18,7 @@ export default function Home() {
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
+
   return (
     <div className="relative flex flex-col items-center justify-center h-screen gap-8">
       <button
@@ -31,18 +32,39 @@ export default function Home() {
           <SunIcon className="h-4 w-4" />
         )}
       </button>
-      <div className="absolute top-4 left-4">fogih</div>
+      <div className="absolute top-4 left-4">Test nested dialogs</div>
+
+      {/* Parent Alert Dialog */}
       <AlertDialog>
-        <AlertDialogTrigger>Delete item</AlertDialogTrigger>
+        <AlertDialogTrigger>Open Parent Dialog</AlertDialogTrigger>
         <AlertDialogPortal>
           <AlertDialogBackdrop />
           <AlertDialogPopup>
-            <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+            <AlertDialogTitle>Parent Dialog</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone.
+              This is the parent dialog. When you open the nested dialog below,
+              this dialog should have the data-nested-dialog-open attribute.
             </AlertDialogDescription>
-            <div className="flex justify-end gap-3">
+            <div className="flex justify-between gap-3 mt-6">
               <AlertDialogClose>Cancel</AlertDialogClose>
+
+              {/* Nested Alert Dialog */}
+              <AlertDialog>
+                <AlertDialogTrigger>Open Nested Dialog</AlertDialogTrigger>
+                <AlertDialogPortal>
+                  <AlertDialogBackdrop />
+                  <AlertDialogPopup>
+                    <AlertDialogTitle>Nested Dialog</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      This is nested inside the parent dialog. When this is
+                      open, the parent should show data-nested-dialog-open.
+                    </AlertDialogDescription>
+                    <div className="flex justify-end gap-3 mt-6">
+                      <AlertDialogClose>Close Nested</AlertDialogClose>
+                    </div>
+                  </AlertDialogPopup>
+                </AlertDialogPortal>
+              </AlertDialog>
             </div>
           </AlertDialogPopup>
         </AlertDialogPortal>
