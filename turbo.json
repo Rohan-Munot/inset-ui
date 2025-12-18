@@ -21,6 +21,9 @@
     "typecheck": {
       "cache": true,
       "dependsOn": ["^typecheck"]
+    },
+    "format": {
+      "cache": true
     }
   },
   "ui": "tui"
