@@ -7,23 +7,25 @@ import {
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <Accordion className="w-full max-w-md">
-        <AccordionItem value="item-1">
-          <AccordionTrigger>Is it accessible?</AccordionTrigger>
+      <Accordion className="w-full max-w-md" multiple>
+        <AccordionItem value="item-a">
+          <AccordionTrigger>What is Inset UI?</AccordionTrigger>
           <AccordionContent>
-            Yes. It adheres to the WAI-ARIA design pattern.
+            Inset UI is a React component library featuring tactile aesthetics
+            and smooth animations.
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem value="item-2">
-          <AccordionTrigger>Is it accessible?</AccordionTrigger>
+        <AccordionItem value="item-b">
+          <AccordionTrigger>Who built Inset UI?</AccordionTrigger>
           <AccordionContent>
-            Yes. It adheres to the WAI-ARIA design pattern.
+            Inset UI is a personal project lovingly crafted for reusability and
+            style exploration.
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem value="item-3">
-          <AccordionTrigger>Is it accessible?</AccordionTrigger>
+        <AccordionItem value="item-c">
+          <AccordionTrigger>Does Inset UI support dark mode?</AccordionTrigger>
           <AccordionContent>
-            Yes. It adheres to the WAI-ARIA design pattern.
+            Yes, all design tokens and colors automatically adapt to dark mode.
           </AccordionContent>
         </AccordionItem>
       </Accordion>

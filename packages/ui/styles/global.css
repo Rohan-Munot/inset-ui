@@ -64,111 +64,251 @@
 
 :root {
   --radius: 0.625rem;
-  --background: var(--color-white);
-  --foreground: var(--color-zinc-800);
-  --card: var(--color-white);
-  --card-foreground: var(--color-zinc-800);
-  --popover: var(--color-white);
-  --popover-foreground: var(--color-zinc-800);
+  /* Inset theme: Soft, tactile backgrounds with subtle warmth */
+  --background: color-mix(
+    in srgb,
+    var(--color-zinc-50) 95%,
+    var(--color-white)
+  );
+  --foreground: var(--color-zinc-900);
+  --card: color-mix(in srgb, var(--color-white) 98%, var(--color-zinc-50));
+  --card-foreground: var(--color-zinc-900);
+  --popover: color-mix(in srgb, var(--color-white) 96%, var(--color-zinc-50));
+  --popover-foreground: var(--color-zinc-900);
+  /* Primary: Warm charcoal for tactile feel */
   --primary: var(--color-zinc-800);
   --primary-foreground: var(--color-zinc-50);
-  --secondary: --alpha(var(--color-black) / 4%);
+  /* Secondary: Subtle zinc tint for depth */
+  --secondary: color-mix(
+    in srgb,
+    var(--color-zinc-100) 60%,
+    var(--color-zinc-200)
+  );
   --secondary-foreground: var(--color-zinc-800);
-  --muted: --alpha(var(--color-black) / 4%);
+  /* Muted: Very subtle zinc background */
+  --muted: color-mix(in srgb, var(--color-zinc-50) 30%, transparent);
   --muted-foreground: color-mix(
     in srgb,
-    var(--color-zinc-500) 90%,
-    var(--color-black)
+    var(--color-zinc-600) 80%,
+    var(--color-zinc-500)
   );
-  --accent: --alpha(var(--color-black) / 4%);
-  --accent-foreground: var(--color-zinc-800);
-  --destructive: var(--color-red-500);
-  --destructive-foreground: var(--color-red-700);
-  --info: var(--color-blue-500);
-  --info-foreground: var(--color-blue-700);
-  --success: var(--color-emerald-500);
-  --success-foreground: var(--color-emerald-700);
-  --warning: var(--color-amber-500);
-  --warning-foreground: var(--color-amber-700);
-  --border: --alpha(var(--color-black) / 12%);
-  --input: --alpha(var(--color-black) / 12%);
+  /* Accent: Soft zinc highlight */
+  --accent: color-mix(
+    in srgb,
+    var(--color-zinc-200) 40%,
+    var(--color-zinc-100)
+  );
+  --accent-foreground: var(--color-zinc-900);
+  /* Status colors: Muted versions for inset aesthetic */
+  --destructive: color-mix(
+    in srgb,
+    var(--color-red-500) 90%,
+    var(--color-red-400)
+  );
+  --destructive-foreground: var(--color-red-800);
+  --info: color-mix(in srgb, var(--color-blue-500) 85%, var(--color-blue-400));
+  --info-foreground: var(--color-blue-800);
+  --success: color-mix(
+    in srgb,
+    var(--color-emerald-500) 85%,
+    var(--color-emerald-400)
+  );
+  --success-foreground: var(--color-emerald-800);
+  --warning: color-mix(
+    in srgb,
+    var(--color-amber-500) 85%,
+    var(--color-amber-400)
+  );
+  --warning-foreground: var(--color-amber-800);
+  /* Borders and inputs: Very subtle zinc borders */
+  --border: color-mix(
+    in srgb,
+    var(--color-zinc-200) 50%,
+    var(--color-zinc-300)
+  );
+  --input: color-mix(in srgb, var(--color-zinc-200) 30%, transparent);
   --ring: var(--color-zinc-400);
-  --chart-1: var(--color-orange-600);
-  --chart-2: var(--color-teal-600);
-  --chart-3: var(--color-cyan-900);
-  --chart-4: var(--color-amber-400);
-  --chart-5: var(--color-amber-500);
-  --sidebar: var(--color-zinc-50);
+  /* Chart colors: Muted, sophisticated palette */
+  --chart-1: color-mix(
+    in srgb,
+    var(--color-orange-600) 80%,
+    var(--color-orange-500)
+  );
+  --chart-2: color-mix(
+    in srgb,
+    var(--color-teal-600) 75%,
+    var(--color-teal-500)
+  );
+  --chart-3: color-mix(
+    in srgb,
+    var(--color-zinc-700) 70%,
+    var(--color-zinc-600)
+  );
+  --chart-4: color-mix(
+    in srgb,
+    var(--color-amber-500) 75%,
+    var(--color-amber-400)
+  );
+  --chart-5: color-mix(
+    in srgb,
+    var(--color-zinc-500) 80%,
+    var(--color-zinc-400)
+  );
+  /* Sidebar: Soft zinc background */
+  --sidebar: color-mix(
+    in srgb,
+    var(--color-zinc-100) 90%,
+    var(--color-zinc-50)
+  );
   --sidebar-foreground: color-mix(
     in srgb,
-    var(--color-zinc-800) 64%,
-    var(--sidebar)
+    var(--color-zinc-900) 70%,
+    var(--color-zinc-800)
   );
   --sidebar-primary: var(--color-zinc-800);
   --sidebar-primary-foreground: var(--color-zinc-50);
-  --sidebar-accent: --alpha(var(--color-black) / 4%);
-  --sidebar-accent-foreground: var(--color-zinc-800);
-  --sidebar-border: --alpha(var(--color-black) / 12%);
+  --sidebar-accent: color-mix(
+    in srgb,
+    var(--color-zinc-200) 40%,
+    var(--color-zinc-100)
+  );
+  --sidebar-accent-foreground: var(--color-zinc-900);
+  --sidebar-border: color-mix(
+    in srgb,
+    var(--color-zinc-200) 60%,
+    var(--color-zinc-300)
+  );
   --sidebar-ring: var(--color-zinc-400);
-  --code: var(--color-white);
-  --code-foreground: var(--foreground);
-  --code-highlight: --alpha(var(--color-black) / 4%);
+  /* Code: Clean with subtle zinc tint */
+  --code: color-mix(in srgb, var(--color-zinc-50) 95%, var(--color-white));
+  --code-foreground: var(--color-zinc-900);
+  --code-highlight: color-mix(in srgb, var(--color-zinc-200) 20%, transparent);
 }
 
 .dark {
+  /* Inset dark theme: Deep zinc backgrounds with subtle warmth */
   --background: color-mix(
     in srgb,
-    var(--color-zinc-950) 98%,
-    var(--color-white)
+    var(--color-zinc-950) 95%,
+    var(--color-zinc-900)
   );
-  --foreground: var(--color-zinc-200);
-  --card: color-mix(in srgb, var(--background) 98%, var(--color-white));
-  --card-foreground: var(--color-zinc-200);
-  --popover: color-mix(in srgb, var(--background) 96%, var(--color-white));
-  --popover-foreground: var(--color-zinc-200);
+  --foreground: var(--color-zinc-100);
+  --card: color-mix(in srgb, var(--background) 105%, var(--color-zinc-800));
+  --card-foreground: var(--color-zinc-100);
+  --popover: color-mix(in srgb, var(--background) 110%, var(--color-zinc-800));
+  --popover-foreground: var(--color-zinc-100);
+  /* Primary: Light zinc for contrast against dark background */
   --primary: var(--color-zinc-200);
-  --primary-foreground: var(--color-zinc-800);
-  --secondary: --alpha(var(--color-white) / 6%);
+  --primary-foreground: var(--color-zinc-900);
+  /* Secondary: Subtle zinc highlight */
+  --secondary: color-mix(
+    in srgb,
+    var(--color-zinc-700) 50%,
+    var(--color-zinc-600)
+  );
   --secondary-foreground: var(--color-zinc-200);
-  --muted: --alpha(var(--color-white) / 6%);
+  /* Muted: Very subtle zinc background */
+  --muted: color-mix(in srgb, var(--color-zinc-800) 30%, var(--color-zinc-700));
   --muted-foreground: color-mix(
     in srgb,
-    var(--color-zinc-500) 90%,
-    var(--color-white)
+    var(--color-zinc-400) 90%,
+    var(--color-zinc-300)
   );
-  --accent: --alpha(var(--color-white) / 6%);
-  --accent-foreground: var(--color-zinc-200);
-  --destructive: var(--color-red-500);
-  --destructive-foreground: var(--color-red-400);
-  --info: var(--color-blue-500);
-  --info-foreground: var(--color-blue-400);
-  --success: var(--color-emerald-500);
-  --success-foreground: var(--color-emerald-400);
-  --warning: var(--color-amber-500);
-  --warning-foreground: var(--color-amber-400);
-  --border: --alpha(var(--color-white) / 12%);
-  --input: --alpha(var(--color-white) / 12%);
+  /* Accent: Soft zinc highlight for dark mode */
+  --accent: color-mix(
+    in srgb,
+    var(--color-zinc-700) 60%,
+    var(--color-zinc-600)
+  );
+  --accent-foreground: var(--color-zinc-100);
+  /* Status colors: Muted, refined versions for dark inset theme */
+  --destructive: color-mix(
+    in srgb,
+    var(--color-red-400) 85%,
+    var(--color-red-500)
+  );
+  --destructive-foreground: var(--color-red-200);
+  --info: color-mix(in srgb, var(--color-blue-400) 80%, var(--color-blue-500));
+  --info-foreground: var(--color-blue-200);
+  --success: color-mix(
+    in srgb,
+    var(--color-emerald-400) 80%,
+    var(--color-emerald-500)
+  );
+  --success-foreground: var(--color-emerald-200);
+  --warning: color-mix(
+    in srgb,
+    var(--color-amber-400) 80%,
+    var(--color-amber-500)
+  );
+  --warning-foreground: var(--color-amber-200);
+  /* Borders and inputs: Subtle zinc borders for dark mode */
+  --border: color-mix(
+    in srgb,
+    var(--color-zinc-700) 70%,
+    var(--color-zinc-600)
+  );
+  --input: color-mix(in srgb, var(--color-zinc-700) 50%, var(--color-zinc-600));
   --ring: var(--color-zinc-500);
-  --chart-1: var(--color-blue-700);
-  --chart-2: var(--color-emerald-500);
-  --chart-3: var(--color-amber-500);
-  --chart-4: var(--color-purple-500);
-  --chart-5: var(--color-rose-500);
-  --sidebar: var(--color-zinc-950);
+  /* Chart colors: Muted, sophisticated dark palette */
+  --chart-1: color-mix(
+    in srgb,
+    var(--color-orange-400) 75%,
+    var(--color-orange-500)
+  );
+  --chart-2: color-mix(
+    in srgb,
+    var(--color-teal-400) 70%,
+    var(--color-teal-500)
+  );
+  --chart-3: color-mix(
+    in srgb,
+    var(--color-zinc-400) 80%,
+    var(--color-zinc-500)
+  );
+  --chart-4: color-mix(
+    in srgb,
+    var(--color-amber-400) 75%,
+    var(--color-amber-500)
+  );
+  --chart-5: color-mix(
+    in srgb,
+    var(--color-zinc-300) 85%,
+    var(--color-zinc-400)
+  );
+  /* Sidebar: Deep zinc background for dark mode */
+  --sidebar: color-mix(
+    in srgb,
+    var(--color-zinc-900) 90%,
+    var(--color-zinc-950)
+  );
   --sidebar-foreground: color-mix(
     in srgb,
-    var(--color-zinc-200) 64%,
-    var(--sidebar)
+    var(--color-zinc-100) 80%,
+    var(--color-zinc-200)
   );
   --sidebar-primary: var(--color-zinc-200);
-  --sidebar-primary-foreground: var(--color-zinc-800);
-  --sidebar-accent: --alpha(var(--color-white) / 6%);
-  --sidebar-accent-foreground: var(--color-zinc-200);
-  --sidebar-border: --alpha(var(--color-white) / 12%);
+  --sidebar-primary-foreground: var(--color-zinc-900);
+  --sidebar-accent: color-mix(
+    in srgb,
+    var(--color-zinc-700) 50%,
+    var(--color-zinc-600)
+  );
+  --sidebar-accent-foreground: var(--color-zinc-100);
+  --sidebar-border: color-mix(
+    in srgb,
+    var(--color-zinc-700) 80%,
+    var(--color-zinc-600)
+  );
   --sidebar-ring: var(--color-zinc-400);
-  --code: color-mix(in srgb, var(--background) 96%, var(--color-white));
+  /* Code: Deep zinc background with subtle contrast */
+  --code: color-mix(in srgb, var(--background) 105%, var(--color-zinc-800));
   --code-foreground: var(--foreground);
-  --code-highlight: --alpha(var(--color-white) / 6%);
+  --code-highlight: color-mix(
+    in srgb,
+    var(--color-zinc-700) 30%,
+    var(--color-zinc-600)
+  );
 }
 
 @layer base {
