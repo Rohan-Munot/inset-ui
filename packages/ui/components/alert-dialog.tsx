@@ -90,7 +90,7 @@ function AlertDialogPopup({
             "absolute bottom-0 sm:bottom-1/2 left-1/2 -translate-x-1/2 sm:-translate-y-[calc(1.05rem*var(--nested-dialogs))]",
             "w-full max-w-md p-5 will-change-transform bg-clip-border",
             "bg-card text-card-foreground",
-            "border border-border/90 data-nested-dialog-open:rounded-xs sm:rounded-xl",
+            "border border-border/90 data-nested-dialog-open:rounded-xs sm:data-nested-dialog-open:rounded-xl sm:rounded-xl",
             "shadow-2xl shadow-black/10",
             "transition-[scale,translate,opacity] duration-200 ease-in-out",
             "data-ending-style:translate-y-1/2 data-ending-style:opacity-0 sm:data-ending-style:scale-50 data-nested-dialog-open:origin-top scale-[calc(1-0.01*var(--nested-dialogs))] sm:scale-[calc(1-0.08*var(--nested-dialogs))]",

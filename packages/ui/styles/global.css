@@ -50,10 +50,6 @@
   --color-code: var(--code);
   --color-code-foreground: var(--code-foreground);
   --color-code-highlight: var(--code-highlight);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
   --animate-skeleton: skeleton 2s -1s infinite linear;
   @keyframes skeleton {
     to {
@@ -80,9 +76,6 @@
     black 10%
   ); /* Border/Darker */
   --light-4: color-mix(in srgb, var(--color-light), black 5%); /* Muted */
-
-  --radius: 0.625rem;
-
   --background: var(--light-1);
   --foreground: var(--color-dark);
 
