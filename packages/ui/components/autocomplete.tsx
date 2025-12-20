@@ -18,7 +18,8 @@ function AutocompleteInput({
     <div className="relative w-full">
       <AutocompletePrimitive.Input
         className={cn(
-          "w-full rounded-lg border border-border bg-card py-2 px-3 text-sm font-medium text-foreground shadow-inner",
+          "w-full rounded-lg border border-border bg-card px-3 text-sm font-medium text-foreground shadow-inner",
+          "leading-9",
           "transition-all duration-200 ease-in-out",
           "focus-visible:border-ring/50 focus-visible:outline-none",
           "disabled:cursor-not-allowed disabled:opacity-50",
