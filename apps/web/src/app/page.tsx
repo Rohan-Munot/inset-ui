@@ -33,6 +33,27 @@ export default function Home() {
     { label: 'Kiwi', value: 'kiwi' },
     { label: 'Peach', value: 'peach' },
     { label: 'Pear', value: 'pear' },
+    // More fruit
+    { label: 'Watermelon', value: 'watermelon' },
+    { label: 'Lemon', value: 'lemon' },
+    { label: 'Lime', value: 'lime' },
+    { label: 'Blueberry', value: 'blueberry' },
+    { label: 'Raspberry', value: 'raspberry' },
+    { label: 'Blackberry', value: 'blackberry' },
+    { label: 'Cherry', value: 'cherry' },
+    { label: 'Papaya', value: 'papaya' },
+    { label: 'Guava', value: 'guava' },
+    { label: 'Plum', value: 'plum' },
+    { label: 'Apricot', value: 'apricot' },
+    { label: 'Lychee', value: 'lychee' },
+    { label: 'Dragonfruit', value: 'dragonfruit' },
+    { label: 'Passionfruit', value: 'passionfruit' },
+    { label: 'Coconut', value: 'coconut' },
+    { label: 'Melon', value: 'melon' },
+    { label: 'Fig', value: 'fig' },
+    { label: 'Date', value: 'date' },
+    { label: 'Pomegranate', value: 'pomegranate' },
+    { label: 'Tangerine', value: 'tangerine' },
   ];
 
   return (
@@ -56,7 +77,7 @@ export default function Home() {
           <p className="text-muted-foreground">Autocomplete with a list of selectable items.</p>
 
           <Autocomplete items={items}>
-            <AutocompleteInput placeholder="Choose a fruit..." />
+            <AutocompleteInput placeholder="Choose a fruit..." trigger hasClear />
             <AutocompletePopup>
               <AutocompleteEmpty>No items found.</AutocompleteEmpty>
               <AutocompleteList>
