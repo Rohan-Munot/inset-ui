@@ -17,6 +17,7 @@
     "dev": "bunx --bun turbo dev",
     "build": "bunx turbo build",
     "lint": "bunx turbo lint",
+    "format": "bunx turbo format",
     "test": "bunx turbo test"
   },
   "type": "module",

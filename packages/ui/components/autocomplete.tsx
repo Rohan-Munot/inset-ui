@@ -1,11 +1,13 @@
 import { Autocomplete as AutocompletePrimitive } from "@base-ui/react/autocomplete";
 import { cn } from "@inset/ui/lib/utils";
+import { ChevronDown } from "lucide-react";
 
 const Autocomplete = AutocompletePrimitive.Root;
 function AutocompleteInput({
   className,
+  trigger,
   ...props
-}: AutocompletePrimitive.Input.Props) {
+}: AutocompletePrimitive.Input.Props & { trigger?: boolean }) {
   return (
     <div className="relative w-full max-w-xs sm:max-w-sm mx-auto">
       <AutocompletePrimitive.Input
@@ -19,6 +21,11 @@ function AutocompleteInput({
         data-slot="autocomplete-input"
         {...props}
       />
+      {trigger && (
+        <AutocompleteTrigger>
+          <ChevronDown className="size-4" />
+        </AutocompleteTrigger>
+      )}
     </div>
   );
 }
