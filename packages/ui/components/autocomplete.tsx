@@ -1,6 +1,7 @@
 import { Autocomplete as AutocompletePrimitive } from "@base-ui/react/autocomplete";
 import { cn } from "@inset/ui/lib/utils";
 import { CaretDownIcon, XIcon } from "@phosphor-icons/react";
+import { Input } from "@inset/ui/input";
 
 const Autocomplete = AutocompletePrimitive.Root;
 function AutocompleteInput({
@@ -18,15 +19,17 @@ function AutocompleteInput({
     <div className="relative w-full">
       <AutocompletePrimitive.Input
         className={cn(
-          "w-full rounded-lg border border-border bg-card px-3 text-sm font-medium text-foreground shadow-inner",
+          "w-full bg-card text-sm font-medium text-foreground",
           "leading-9",
           "transition-all duration-200 ease-in-out",
           "focus-visible:border-ring/50 focus-visible:outline-none",
           "disabled:cursor-not-allowed disabled:opacity-50",
-          (trigger || hasClear) && "pe-8",
+          (trigger || hasClear) &&
+            "has-[+[data-slot=autocomplete-trigger],+[data-slot=autocomplete-clear]]:*:data-[slot=input]:pe-8",
           className
         )}
         data-slot="autocomplete-input"
+        render={<Input />}
         {...props}
       />
       {trigger && (
@@ -109,7 +112,7 @@ function AutocompletePopup({
       <AutocompletePrimitive.Positioner sideOffset={2}>
         <AutocompletePrimitive.Popup
           className={cn(
-            "relative origin-(--transform-origin) rounded-lg border bg-popover bg-clip-padding transition-[scale,opacity] before:pointer-events-none before:shadow-lg has-data-starting-style:scale-20 has-data-starting-style:opacity-0 flex max-h-[min(var(--available-height),23rem)] w-(--anchor-width) max-w-(--available-width) flex-col",
+            "relative origin-(--transform-origin) rounded-xl border bg-popover bg-clip-padding transition-[scale,opacity] before:pointer-events-none before:shadow-lg has-data-starting-style:scale-20 has-data-starting-style:opacity-0 flex max-h-[min(var(--available-height),23rem)] w-(--anchor-width) flex-col",
             "border-border shadow-inner overflow-y-scroll",
             className
           )}
