@@ -2,6 +2,7 @@ import { Autocomplete as AutocompletePrimitive } from "@base-ui/react/autocomple
 import { cn } from "@inset/ui/lib/utils";
 import { CaretDownIcon, XIcon } from "@phosphor-icons/react";
 import { Input } from "@inset/ui/input";
+import { ScrollArea } from "@inset/ui/scroll-area";
 
 const Autocomplete = AutocompletePrimitive.Root;
 function AutocompleteInput({
@@ -91,14 +92,16 @@ function AutocompleteList({
   ...props
 }: AutocompletePrimitive.List.Props) {
   return (
-    <AutocompletePrimitive.List
-      className={cn(
-        "not-empty:scroll-py-1 not-empty:px-1 not-empty:py-1 in-data-has-overflow-y:pe-3",
-        className
-      )}
-      data-slot="autocomplete-list"
-      {...props}
-    />
+    <ScrollArea>
+      <AutocompletePrimitive.List
+        className={cn(
+          "not-empty:scroll-py-1 not-empty:px-1 not-empty:py-1 in-data-has-overflow-y:pe-3 ",
+          className
+        )}
+        data-slot="autocomplete-list"
+        {...props}
+      />
+    </ScrollArea>
   );
 }
 
@@ -110,17 +113,19 @@ function AutocompletePopup({
   return (
     <AutocompletePrimitive.Portal>
       <AutocompletePrimitive.Positioner sideOffset={2}>
-        <AutocompletePrimitive.Popup
-          className={cn(
-            "relative origin-(--transform-origin) rounded-xl border bg-popover bg-clip-padding transition-[scale,opacity] before:pointer-events-none before:shadow-lg has-data-starting-style:scale-20 has-data-starting-style:opacity-0 flex max-h-[min(var(--available-height),23rem)] w-(--anchor-width) flex-col",
-            "border-border shadow-inner overflow-y-scroll",
-            className
-          )}
-          data-slot="autocomplete-popup"
-          {...props}
-        >
-          {children}
-        </AutocompletePrimitive.Popup>
+        <span className="relative flex max-h-full">
+          <AutocompletePrimitive.Popup
+            className={cn(
+              "relative origin-(--transform-origin) rounded-xl border bg-popover bg-clip-padding transition-[scale,opacity] before:pointer-events-none before:shadow-lg has-data-starting-style:scale-20 has-data-starting-style:opacity-0 flex max-h-[min(var(--available-height),23rem)] w-(--anchor-width) flex-col",
+              "border-border shadow-inner",
+              className
+            )}
+            data-slot="autocomplete-popup"
+            {...props}
+          >
+            {children}
+          </AutocompletePrimitive.Popup>
+        </span>
       </AutocompletePrimitive.Positioner>
     </AutocompletePrimitive.Portal>
   );
@@ -187,7 +192,7 @@ function AutocompleteItem({
   return (
     <AutocompletePrimitive.Item
       className={cn(
-        "flex min-h-8 px-2 py-1 rounded-sm",
+        "flex min-h-8 px-2 py-1 rounded-lg",
         "cursor-default select-none",
         "data-disabled:opacity-50 data-disabled:cursor-not-allowed data-disabled:pointer-events-none",
         "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
