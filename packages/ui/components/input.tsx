@@ -7,7 +7,8 @@ function Input({ className, ...props }: InputPrimitive.Props) {
       className={cn(
         "relative inline-flex w-full rounded-xl border border-input bg-card bg-clip-padding text-base shadow-xs ring-ring/24 transition-all duration-200 ease-in-out",
         "has-focus-visible:border-ring/50 has-focus-visible:ring-ring/10 has-focus-visible:ring-[3px]",
-        "before:pointer-events-none before:absolute before:inset-0 dark:before:shadow-[0_-1px_0_0_rgba(255,255,255,0.15)] before:rounded-[calc(var(--radius-xl)-1px)] before:shadow-[0_-1px_0_0_rgba(125,125,125,0.15)]",
+        "before:pointer-events-none before:absolute before:inset-0 dark:before:shadow-[0_-1px_0_0_rgba(255,255,255,0.15)] before:rounded-[calc(var(--radius-xl)-1px)] before:shadow-[0_-1px_0_0_rgba(0,0,0,0.15)]",
+        "dark:shadow-[inset_0_-1px_3px_0_rgba(255,255,255,0.15)]",
         className
       )}
     >
