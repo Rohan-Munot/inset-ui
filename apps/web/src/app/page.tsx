@@ -1,101 +1,19 @@
 'use client';
-
-import * as React from 'react';
-
-import {
-  Autocomplete,
-  AutocompleteCollection,
-  AutocompleteEmpty,
-  AutocompleteGroup,
-  AutocompleteGroupLabel,
-  AutocompleteInput,
-  AutocompleteItem,
-  AutocompleteList,
-  AutocompletePopup,
-  AutocompleteSeparator,
-} from '@inset/ui/autocomplete';
 import { useTheme } from 'next-themes';
 import { MoonIcon } from '@phosphor-icons/react';
 import { SunIcon } from '@phosphor-icons/react';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionPanel,
-  AccordionTrigger,
-} from '@inset/ui/accordion';
 import { cn } from '@inset/ui/lib/utils';
-
-// Grouped items demo
-type Tag = { id: string; label: string; group: 'Status' | 'Priority' | 'Team' };
-type TagGroup = { value: string; items: Tag[] };
-
-const tagsData: Tag[] = [
-  // Status
-  { group: 'Status', id: 's-open', label: 'Open' },
-  { group: 'Status', id: 's-in-progress', label: 'In progress' },
-  { group: 'Status', id: 's-blocked', label: 'Blocked' },
-  { group: 'Status', id: 's-resolved', label: 'Resolved' },
-  { group: 'Status', id: 's-closed', label: 'Closed' },
-  // Priority
-  { group: 'Priority', id: 'p-low', label: 'Low' },
-  { group: 'Priority', id: 'p-medium', label: 'Medium' },
-  { group: 'Priority', id: 'p-high', label: 'High' },
-  { group: 'Priority', id: 'p-urgent', label: 'Urgent' },
-  // Team
-  { group: 'Team', id: 't-design', label: 'Design' },
-  { group: 'Team', id: 't-frontend', label: 'Frontend' },
-  { group: 'Team', id: 't-backend', label: 'Backend' },
-  { group: 'Team', id: 't-devops', label: 'DevOps' },
-  { group: 'Team', id: 't-qa', label: 'QA' },
-  { group: 'Team', id: 't-mobile', label: 'Mobile' },
-  { group: 'Team', id: 't-data', label: 'Data' },
-  { group: 'Team', id: 't-security', label: 'Security' },
-  { group: 'Team', id: 't-platform', label: 'Platform' },
-  { group: 'Team', id: 't-infra', label: 'Infrastructure' },
-  { group: 'Team', id: 't-product', label: 'Product' },
-  { group: 'Team', id: 't-marketing', label: 'Marketing' },
-  { group: 'Team', id: 't-sales', label: 'Sales' },
-  { group: 'Team', id: 't-support', label: 'Support' },
-  { group: 'Team', id: 't-research', label: 'Research' },
-  { group: 'Team', id: 't-content', label: 'Content' },
-  { group: 'Team', id: 't-analytics', label: 'Analytics' },
-  { group: 'Team', id: 't-operations', label: 'Operations' },
-  { group: 'Team', id: 't-finance', label: 'Finance' },
-  { group: 'Team', id: 't-hr', label: 'HR' },
-  { group: 'Team', id: 't-legal', label: 'Legal' },
-  { group: 'Team', id: 't-growth', label: 'Growth' },
-  { group: 'Team', id: 't-partner', label: 'Partner' },
-  { group: 'Team', id: 't-community', label: 'Community' },
-  { group: 'Team', id: 't-docs', label: 'Docs' },
-  { group: 'Team', id: 't-l10n', label: 'Localization' },
-  { group: 'Team', id: 't-a11y', label: 'Accessibility' },
-  { group: 'Team', id: 't-sre', label: 'SRE' },
-  { group: 'Team', id: 't-release', label: 'Release' },
-  { group: 'Team', id: 't-architecture', label: 'Architecture' },
-  { group: 'Team', id: 't-ux', label: 'UX' },
-  { group: 'Team', id: 't-ui', label: 'UI' },
-  { group: 'Team', id: 't-management', label: 'Management' },
-];
-
-function groupTags(tags: Tag[]): TagGroup[] {
-  const groups: Record<string, Tag[]> = {};
-  for (const tag of tags) {
-    if (!groups[tag.group]) {
-      groups[tag.group] = [];
-    }
-    // biome-ignore lint/style/noNonNullAssertion: will never be null
-    groups[tag.group]!.push(tag);
-  }
-
-  const order: Array<TagGroup['value']> = ['Status', 'Priority', 'Team'];
-  return order.map((value) => ({ items: groups[value] ?? [], value }));
-}
-
-const groupedTags: TagGroup[] = groupTags(tagsData);
+import { Button } from '@inset/ui/button';
+import { Input } from '@inset/ui/input';
+import { useEffect, useState } from 'react';
 
 export default function Particle() {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
@@ -104,22 +22,27 @@ export default function Particle() {
   return (
     <div className="flex h-screen flex-col items-center justify-center gap-2">
       <button onClick={toggleTheme} className="absolute top-0 right-0 m-4">
-        {theme === 'light' ? <MoonIcon className="h-4 w-4" /> : <SunIcon className="h-4 w-4" />}
+        {mounted &&
+          (theme === 'light' ? <MoonIcon className="h-4 w-4" /> : <SunIcon className="h-4 w-4" />)}
       </button>
-      <Accordion multiple className={cn('w-full max-w-sm')}>
-        <AccordionItem value="1">
-          <AccordionTrigger>Accordion Item 1</AccordionTrigger>
-          <AccordionContent>Content</AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="2">
-          <AccordionTrigger>Accordion Item 2</AccordionTrigger>
-          <AccordionContent>Content</AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="3">
-          <AccordionTrigger>Accordion Item 3</AccordionTrigger>
-          <AccordionContent>Content</AccordionContent>
-        </AccordionItem>
-      </Accordion>
+      <Button>
+        Default <MoonIcon className="" />
+      </Button>
+      <Button variant="outline">
+        Outline <MoonIcon className="" />
+      </Button>
+      <Button variant="destructive">
+        Destructive <MoonIcon className="" />
+      </Button>
+      <Button variant="ghost">
+        Ghost <MoonIcon className="" />
+      </Button>
+      <Button variant="destructive-outline">
+        Destructive Outline <MoonIcon className="" />
+      </Button>
+      <div className="flex max-w-sm flex-col gap-2">
+        <Input placeholder="Enter your email" />
+      </div>
     </div>
   );
 }
