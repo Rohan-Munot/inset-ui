@@ -118,6 +118,7 @@ function AutocompletePopup({
             className={cn(
               "relative origin-(--transform-origin) rounded-xl border bg-popover bg-clip-padding transition-[scale,opacity] before:pointer-events-none before:shadow-lg has-data-starting-style:scale-20 has-data-starting-style:opacity-0 flex max-h-[min(var(--available-height),23rem)] w-(--anchor-width) flex-col",
               "border-border shadow-inner",
+              "dark:shadow-[inset_0_-1px_2px_0_rgba(255,255,255,0.15)]",
               className
             )}
             data-slot="autocomplete-popup"
@@ -228,7 +229,10 @@ function AutocompleteGroupLabel({
 }: AutocompletePrimitive.GroupLabel.Props) {
   return (
     <AutocompletePrimitive.GroupLabel
-      className={className}
+      className={cn(
+        "text-xs font-medium text-muted-foreground px-2 py-1",
+        className
+      )}
       data-slot="autocomplete-group-label"
       {...props}
     />
@@ -241,7 +245,7 @@ function AutocompleteSeparator({
 }: AutocompletePrimitive.Separator.Props) {
   return (
     <AutocompletePrimitive.Separator
-      className={className}
+      className={cn("h-px w-full bg-border my-1", className)}
       data-slot="autocomplete-separator"
       {...props}
     />

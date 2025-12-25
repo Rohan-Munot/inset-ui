@@ -28,19 +28,22 @@ function ScrollArea({
 
 function ScrollBar({
   className,
+  orientation = "vertical",
   ...props
 }: ScrollAreaPrimitive.Scrollbar.Props) {
   return (
     <ScrollAreaPrimitive.Scrollbar
-      className={cn("m-1", className)}
+      className={cn(
+        "m-1 data-[orientation=vertical]:w-1.5 data-[orientation=horizontal]:h-1.5",
+        "opacity-0 transition-opacity delay-300 data-hovering:opacity-100 data-scrolling:opacity-100 data-hovering:delay-0 data-scrolling:delay-0 data-hovering:duration-100 data-scrolling:duration-100",
+        className
+      )}
       data-slot="scroll-area-scroll-bar"
+      orientation={orientation}
       {...props}
     >
       <ScrollAreaPrimitive.Thumb
-        className={cn(
-          "relative flex-1 rounded-full bg-border transition-colors duration-200 ease-in-out",
-          "has-hover:bg-border/80 has-active:bg-border"
-        )}
+        className={cn("relative flex-1 rounded-full bg-foreground/50")}
         data-slot="scroll-area-thumb"
       />
     </ScrollAreaPrimitive.Scrollbar>
