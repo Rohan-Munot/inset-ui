@@ -6,6 +6,7 @@ import { cn } from '@inset/ui/lib/utils';
 import { Button } from '@inset/ui/button';
 import { Input } from '@inset/ui/input';
 import { useEffect, useState } from 'react';
+import { Label } from '@inset/ui/label';
 
 export default function Particle() {
   const { theme, setTheme } = useTheme();
@@ -40,8 +41,9 @@ export default function Particle() {
       <Button variant="destructive-outline">
         Destructive Outline <MoonIcon className="" />
       </Button>
-      <div className="flex max-w-sm flex-col gap-2">
-        <Input placeholder="Enter your email" />
+      <div className="mt-3 flex max-w-sm flex-col">
+        <Label htmlFor="email">Email</Label>
+        <Input id="email" placeholder="Enter your email" />
       </div>
     </div>
   );
