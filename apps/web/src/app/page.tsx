@@ -7,6 +7,7 @@ import { Button } from '@inset/ui/button';
 import { Input } from '@inset/ui/input';
 import { useEffect, useState } from 'react';
 import { Label } from '@inset/ui/label';
+import { Checkbox } from '@inset/ui/checkbox';
 
 export default function Particle() {
   const { theme, setTheme } = useTheme();
@@ -22,28 +23,17 @@ export default function Particle() {
 
   return (
     <div className="flex h-screen flex-col items-center justify-center gap-2">
-      <button onClick={toggleTheme} className="absolute top-0 right-0 m-4">
+      <Button onClick={toggleTheme} className="absolute top-0 right-0 m-4">
         {mounted &&
           (theme === 'light' ? <MoonIcon className="h-4 w-4" /> : <SunIcon className="h-4 w-4" />)}
-      </button>
-      <Button>
-        Default <MoonIcon className="" />
-      </Button>
-      <Button variant="outline">
-        Outline <MoonIcon className="" />
-      </Button>
-      <Button variant="destructive">
-        Destructive <MoonIcon className="" />
-      </Button>
-      <Button variant="ghost">
-        Ghost <MoonIcon className="" />
-      </Button>
-      <Button variant="destructive-outline">
-        Destructive Outline <MoonIcon className="" />
       </Button>
       <div className="mt-3 flex max-w-sm flex-col">
         <Label htmlFor="email">Email</Label>
         <Input id="email" placeholder="Enter your email" />
+      </div>
+      <div className="mt-3 flex max-w-sm items-center gap-2">
+        <Checkbox id="checkbox" />
+        <Label htmlFor="checkbox">Checkbox</Label>
       </div>
     </div>
   );
