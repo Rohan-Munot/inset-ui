@@ -1,10 +1,11 @@
 'use client';
 import { useTheme } from 'next-themes';
-import { MoonIcon, UserIcon } from '@phosphor-icons/react';
+import { MoonIcon } from '@phosphor-icons/react';
 import { SunIcon } from '@phosphor-icons/react';
 import { Button } from '@inset/ui/button';
 import { useEffect, useState } from 'react';
-import { Avatar, AvatarFallback, AvatarImage } from '@inset/ui/avatar';
+import { Combobox, ComboboxInput } from '@inset/ui/combobox';
+import { Label } from '@inset/ui/label';
 
 export default function Particle() {
   const { theme, setTheme } = useTheme();
@@ -24,15 +25,46 @@ export default function Particle() {
         {mounted &&
           (theme === 'light' ? <MoonIcon className="h-4 w-4" /> : <SunIcon className="h-4 w-4" />)}
       </Button>
-      <Avatar>
-        <AvatarImage
-          src="https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?w=128&h=128&dpr=2&q=80"
-          alt="avatar"
-        />
-        <AvatarFallback>
-          <UserIcon className="h-4 w-4" />
-        </AvatarFallback>
-      </Avatar>
+      <Combobox items={fruits}>
+        <div className="relative flex flex-col gap-2">
+          <Label htmlFor="select-fruit">Select a fruit</Label>
+          <ComboboxInput
+            className="w-80"
+            id="select-fruit"
+            placeholder="e.g. Apple"
+            trigger
+            hasClear
+          />
+        </div>
+      </Combobox>
     </div>
   );
 }
+
+const fruits = [
+  'Apple',
+  'Banana',
+  'Orange',
+  'Pineapple',
+  'Grape',
+  'Mango',
+  'Strawberry',
+  'Blueberry',
+  'Raspberry',
+  'Blackberry',
+  'Cherry',
+  'Peach',
+  'Pear',
+  'Plum',
+  'Kiwi',
+  'Watermelon',
+  'Cantaloupe',
+  'Honeydew',
+  'Papaya',
+  'Guava',
+  'Lychee',
+  'Pomegranate',
+  'Apricot',
+  'Grapefruit',
+  'Passionfruit',
+];

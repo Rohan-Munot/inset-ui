@@ -14,7 +14,7 @@ function ScrollArea({
     >
       <ScrollAreaPrimitive.Viewport
         className={cn(
-          "h-full overscroll-contain rounded-[inherit] outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          "h-full overscroll-contain rounded-[inherit] outline-none focus-visible:ring-2 focus-visible:ring-ring mr-2.5"
         )}
         data-slot="scroll-area-viewport"
       >
@@ -43,7 +43,7 @@ function ScrollBar({
       {...props}
     >
       <ScrollAreaPrimitive.Thumb
-        className={cn("relative flex-1 rounded-full bg-foreground/50")}
+        className={cn("relative flex-1 rounded-full bg-foreground/10")}
         data-slot="scroll-area-thumb"
       />
     </ScrollAreaPrimitive.Scrollbar>
