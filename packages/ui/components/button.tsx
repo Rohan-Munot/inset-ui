@@ -6,7 +6,7 @@ import type * as React from "react";
 import { cn } from "@inset/ui/lib/utils";
 
 const buttonVariants = cva(
-  "relative inline-flex gap-2 shrink-0 items-center justify-center whitespace-nowrap rounded-xl border border-border font-medium text-base outline-none before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-xl)-1px)] before:rounded-[calc(var(--radius-xl)-1px)] [&_svg]:-mx-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50 transition-all duration-200 ease-in-out focus-visible:ring-offset-background sm:text-sm [&_svg]:shrink-0 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4.5 sm:[&_svg:not([class*='size-'])]:size-4 [:active,[data-pressed]]:scale-95",
+  "relative inline-flex gap-2 shrink-0 items-center justify-center whitespace-nowrap rounded-xl border border-border font-medium text-base outline-none before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-xl)-1px)] before:rounded-[calc(var(--radius-xl)-1px)] [&_svg]:-mx-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50 transition-all duration-200 ease-in-out focus-visible:ring-offset-background sm:text-sm [&_svg]:shrink-0 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4.5 sm:[&_svg:not([class*='size-'])]:size-4 [:active,[data-pressed]]:scale-95 before:shadow-[0_-1px_0_0_rgba(0,0,0,0.2)] dark:shadow-[0px_-8px_16px_-1px_#00000029,0px_2px_4px_-1px_#0000003d,0px_0px_0px_1px_#000000,inset_0px_-1px_2px_rgba(255,255,255,0.08)] dark:before:shadow-[0_-1px_0px_0_rgba(255,255,255,0.2)]",
 
   {
     defaultVariants: {
@@ -21,7 +21,7 @@ const buttonVariants = cva(
         icon: "h-10 w-10",
       },
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        default: "bg-card text-card-foreground hover:bg-card/90",
         outline:
           "bg-transparent text-primary border border-border hover:bg-primary/10 hover:text-primary",
         destructive:
