@@ -1,0 +1,108 @@
+---
+title: Theming
+description: Customize the look and feel of Inset UI components
+---
+
+## Overview
+
+Inset UI uses CSS custom properties (variables) for theming. This allows you to easily customize colors, spacing, and other design tokens to match your brand.
+
+## Color System
+
+### Semantic Colors
+
+All components use semantic color tokens that automatically adapt to light and dark modes:
+
+| Token | Light Mode | Dark Mode |
+|-------|------------|-----------|
+| `--background` | White background | Dark background |
+| `--foreground` | Dark text | Light text |
+| `--card` | Card surface | Card surface |
+| `--primary` | Primary brand color | Primary brand color |
+| `--muted` | Muted backgrounds | Muted backgrounds |
+| `--accent` | Accent highlights | Accent highlights |
+| `--destructive` | Error/danger | Error/danger |
+
+### Using Colors
+
+In your Tailwind classes, use the semantic tokens:
+
+```tsx
+<div className="bg-background text-foreground">
+  <div className="bg-card border-border rounded-lg p-4">
+    <p className="text-muted-foreground">Muted text</p>
+    <button className="bg-primary text-primary-foreground">
+      Primary Action
+    </button>
+  </div>
+</div>
+```
+
+## Customizing Tokens
+
+Override CSS variables in your global CSS:
+
+```css
+:root {
+  /* Light mode customization */
+  --primary: 210 100% 50%;
+  --primary-foreground: 0 0% 100%;
+  --radius: 0.75rem;
+}
+
+.dark {
+  /* Dark mode customization */
+  --primary: 210 100% 60%;
+  --background: 220 20% 10%;
+}
+```
+
+## Border Radius
+
+Control the roundness of all components:
+
+```css
+:root {
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+}
+```
+
+## Dark Mode
+
+Inset UI supports automatic dark mode via the `dark` class on the HTML element. Use a theme provider like `next-themes`:
+
+```tsx
+import { ThemeProvider } from 'next-themes';
+
+export default function RootLayout({ children }) {
+  return (
+    <html suppressHydrationWarning>
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="system">
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+## Animations
+
+All components use consistent animation timing:
+
+```css
+:root {
+  /* Standard duration for most interactions */
+  --duration-normal: 200ms;
+  
+  /* Easing function for smooth motion */
+  --ease-default: ease-in-out;
+}
+```
+
+The signature inset aesthetic includes subtle inner shadows and smooth state transitions.
+

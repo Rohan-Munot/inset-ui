@@ -21,7 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${urbanist.variable} bg-background font-sans antialiased flex flex-col min-h-screen`}>
+      <body
+        className={`${urbanist.variable} bg-background flex h-screen flex-col overflow-hidden font-sans antialiased`}
+      >
         <RootProvider>{children}</RootProvider>
       </body>
     </html>

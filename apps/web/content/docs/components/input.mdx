@@ -1,0 +1,74 @@
+---
+title: Input
+description: A styled text input field with optional label and description
+---
+
+## Overview
+
+The Input component provides a text entry field with built-in styling, label support, and accessibility features.
+
+## Installation
+
+```bash
+bun add @inset/ui
+```
+
+## Usage
+
+```tsx
+import { Input } from '@inset/ui/input';
+
+export default function Example() {
+  return <Input placeholder="Enter your email" />;
+}
+```
+
+## With Label
+
+```tsx
+import { Input } from '@inset/ui/input';
+import { Label } from '@inset/ui/label';
+
+export default function Example() {
+  return (
+    <div className="space-y-2">
+      <Label htmlFor="email">Email Address</Label>
+      <Input id="email" type="email" placeholder="you@example.com" />
+    </div>
+  );
+}
+```
+
+## Input Types
+
+```tsx
+<Input type="text" placeholder="Your name" />
+<Input type="email" placeholder="email@example.com" />
+<Input type="password" placeholder="Password" />
+<Input type="number" placeholder="42" />
+<Input type="search" placeholder="Search..." />
+```
+
+## States
+
+### Disabled
+
+```tsx
+<Input disabled placeholder="Cannot edit" />
+```
+
+### Read Only
+
+```tsx
+<Input readOnly value="Read only value" />
+```
+
+## Props
+
+| Prop          | Type      | Default  | Description            |
+| ------------- | --------- | -------- | ---------------------- |
+| `type`        | `string`  | `'text'` | HTML input type        |
+| `placeholder` | `string`  | -        | Placeholder text       |
+| `disabled`    | `boolean` | `false`  | Disables the input     |
+| `readOnly`    | `boolean` | `false`  | Makes input read-only  |
+| `className`   | `string`  | -        | Additional CSS classes |

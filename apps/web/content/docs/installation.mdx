@@ -1,0 +1,77 @@
+---
+title: Installation
+description: How to install and set up Inset UI in your project
+---
+
+## Requirements
+
+- **React 19** or later
+- **Bun** 1.3.1+ (recommended) or Node.js 18+
+- **Tailwind CSS v4** (for styling)
+
+## Installation
+
+Install Inset UI using Bun:
+
+```bash
+bun add @inset/ui
+```
+
+Or using npm:
+
+```bash
+npm install @inset/ui
+```
+
+## Setup
+
+### 1. Configure Tailwind CSS
+
+Make sure you have Tailwind CSS v4 configured in your project. Then import the Inset UI styles:
+
+```css
+/* In your global CSS file */
+@import "@inset/ui/global.css";
+```
+
+### 2. Import Components
+
+Import components directly from `@inset/ui`:
+
+```tsx
+import { Button } from '@inset/ui/button';
+import { Input } from '@inset/ui/input';
+import { Checkbox } from '@inset/ui/checkbox';
+```
+
+## Next.js Setup
+
+For Next.js projects, import the global styles in your root layout:
+
+```tsx
+// app/layout.tsx
+import '@inset/ui/global.css';
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+## TypeScript
+
+Inset UI is written in TypeScript and includes type definitions out of the box. No additional setup required.
+
+## Troubleshooting
+
+### Styles not applying
+
+Make sure you've imported `@inset/ui/global.css` in your root layout or global CSS file.
+
+### Import errors
+
+Ensure your bundler is configured to handle the package's exports. Most modern bundlers (Vite, Next.js, etc.) handle this automatically.
+

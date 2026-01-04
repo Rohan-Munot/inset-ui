@@ -1,0 +1,84 @@
+---
+title: Button
+description: A versatile button component with multiple variants and states
+---
+
+## Overview
+
+The Button component is a fundamental interactive element that triggers actions when clicked. It supports multiple visual variants, sizes, and states.
+
+## Installation
+
+```bash
+bun add @inset/ui
+```
+
+## Usage
+
+```tsx
+import { Button } from '@inset/ui/button';
+
+export default function Example() {
+  return (
+    <Button>Click me</Button>
+  );
+}
+```
+
+## Variants
+
+### Default
+
+The default button style with our signature inset shadow effect.
+
+```tsx
+<Button>Default Button</Button>
+```
+
+### Destructive
+
+Used for dangerous or irreversible actions.
+
+```tsx
+<Button variant="destructive">Delete Item</Button>
+```
+
+### Outline
+
+A bordered variant for secondary actions.
+
+```tsx
+<Button variant="outline">Cancel</Button>
+```
+
+### Ghost
+
+Minimal styling, perfect for icon buttons or tertiary actions.
+
+```tsx
+<Button variant="ghost">Learn More</Button>
+```
+
+## Sizes
+
+```tsx
+<Button size="sm">Small</Button>
+<Button size="md">Medium</Button>
+<Button size="lg">Large</Button>
+```
+
+## Disabled State
+
+```tsx
+<Button disabled>Disabled</Button>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `'default' \| 'destructive' \| 'outline' \| 'ghost'` | `'default'` | Visual style variant |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Button size |
+| `disabled` | `boolean` | `false` | Disables the button |
+| `asChild` | `boolean` | `false` | Render as child element |
+

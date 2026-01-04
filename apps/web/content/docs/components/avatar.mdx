@@ -1,0 +1,107 @@
+---
+title: Avatar
+description: Display user avatars with image and fallback support
+---
+
+## Overview
+
+The Avatar component displays user profile images with automatic fallback to initials or an icon when the image fails to load or isn't provided.
+
+## Installation
+
+```bash
+bun add @inset/ui
+```
+
+## Usage
+
+```tsx
+import { Avatar, AvatarImage, AvatarFallback } from '@inset/ui/avatar';
+
+export default function Example() {
+  return (
+    <Avatar>
+      <AvatarImage src="https://example.com/user.jpg" alt="User" />
+      <AvatarFallback>JD</AvatarFallback>
+    </Avatar>
+  );
+}
+```
+
+## Sizes
+
+```tsx
+<Avatar size="sm">
+  <AvatarFallback>SM</AvatarFallback>
+</Avatar>
+
+<Avatar size="md">
+  <AvatarFallback>MD</AvatarFallback>
+</Avatar>
+
+<Avatar size="lg">
+  <AvatarFallback>LG</AvatarFallback>
+</Avatar>
+```
+
+## Fallback Content
+
+When no image is available, display initials or an icon:
+
+```tsx
+// Initials
+<Avatar>
+  <AvatarFallback>JD</AvatarFallback>
+</Avatar>
+
+// Icon
+<Avatar>
+  <AvatarFallback>
+    <UserIcon className="size-4" />
+  </AvatarFallback>
+</Avatar>
+```
+
+## Avatar Group
+
+Display multiple avatars in a stacked layout:
+
+```tsx
+<div className="flex -space-x-2">
+  <Avatar>
+    <AvatarImage src="/user1.jpg" alt="User 1" />
+    <AvatarFallback>U1</AvatarFallback>
+  </Avatar>
+  <Avatar>
+    <AvatarImage src="/user2.jpg" alt="User 2" />
+    <AvatarFallback>U2</AvatarFallback>
+  </Avatar>
+  <Avatar>
+    <AvatarImage src="/user3.jpg" alt="User 3" />
+    <AvatarFallback>U3</AvatarFallback>
+  </Avatar>
+</div>
+```
+
+## Props
+
+### Avatar
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Avatar size |
+| `className` | `string` | - | Additional CSS classes |
+
+### AvatarImage
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `src` | `string` | - | Image source URL |
+| `alt` | `string` | - | Image alt text |
+
+### AvatarFallback
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `delayMs` | `number` | - | Delay before showing fallback |
+
