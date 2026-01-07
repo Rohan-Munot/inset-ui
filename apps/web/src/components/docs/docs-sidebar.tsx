@@ -56,8 +56,8 @@ function SidebarItem({ item }: { item: PageTree.Item }) {
         data-active={isActive}
         className={cn(
           'flex items-center',
-          'data-[active=true]:text-accent-foreground data-[active=false]:text-muted-foreground data-[active=false]:hover:text-foreground h-7 rounded-md px-3 text-sm leading-5 font-medium tracking-wide transition-colors duration-200',
-          'data-[active=true]:underline data-[active=true]:underline-offset-4'
+          'data-[active=true]:text-accent-foreground data-[active=false]:text-muted-foreground data-[active=false]:hover:text-foreground h-7 rounded-md px-3 text-sm leading-5 font-medium tracking-wide transition-colors duration-200'
+          // 'data-[active=true]:underline data-[active=true]:underline-offset-4'
         )}
       >
         {item.name}
@@ -69,10 +69,10 @@ function SidebarItem({ item }: { item: PageTree.Item }) {
 function SidebarFolder({ folder }: { folder: PageTree.Folder }) {
   return (
     <li>
-      <div className="text-foreground flex h-7 items-center px-3 text-sm font-medium tracking-wide">
+      <div className="text-foreground mt-1.5 flex h-7 items-center px-3 text-sm font-medium tracking-wide">
         {folder.name}
       </div>
-      <ul className="pl-3">
+      <ul className="border-border ml-2.5 border-l">
         {folder.children.map((child, index) => (
           <SidebarNode key={index} node={child} />
         ))}

@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { cn } from '@inset/ui/lib/utils';
+import { ScrollArea } from '@inset/ui/scroll-area';
 
 interface DocsPageProps {
   children: ReactNode;
@@ -8,12 +9,14 @@ interface DocsPageProps {
 
 export function DocsPage({ children, className }: DocsPageProps) {
   return (
-    <article
-      className={cn('mx-auto h-[calc(100vh-3.5rem)] w-full overflow-y-auto p-4 md:p-6', className)}
-      data-slot="docs-page"
-    >
-      {children}
-    </article>
+    <ScrollArea className="h-[calc(100vh-3.5rem)] w-full">
+      <article
+        className={cn('mx-auto w-full max-w-3xl p-6 pb-20 md:p-10', className)}
+        data-slot="docs-page"
+      >
+        {children}
+      </article>
+    </ScrollArea>
   );
 }
 
@@ -24,7 +27,7 @@ interface DocsPageHeaderProps {
 
 export function DocsPageHeader({ children, className }: DocsPageHeaderProps) {
   return (
-    <header className={cn('mb-8 space-y-2', className)} data-slot="docs-page-header">
+    <header className={cn('mb-10 space-y-2', className)} data-slot="docs-page-header">
       {children}
     </header>
   );
@@ -38,7 +41,10 @@ interface DocsPageTitleProps {
 export function DocsPageTitle({ children, className }: DocsPageTitleProps) {
   return (
     <h1
-      className={cn('text-foreground text-3xl font-bold tracking-tight md:text-4xl', className)}
+      className={cn(
+        'text-foreground scroll-m-20 text-3xl font-bold tracking-tight md:text-4xl',
+        className
+      )}
       data-slot="docs-page-title"
     >
       {children}
@@ -53,10 +59,7 @@ interface DocsPageDescriptionProps {
 
 export function DocsPageDescription({ children, className }: DocsPageDescriptionProps) {
   return (
-    <p
-      className={cn('text-muted-foreground text-base md:text-lg', className)}
-      data-slot="docs-page-description"
-    >
+    <p className={cn('text-muted-foreground text-lg', className)} data-slot="docs-page-description">
       {children}
     </p>
   );
@@ -71,31 +74,47 @@ export function DocsPageContent({ children, className }: DocsPageContentProps) {
   return (
     <div
       className={cn(
-        'prose prose-neutral dark:prose-invert max-w-none',
         // Headings
-        '[&_h2]:mt-10 [&_h2]:scroll-mt-24 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:tracking-tight',
+        '[&_h2]:mt-12 [&_h2]:scroll-mt-24 [&_h2]:border-b [&_h2]:pb-2 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:tracking-tight first:[&_h2]:mt-0',
         '[&_h3]:mt-8 [&_h3]:scroll-mt-24 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:tracking-tight',
-        '[&_h4]:mt-6 [&_h4]:scroll-mt-24 [&_h4]:text-lg [&_h4]:font-semibold',
-        // Paragraphs and text
-        '[&_p]:text-foreground/90 [&_p]:leading-7',
+        '[&_h4]:mt-6 [&_h4]:scroll-mt-24 [&_h4]:text-lg [&_h4]:font-semibold [&_h4]:tracking-tight',
+        '[&_h2_svg]:hidden [&_h3_svg]:hidden [&_h4_svg]:hidden',
+
+        // Text & Typography
+        '[&_p]:text-foreground/90 [&_p]:leading-7 [&_p]:not-first:mt-3',
+        '[&_strong]:text-foreground [&_strong]:font-semibold',
+
         // Links
-        '[&_a]:text-primary [&_a]:underline-offset-4 hover:[&_a]:underline',
+        '[&_a]:decoration-muted-foreground/40 hover:[&_a]:decoration-foreground hover:[&_a]:text-foreground transition-colors [&_a]:font-medium',
+
         // Lists
-        '[&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-6',
-        '[&_ol]:my-4 [&_ol]:list-decimal [&_ol]:pl-6',
-        '[&_li]:mt-2',
-        // Code
-        '[&_code]:bg-muted [&_code]:rounded-md [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-sm',
-        '[&_pre]:bg-muted [&_pre]:my-4 [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:p-4',
-        '[&_pre_code]:bg-transparent [&_pre_code]:p-0',
+        '[&_ul]:my-6 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-6',
+        '[&_ol]:my-6 [&_ol]:list-decimal [&_ol]:space-y-2 [&_ol]:pl-6',
+        '[&_li]:leading-7',
+
+        // Code Blocks & Inline Code
+        // FIX: Removed border, bg, and rounded from generic 'pre' to avoid double-styling with Fumadocs wrappers
+        '[&_pre]:overflow-x-auto',
+
+        // Keep inline code styling
+        '[&_code]:bg-muted/60 [&_code]:text-foreground [&_code]:rounded-md [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[0.9em]',
+
+        // Ensure code inside pre blocks doesn't double-dip on the inline styles
+        '[&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:text-sm [&_pre_code]:leading-normal',
+
         // Blockquotes
-        '[&_blockquote]:border-border [&_blockquote]:text-muted-foreground [&_blockquote]:mt-4 [&_blockquote]:border-l-2 [&_blockquote]:pl-4 [&_blockquote]:italic',
+        '[&_blockquote]:border-primary/20 [&_blockquote]:text-muted-foreground [&_blockquote]:mt-6 [&_blockquote]:border-l-2 [&_blockquote]:pl-6 [&_blockquote]:italic',
+
         // Tables
-        '[&_table]:my-4 [&_table]:w-full [&_table]:border-collapse',
-        '[&_th]:border-border [&_th]:bg-muted [&_th]:border [&_th]:px-4 [&_th]:py-2 [&_th]:text-left [&_th]:font-semibold',
-        '[&_td]:border-border [&_td]:border [&_td]:px-4 [&_td]:py-2',
-        // Horizontal rule
+        '[&_table]:my-6 [&_table]:w-full [&_table]:border-collapse [&_table]:overflow-hidden [&_table]:text-sm',
+        '[&_tr]:border-border hover:[&_tr]:bg-muted/50 transition-colors [&_tr]:border-b last:[&_tr]:border-0',
+        '[&_th]:text-muted-foreground [&_th]:h-10 [&_th]:px-4 [&_th]:text-left [&_th]:font-medium',
+        '[&_td]:p-4 [&_td]:align-middle',
+
+        // Media
+        '[&_img]:bg-muted [&_img]:rounded-lg [&_img]:border [&_img]:shadow-sm',
         '[&_hr]:border-border [&_hr]:my-8',
+
         className
       )}
       data-slot="docs-page-content"

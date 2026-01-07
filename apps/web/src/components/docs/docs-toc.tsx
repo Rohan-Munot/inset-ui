@@ -3,7 +3,6 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { cn } from '@inset/ui/lib/utils';
 import type { ReactNode } from 'react';
-
 interface TOCItem {
   title: ReactNode;
   url: string;
@@ -68,7 +67,7 @@ export function DocsToc({ toc, title = 'On this page', className }: DocsTocProps
     <aside
       data-slot="docs-toc"
       className={cn(
-        'border-border sticky top-0 hidden h-screen w-56 shrink-0 border-l border-dashed p-4 xl:block',
+        'border-border sticky top-0 hidden w-56 shrink-0 border-l border-dashed p-4 xl:block',
         className
       )}
     >

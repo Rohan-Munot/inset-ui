@@ -7,7 +7,6 @@ export {
   DocsPageDescription,
   DocsPageContent,
 } from './docs-page';
-export { DocsBody } from './docs-body';
 export { DocsHeader, DocsHeaderSearchTrigger, DocsHeaderThemeToggle } from './docs-header';
 export { DocsHeaderActions } from './docs-header-actions';
 export { DocsToc, DocsTocPopover } from './docs-toc';

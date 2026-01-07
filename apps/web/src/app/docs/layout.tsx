@@ -19,7 +19,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       </DocsHeader>
 
       {/* Content area fills remaining height */}
-      <div className="mx-auto flex w-full max-w-7xl overflow-y-hidden">
+      <div className="mx-auto flex h-screen w-full max-w-7xl overflow-hidden">
         <DocsSidebar tree={source.pageTree} />
         <main className="border-border min-w-0 flex-1 border-dashed xl:border-r">{children}</main>
       </div>

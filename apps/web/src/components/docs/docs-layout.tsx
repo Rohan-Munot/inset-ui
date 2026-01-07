@@ -29,7 +29,7 @@ export function DocsLayout({ tree, children }: DocsLayoutProps) {
 
   return (
     <DocsContext.Provider value={{ tree, sidebarOpen, setSidebarOpen }}>
-      {children}
+      <div className="mx-auto flex min-h-screen w-full flex-col">{children}</div>
     </DocsContext.Provider>
   );
 }
