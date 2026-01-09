@@ -9,9 +9,9 @@ const badgeVariants = cva(
         default: " bg-primary text-primary-foreground",
         secondary: " bg-secondary text-secondary-foreground",
         success:
-          " bg-gradient-to-b from-[#38b000] to-[#008000] text-success-foreground",
+          " bg-gradient-to-b from-[#38b000] to-[#008000] text-success-foreground text-white",
         warning:
-          " bg-gradient-to-b from-[#ff7b00] to-[#ffa200] text-warning-foreground",
+          " bg-gradient-to-b from-[#ff7b00] to-[#ffa200] text-warning-foreground text-white",
         error:
           "bg-linear-to-b dark:from-red-700 dark:to-red-600 from-red-600 to-red-500 text-white hover:from-red-600 hover:to-red-500 outline-none focus-visible:ring-2 focus-visible:ring-red-400/50 shadow-[inset_0_-1px_3px_0_rgba(0,0,0,0.2)] dark:shadow-[inset_0_-1px_3px_0_rgba(255,255,255,0.35)] ",
         "destructive-outline":
