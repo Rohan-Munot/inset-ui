@@ -11,7 +11,7 @@ export function DocsPage({ children, className }: DocsPageProps) {
   return (
     <ScrollArea className="h-[calc(100vh-3.5rem)] w-full">
       <article
-        className={cn('mx-auto w-full max-w-3xl p-6 pb-20 md:p-10', className)}
+        className={cn('mx-auto w-full max-w-3xl p-6 md:p-7', className)}
         data-slot="docs-page"
       >
         {children}

@@ -33,7 +33,7 @@ export default async function Page(props: PageProps) {
     <div className="mx-auto flex w-full max-w-7xl">
       <DocsPage>
         {/* Mobile TOC */}
-        <DocsTocPopover toc={page.data.toc} />
+        {/*<DocsTocPopover toc={page.data.toc} />*/}
 
         {/* Page Header */}
         <DocsPageHeader>

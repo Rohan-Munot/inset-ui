@@ -36,7 +36,7 @@ export function DocsHeader({
         className
       )}
     >
-      <div className="border-border mx-auto flex h-14 max-w-7xl items-center justify-between border-x border-dashed px-4 md:px-6">
+      <div className="border-border mx-auto flex h-14 max-w-7xl items-center justify-between border-none px-4 sm:border-x sm:border-dashed md:px-6">
         {/* Left: Mobile menu + Logo */}
         <div className="flex items-center gap-4">
           <DocsHeaderMobileToggle onClick={() => setSidebarOpen(true)} />

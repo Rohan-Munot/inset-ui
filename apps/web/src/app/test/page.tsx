@@ -68,7 +68,7 @@ const groupedProduce: ProduceGroup[] = groupProduce(produceData);
 
 export default function TestPage() {
   return (
-    <div className="bg-background text-foreground flex min-h-screen flex-col items-center justify-start gap-16 p-10">
+    <div className="bg-background text-foreground flex min-h-screen flex-col items-center justify-start gap-16 overflow-scroll p-10">
       <div className="flex flex-col items-center gap-4 text-center">
         <h1 className="text-4xl font-bold tracking-tight">Combobox Test Suite</h1>
         <p className="text-muted-foreground max-w-lg">

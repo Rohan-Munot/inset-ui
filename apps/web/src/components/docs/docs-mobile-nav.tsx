@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { useDocsContext } from './docs-layout';
 import { cn } from '@inset/ui/lib/utils';
 import type * as PageTree from 'fumadocs-core/page-tree';
-import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@inset/ui/collapsible';
+import { XIcon } from '@phosphor-icons/react';
 
 interface DocsMobileNavProps {
   className?: string;
@@ -53,49 +53,29 @@ export function DocsMobileNav({ className }: DocsMobileNavProps) {
   if (!sidebarOpen) return null;
 
   return (
-    <div
-      data-slot="docs-mobile-nav"
-      className={cn('fixed inset-0 z-50 md:hidden', className)}
-    >
+    <div data-slot="docs-mobile-nav" className={cn('fixed inset-0 z-50 md:hidden', className)}>
       {/* Overlay */}
       <div
-        className="absolute inset-0 bg-background/80 backdrop-blur-sm"
+        className="bg-background/80 absolute inset-0 backdrop-blur-sm"
         onClick={handleOverlayClick}
         aria-hidden="true"
       />
 
       {/* Drawer */}
-      <aside className="absolute left-0 top-0 h-full w-72 max-w-[80vw] border-r border-border bg-background shadow-xl animate-in slide-in-from-left duration-300">
+      <aside className="border-border bg-background animate-in slide-in-from-left absolute top-0 left-0 h-full w-72 max-w-[80vw] border-r shadow-xl duration-300">
         <div className="flex h-full flex-col">
           {/* Header */}
-          <div className="flex h-14 items-center justify-between border-b border-border px-4">
-            <Link
-              href="/"
-              className="text-lg font-semibold"
-              onClick={() => setSidebarOpen(false)}
-            >
+          <div className="border-border flex h-14 items-center justify-between border-b px-4">
+            <Link href="/" className="text-lg font-semibold" onClick={() => setSidebarOpen(false)}>
               {tree.name}
             </Link>
             <button
               type="button"
               onClick={() => setSidebarOpen(false)}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+              className="text-muted-foreground hover:bg-accent hover:text-foreground inline-flex h-9 w-9 items-center justify-center rounded-md transition-colors"
               aria-label="Close navigation menu"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M18 6 6 18" />
-                <path d="m6 6 12 12" />
-              </svg>
+              <XIcon size={24} />
             </button>
           </div>
 
@@ -140,11 +120,10 @@ function MobileSidebarItem({ item }: { item: PageTree.Item }) {
     <li>
       <Link
         href={item.url}
+        data-active={isActive}
         className={cn(
-          'block rounded-md px-3 py-2 text-sm transition-colors duration-200',
-          isActive
-            ? 'bg-accent text-accent-foreground font-medium'
-            : 'text-muted-foreground hover:bg-accent/50 hover:text-foreground'
+          'flex items-center',
+          'data-[active=true]:text-accent-foreground data-[active=false]:text-muted-foreground data-[active=false]:hover:text-foreground h-7 rounded-md px-3 text-sm leading-5 font-medium tracking-wide transition-colors duration-200'
         )}
       >
         {item.name}
@@ -154,55 +133,26 @@ function MobileSidebarItem({ item }: { item: PageTree.Item }) {
 }
 
 function MobileSidebarFolder({ folder }: { folder: PageTree.Folder }) {
-  const pathname = usePathname();
-
-  // Check if current path is inside this folder
-  const isOpen =
-    folder.index?.url === pathname ||
-    folder.children.some(
-      (child) =>
-        (child.type === 'page' && child.url === pathname) ||
-        (child.type === 'folder' && isPathInFolder(pathname, child))
-    );
-
   return (
     <li>
-      <Collapsible defaultOpen={isOpen || folder.defaultOpen}>
-        <CollapsibleTrigger className="w-full rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-accent/50">
-          {folder.name}
-        </CollapsibleTrigger>
-        <CollapsibleContent>
-          <ul className="ml-3 border-l border-border pl-3 pt-1">
-            {folder.index && (
-              <MobileSidebarItem
-                item={{ ...folder.index, name: 'Overview' } as PageTree.Item}
-              />
-            )}
-            {folder.children.map((child, index) => (
-              <MobileSidebarNode key={index} node={child} />
-            ))}
-          </ul>
-        </CollapsibleContent>
-      </Collapsible>
+      <div className="text-foreground mt-1.5 flex h-7 items-center px-3 text-sm font-medium tracking-wide">
+        {folder.name}
+      </div>
+      <ul className="border-border ml-2.5 border-l">
+        {folder.children.map((child, index) => (
+          <MobileSidebarNode key={index} node={child} />
+        ))}
+      </ul>
     </li>
   );
 }
 
 function MobileSidebarSeparator({ name }: { name?: React.ReactNode }) {
   return (
-    <li className="pb-2 pt-4">
-      <span className="px-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+    <li className="pt-4 pb-2">
+      <span className="text-muted-foreground px-3 text-xs font-semibold tracking-wider uppercase">
         {name}
       </span>
     </li>
-  );
-}
-
-function isPathInFolder(pathname: string, folder: PageTree.Folder): boolean {
-  if (folder.index?.url === pathname) return true;
-  return folder.children.some(
-    (child) =>
-      (child.type === 'page' && child.url === pathname) ||
-      (child.type === 'folder' && isPathInFolder(pathname, child))
   );
 }

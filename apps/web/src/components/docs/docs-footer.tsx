@@ -18,7 +18,7 @@ export function DocsFooter({ previous, next, className }: DocsFooterProps) {
   return (
     <footer
       className={cn(
-        'border-border mt-12 flex items-center justify-between border-t py-2',
+        'border-border bg-background fixed right-0 bottom-0 left-0 z-50 flex items-center justify-between border-t border-dashed px-4 py-4',
         className
       )}
       data-slot="docs-footer"
