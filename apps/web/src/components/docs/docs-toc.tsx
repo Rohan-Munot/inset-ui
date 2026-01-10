@@ -67,7 +67,7 @@ export function DocsToc({ toc, title = 'On this page', className }: DocsTocProps
     <aside
       data-slot="docs-toc"
       className={cn(
-        'border-border sticky top-0 hidden w-56 shrink-0 border-l border-dashed p-4 xl:block',
+        'border-border sticky top-0 hidden w-56 shrink-0 border-x border-dashed p-4 xl:block',
         className
       )}
     >

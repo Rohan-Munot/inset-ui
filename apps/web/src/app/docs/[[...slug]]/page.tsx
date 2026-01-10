@@ -11,8 +11,8 @@ import {
 } from '@/components/docs';
 import { notFound } from 'next/navigation';
 import { getMDXComponents } from '@/mdx-components';
-import { createRelativeLink } from 'fumadocs-ui/mdx';
 import { findNeighbour } from 'fumadocs-core/page-tree';
+import Link from 'fumadocs-core/link';
 import type { Metadata } from 'next';
 
 interface PageProps {
@@ -30,7 +30,7 @@ export default async function Page(props: PageProps) {
   const neighbours = findNeighbour(source.pageTree, page.url);
 
   return (
-    <div className="mx-auto flex w-full max-w-7xl">
+    <div className="flex w-full">
       <DocsPage>
         {/* Mobile TOC */}
         {/*<DocsTocPopover toc={page.data.toc} />*/}
@@ -47,7 +47,7 @@ export default async function Page(props: PageProps) {
         <DocsPageContent>
           <MDX
             components={getMDXComponents({
-              a: createRelativeLink(source, page),
+              a: (props) => <Link {...props} />,
             })}
           />
         </DocsPageContent>

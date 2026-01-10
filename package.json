@@ -26,7 +26,6 @@
     "packages/*"
   ],
   "dependencies": {
-    "fumadocs-core": "^16.4.2",
-    "fumadocs-ui": "^16.4.2"
+    "fumadocs-core": "^16.4.2"
   }
 }

@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { Urbanist } from 'next/font/google';
 import './globals.css';
-import { RootProvider } from 'fumadocs-ui/provider/next';
+import { NextProvider } from 'fumadocs-core/framework/next';
+import { ThemeProvider } from '@/components/theme-provider';
 import type { ReactNode } from 'react';
 
 const urbanist = Urbanist({
@@ -24,7 +25,14 @@ export default function RootLayout({
       <body
         className={`${urbanist.variable} bg-background flex h-screen flex-col overflow-hidden font-sans antialiased`}
       >
-        <RootProvider>{children}</RootProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NextProvider>{children}</NextProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

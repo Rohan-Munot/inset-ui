@@ -5,9 +5,6 @@ const config = {
   reactStrictMode: true,
 };
 
-const withMDX = createMDX({
-  // customise the config file path
-  // configPath: "source.config.ts"
-});
+const withMDX = createMDX({});
 
 export default withMDX(config);
