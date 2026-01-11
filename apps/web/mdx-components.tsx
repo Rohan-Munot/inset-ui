@@ -22,7 +22,10 @@ export function getMDXComponents(overrides: MDXComponents = {}): MDXComponents {
   return {
     h1: ({ className, ...props }: React.ComponentProps<'h1'>) => (
       <h1
-        className={cn('font-heading mt-2 scroll-m-28 text-3xl font-bold tracking-tight', className)}
+        className={cn(
+          'font-heading text-foreground mt-2 scroll-m-28 text-3xl font-bold tracking-tight',
+          className
+        )}
         {...props}
       />
     ),
@@ -36,7 +39,7 @@ export function getMDXComponents(overrides: MDXComponents = {}): MDXComponents {
             .replace(/\?/g, '')
             .toLowerCase()}
           className={cn(
-            'font-heading [&+]*:[code]:text-xl mt-10 scroll-m-28 text-xl font-medium tracking-tight first:mt-0 lg:mt-16 [&+.steps]:!mt-0 [&+.steps>h3]:!mt-4 [&+h3]:!mt-6 [&+p]:!mt-4',
+            'font-heading text-foreground [&+]*:[code]:text-xl mt-10 scroll-m-28 text-xl font-medium tracking-tight first:mt-0 lg:mt-16 [&+.steps]:!mt-0 [&+.steps>h3]:!mt-4 [&+h3]:!mt-6 [&+p]:!mt-4',
             className
           )}
           {...props}
@@ -46,7 +49,7 @@ export function getMDXComponents(overrides: MDXComponents = {}): MDXComponents {
     h3: ({ className, ...props }: React.ComponentProps<'h3'>) => (
       <h3
         className={cn(
-          'font-heading mt-12 scroll-m-28 text-lg font-medium tracking-tight [&+p]:!mt-4 *:[code]:text-xl',
+          'font-heading text-foreground mt-12 scroll-m-28 text-lg font-medium tracking-tight [&+p]:!mt-4 *:[code]:text-xl',
           className
         )}
         {...props}
@@ -55,7 +58,7 @@ export function getMDXComponents(overrides: MDXComponents = {}): MDXComponents {
     h4: ({ className, ...props }: React.ComponentProps<'h4'>) => (
       <h4
         className={cn(
-          'font-heading mt-8 scroll-m-28 text-base font-medium tracking-tight',
+          'font-heading text-foreground mt-8 scroll-m-28 text-base font-medium tracking-tight',
           className
         )}
         {...props}
@@ -63,21 +66,30 @@ export function getMDXComponents(overrides: MDXComponents = {}): MDXComponents {
     ),
     h5: ({ className, ...props }: React.ComponentProps<'h5'>) => (
       <h5
-        className={cn('mt-8 scroll-m-28 text-base font-medium tracking-tight', className)}
+        className={cn(
+          'text-foreground mt-8 scroll-m-28 text-base font-medium tracking-tight',
+          className
+        )}
         {...props}
       />
     ),
     h6: ({ className, ...props }: React.ComponentProps<'h6'>) => (
       <h6
-        className={cn('mt-8 scroll-m-28 text-base font-medium tracking-tight', className)}
+        className={cn(
+          'text-foreground mt-8 scroll-m-28 text-base font-medium tracking-tight',
+          className
+        )}
         {...props}
       />
     ),
     a: ({ className, ...props }: React.ComponentProps<'a'>) => (
-      <a className={cn('font-medium underline underline-offset-4', className)} {...props} />
+      <a
+        className={cn('text-foreground font-medium underline underline-offset-4', className)}
+        {...props}
+      />
     ),
     p: ({ className, ...props }: React.ComponentProps<'p'>) => (
-      <p className={cn('leading-relaxed not-first:mt-6', className)} {...props} />
+      <p className={cn('text-foreground leading-relaxed not-first:mt-6', className)} {...props} />
     ),
     strong: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
       <strong className={cn('font-medium', className)} {...props} />
@@ -99,10 +111,10 @@ export function getMDXComponents(overrides: MDXComponents = {}): MDXComponents {
     ),
     hr: ({ ...props }: React.ComponentProps<'hr'>) => <hr className="my-4 md:my-8" {...props} />,
     table: ({ className, ...props }: React.ComponentProps<'table'>) => (
-      <div className="no-scrollbar my-6 w-full overflow-y-auto rounded-lg border">
+      <div className="no-scrollbar border-border my-6 w-full overflow-y-auto rounded-lg border">
         <table
           className={cn(
-            'relative w-full overflow-hidden border-none text-sm [&_tbody_tr:last-child]:border-b-0',
+            'bg-card text-card-foreground relative w-full overflow-hidden border-none text-sm [&_tbody_tr:last-child]:border-b-0',
             className
           )}
           {...props}
@@ -110,12 +122,12 @@ export function getMDXComponents(overrides: MDXComponents = {}): MDXComponents {
       </div>
     ),
     tr: ({ className, ...props }: React.ComponentProps<'tr'>) => (
-      <tr className={cn('m-0 border-b', className)} {...props} />
+      <tr className={cn('border-border m-0 border-b', className)} {...props} />
     ),
     th: ({ className, ...props }: React.ComponentProps<'th'>) => (
       <th
         className={cn(
-          'px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right',
+          'bg-muted text-foreground px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right',
           className
         )}
         {...props}
@@ -124,7 +136,7 @@ export function getMDXComponents(overrides: MDXComponents = {}): MDXComponents {
     td: ({ className, ...props }: React.ComponentProps<'td'>) => (
       <td
         className={cn(
-          'px-4 py-2 text-left whitespace-nowrap [&[align=center]]:text-center [&[align=right]]:text-right',
+          'text-foreground px-4 py-2 text-left whitespace-nowrap [&[align=center]]:text-center [&[align=right]]:text-right',
           className
         )}
         {...props}
@@ -155,7 +167,7 @@ export function getMDXComponents(overrides: MDXComponents = {}): MDXComponents {
       return (
         <figcaption
           className={cn(
-            'text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70',
+            'text-muted-foreground [&_svg]:text-muted-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70',
             className
           )}
           {...props}
@@ -219,7 +231,7 @@ export function getMDXComponents(overrides: MDXComponents = {}): MDXComponents {
     Step: ({ className, ...props }: React.ComponentProps<'h3'>) => (
       <h3
         className={cn(
-          'font-heading mt-8 scroll-m-32 text-xl font-medium tracking-tight',
+          'font-heading text-foreground mt-8 scroll-m-32 text-xl font-medium tracking-tight',
           className
         )}
         {...props}
