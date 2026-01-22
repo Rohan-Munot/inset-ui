@@ -15,15 +15,14 @@
     "incremental": true,
     "plugins": [
       {
-        "name": "next"
-      }
+        "name": "next",
+      },
     ],
     "paths": {
       "@/*": ["./src/*"],
       "@/mdx-components": ["./mdx-components"],
       "@inset/ui/*": ["../../packages/ui/components/*"],
-      "fumadocs-mdx:collections/*": ["./.source/*"]
-    }
+    },
   },
   "include": [
     "next-env.d.ts",
@@ -31,7 +30,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
-, "next.config.mjs"  ],
-  "exclude": ["node_modules"]
+    "**/*.mts",
+    "next.config.mjs",
+  ],
+  "exclude": ["node_modules"],
 }
