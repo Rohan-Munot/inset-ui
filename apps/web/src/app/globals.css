@@ -1,1 +1,2 @@
 @import '@inset/ui/global.css';
+@plugin "@tailwindcss/typography";
