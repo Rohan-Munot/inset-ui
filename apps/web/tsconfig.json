@@ -20,8 +20,7 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@/mdx-components": ["./mdx-components"],
-      "@inset/ui/*": ["../../packages/ui/components/*"],
+      "@inset/ui/*": ["../../packages/ui/components/*"]
     },
   },
   "include": [
