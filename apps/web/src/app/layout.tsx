@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Urbanist } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
+import { NextProvider } from 'fumadocs-core/framework/next';
 import type { ReactNode } from 'react';
 
 const urbanist = Urbanist({
@@ -30,7 +31,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <NextProvider>{children}</NextProvider>
         </ThemeProvider>
       </body>
     </html>
