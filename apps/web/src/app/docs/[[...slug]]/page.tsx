@@ -27,8 +27,8 @@ export default async function DocsPage({ params }: PageProps) {
   const { body: MDX, toc } = data;
 
   return (
-    <div className="flex flex-1 gap-8">
-      <article className="min-w-0 flex-1">
+    <div className="relative grid xl:grid-cols-[1fr_240px] xl:gap-8">
+      <article className="min-w-0 flex-1 py-4">
         <Breadcrumb tree={tree} />
         <h1 className="mb-2 text-3xl font-bold">{page.data.title}</h1>
         {page.data.description && (
@@ -38,7 +38,7 @@ export default async function DocsPage({ params }: PageProps) {
           <MDX />
         </MDXContent>
       </article>
-      <aside className="hidden w-56 shrink-0 lg:block">
+      <aside className="border-border hidden w-56 shrink-0 border-x border-dashed lg:block">
         <div className="sticky top-6">
           <TableOfContents toc={toc} />
         </div>

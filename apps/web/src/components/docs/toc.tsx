@@ -1,11 +1,6 @@
 'use client';
 
-import {
-  AnchorProvider,
-  ScrollProvider,
-  TOCItem,
-  type TOCItemType,
-} from 'fumadocs-core/toc';
+import { AnchorProvider, ScrollProvider, TOCItem, type TOCItemType } from 'fumadocs-core/toc';
 import { useRef } from 'react';
 import { cn } from '@inset/ui/lib/utils';
 
@@ -21,8 +16,8 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
   }
 
   return (
-    <div className="flex flex-col gap-2">
-      <p className="text-muted-foreground text-xs font-semibold uppercase tracking-wider">
+    <div className="flex flex-col gap-2 pl-4">
+      <p className="text-muted-foreground text-xs font-semibold tracking-wider uppercase">
         On this page
       </p>
       <AnchorProvider toc={toc}>

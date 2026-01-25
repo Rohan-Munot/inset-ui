@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${urbanist.variable} bg-background flex h-screen flex-col overflow-hidden font-sans antialiased`}
+        className={`${urbanist.variable} bg-background min-h-screen font-sans antialiased`}
       >
         <ThemeProvider
           attribute="class"

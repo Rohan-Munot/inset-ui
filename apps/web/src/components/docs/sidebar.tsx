@@ -11,7 +11,7 @@ interface SidebarProps {
 
 export function Sidebar({ tree }: SidebarProps) {
   return (
-    <aside className="bg-sidebar border-sidebar-border hidden w-64 shrink-0 border-r md:block">
+    <aside className="border-sidebar-border sticky top-0 hidden h-screen w-full shrink-0 border-dashed md:block xl:border-x">
       <div className="no-scrollbar h-full overflow-y-auto p-4">
         <nav className="flex flex-col gap-1">
           {tree.children.map((item, index) => (
@@ -39,7 +39,7 @@ function SidebarItem({ item }: SidebarItemProps) {
         className={cn(
           'text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200',
           isActive &&
-            'bg-sidebar-accent text-sidebar-accent-foreground shadow-sm shadow-black/5 inset-shadow-sm inset-shadow-white/10'
+            'bg-sidebar-accent text-sidebar-accent-foreground shadow-sm inset-shadow-sm shadow-black/5 inset-shadow-white/10'
         )}
       >
         {item.name}
@@ -56,18 +56,18 @@ function SidebarItem({ item }: SidebarItemProps) {
             className={cn(
               'text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground rounded-lg px-3 py-2 text-sm font-semibold transition-all duration-200',
               pathname === item.index.url &&
-                'bg-sidebar-accent text-sidebar-accent-foreground shadow-sm shadow-black/5 inset-shadow-sm inset-shadow-white/10'
+                'bg-sidebar-accent text-sidebar-accent-foreground shadow-sm inset-shadow-sm shadow-black/5 inset-shadow-white/10'
             )}
           >
             {item.name}
           </Link>
         ) : (
-          <span className="text-muted-foreground px-3 py-2 text-xs font-semibold uppercase tracking-wider">
+          <span className="text-muted-foreground px-3 py-2 text-xs font-semibold tracking-wider uppercase">
             {item.name}
           </span>
         )}
         {item.children && item.children.length > 0 && (
-          <div className="ml-2 flex flex-col gap-1 border-l border-border/50 pl-2">
+          <div className="border-border/50 ml-2 flex flex-col gap-1 border-l pl-2">
             {item.children.map((child, index) => (
               <SidebarItem key={index} item={child} />
             ))}
@@ -82,9 +82,7 @@ function SidebarItem({ item }: SidebarItemProps) {
       <div className="my-2 flex items-center gap-2">
         <div className="bg-border h-px flex-1" />
         {item.name && (
-          <span className="text-muted-foreground text-xs font-medium">
-            {item.name}
-          </span>
+          <span className="text-muted-foreground text-xs font-medium">{item.name}</span>
         )}
         <div className="bg-border h-px flex-1" />
       </div>
