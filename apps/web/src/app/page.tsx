@@ -13,9 +13,7 @@ export default function Particle() {
 
   return (
     <div className="flex h-screen flex-col items-center justify-center gap-2">
-      <Button onClick={toggleTheme} className="absolute top-0 right-0 m-4">
-        {theme === 'light' ? <MoonIcon className="h-4 w-4" /> : <SunIcon className="h-4 w-4" />}
-      </Button>
+      <Button>Button</Button>
       <Badge variant="default">Badge</Badge>
       <Badge variant="destructive-outline">Badge</Badge>
       <Badge variant="error">Badge</Badge>

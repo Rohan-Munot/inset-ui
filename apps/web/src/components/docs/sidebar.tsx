@@ -11,7 +11,7 @@ interface SidebarProps {
 
 export function Sidebar({ tree }: SidebarProps) {
   return (
-    <aside className="border-sidebar-border sticky top-0 hidden h-screen w-full shrink-0 border-dashed md:block xl:border-x">
+    <aside className="border-sidebar-border sticky top-14 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 border-dashed md:block xl:border-x">
       <div className="no-scrollbar h-full overflow-y-auto p-4">
         <nav className="flex flex-col gap-1">
           {tree.children.map((item, index) => (
@@ -39,7 +39,7 @@ function SidebarItem({ item }: SidebarItemProps) {
         className={cn(
           'text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200',
           isActive &&
-            'bg-sidebar-accent text-sidebar-accent-foreground shadow-sm inset-shadow-sm shadow-black/5 inset-shadow-white/10'
+            'bg-sidebar-accent dark:bg-sidebar-accent/50 text-sidebar-accent-foreground shadow-sm inset-shadow-sm shadow-black/5 inset-shadow-white/10'
         )}
       >
         {item.name}

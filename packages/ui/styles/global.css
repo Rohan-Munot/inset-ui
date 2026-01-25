@@ -177,3 +177,27 @@
 @utility container {
   @apply mx-auto max-w-[1416px] px-4 lg:px-6;
 }
+
+@layer base {
+  .shiki,
+  .shiki span {
+    color: var(--shiki-light);
+    background-color: transparent !important;
+  }
+
+  .dark .shiki,
+  .dark .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: transparent !important;
+  }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+  z-index: 1;
+}

@@ -16,14 +16,14 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
   }
 
   return (
-    <div className="flex flex-col gap-2 pl-4">
+    <div className="flex flex-col gap-2">
       <p className="text-muted-foreground text-xs font-semibold tracking-wider uppercase">
         On this page
       </p>
       <AnchorProvider toc={toc}>
-        <div ref={viewRef} className="no-scrollbar max-h-[calc(100vh-8rem)] overflow-y-auto">
+        <div ref={viewRef} className="no-scrollbar max-h-[calc(100vh-12rem)] overflow-y-auto">
           <ScrollProvider containerRef={viewRef}>
-            <nav className="flex flex-col gap-1">
+            <nav className="flex flex-col gap-2">
               {toc.map((item) => (
                 <TOCItem
                   key={item.url}
@@ -31,6 +31,7 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
                   className={cn(
                     'text-muted-foreground hover:text-foreground block text-sm transition-colors duration-200',
                     'data-[active=true]:text-foreground data-[active=true]:font-medium',
+                    'tracking-wide',
                     item.depth > 2 && 'pl-3',
                     item.depth > 3 && 'pl-6'
                   )}

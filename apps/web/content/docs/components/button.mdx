@@ -1,0 +1,59 @@
+---
+title: Button
+description: Displays a button or a component that looks like a button.
+---
+
+import ButtonDemo from '@/examples/button/basic'
+
+## Interactive Example
+
+<ComponentPreview>
+  <ButtonDemo />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { Button } from "@inset/ui/button"
+
+export default function Example() {
+  return <Button>Click me</Button>
+}
+```
+
+## Variants
+
+The button comes with several variants that you can use to create different styles of buttons.
+
+### Default
+
+```tsx
+<Button>Default</Button>
+```
+
+### Outline
+
+```tsx
+<Button variant="outline">Outline</Button>
+```
+
+### Destructive
+
+```tsx
+<Button variant="destructive">Destructive</Button>
+```
+
+### Ghost
+
+```tsx
+<Button variant="ghost">Ghost</Button>
+```
+
+### Sizes
+
+```tsx
+<Button size="sm">Small</Button>
+<Button size="default">Default</Button>
+<Button size="lg">Large</Button>
+<Button size="icon">Icon</Button>
+```

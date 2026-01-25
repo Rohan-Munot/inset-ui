@@ -7,6 +7,8 @@ import type { Metadata } from 'next';
 import type { MDXContent as MDXContentType } from 'mdx/types';
 import type { TOCItemType } from 'fumadocs-core/toc';
 
+import { ComponentPreview } from '@/components/component-preview';
+
 interface PageProps {
   params: Promise<{ slug?: string[] }>;
 }
@@ -27,19 +29,21 @@ export default async function DocsPage({ params }: PageProps) {
   const { body: MDX, toc } = data;
 
   return (
-    <div className="relative grid xl:grid-cols-[1fr_240px] xl:gap-8">
-      <article className="min-w-0 flex-1 py-4">
-        <Breadcrumb tree={tree} />
-        <h1 className="mb-2 text-3xl font-bold">{page.data.title}</h1>
-        {page.data.description && (
-          <p className="text-muted-foreground mb-8 text-lg">{page.data.description}</p>
-        )}
+    <div className="relative grid h-full xl:grid-cols-[1fr_240px] xl:gap-8">
+      <article className="flex min-w-0 flex-1 flex-col gap-8 py-4">
+        <div className="flex flex-col gap-4">
+          <Breadcrumb tree={tree} />
+          <h1 className="text-3xl font-bold tracking-tight">{page.data.title}</h1>
+          {page.data.description && (
+            <p className="text-muted-foreground text-lg">{page.data.description}</p>
+          )}
+        </div>
         <MDXContent>
-          <MDX />
+          <MDX components={{ ComponentPreview }} />
         </MDXContent>
       </article>
-      <aside className="border-border hidden w-56 shrink-0 border-x border-dashed lg:block">
-        <div className="sticky top-6">
+      <aside className="border-border hidden w-full shrink-0 border-x border-dashed p-4 lg:block">
+        <div className="sticky top-20">
           <TableOfContents toc={toc} />
         </div>
       </aside>

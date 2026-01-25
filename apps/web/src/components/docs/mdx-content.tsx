@@ -7,48 +7,60 @@ interface MDXContentProps {
 }
 
 const mdxStyles = cn(
-  // Base
-  'max-w-none text-foreground',
+  // Layout - Flex column with consistent gap
+  'flex flex-col gap-4',
+  ' text-foreground antialiased',
 
-  // Headings
-  '[&_h1]:text-3xl [&_h1]:font-bold [&_h1]:mb-4 [&_h1]:mt-8 [&_h1]:scroll-mt-20',
-  '[&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:mb-3 [&_h2]:mt-8 [&_h2]:scroll-mt-20 [&_h2]:border-b [&_h2]:border-border [&_h2]:pb-2',
-  '[&_h3]:text-xl [&_h3]:font-semibold [&_h3]:mb-3 [&_h3]:mt-6 [&_h3]:scroll-mt-20',
-  '[&_h4]:text-lg [&_h4]:font-semibold [&_h4]:mb-2 [&_h4]:mt-4 [&_h4]:scroll-mt-20',
+  // Reset margins on direct children so gap controls the spacing
+  '[&_>_*]:m-0',
+
+  // Headings - Stark, high contrast
+  // We add 'mt-8' only to headings to give them extra breathing room beyond the base gap
+  '[&_h1]:text-3xl [&_h1]:font-medium [&_h1]:tracking-tighter [&_h1]:text-foreground [&_h1]:mt-8 [&_h1]:scroll-mt-24',
+  '[&_h2]:text-xl [&_h2]:font-medium [&_h2]:tracking-tight [&_h2]:text-foreground [&_h2]:mt-2 [&_h2]:scroll-mt-24',
+  '[&_h3]:text-lg [&_h3]:font-medium [&_h3]:tracking-tight [&_h3]:text-foreground [&_h3]:mt-6 [&_h3]:scroll-mt-24',
+  '[&_h4]:text-base [&_h4]:font-medium [&_h4]:tracking-tight [&_h4]:text-foreground [&_h4]:mt-4 [&_h4]:scroll-mt-24',
 
   // Paragraphs
-  '[&_p]:leading-7 [&_p]:mb-4 [&_p:last-child]:mb-0',
+  '[&_p]:text-[16px] [&_p]:leading-7 [&_p]:text-foreground/90',
 
   // Links
-  '[&_a]:text-primary [&_a]:underline-offset-4 hover:[&_a]:underline',
+  '[&_a]:text-foreground [&_a]:underline [&_a]:decoration-border [&_a]:underline-offset-4',
+  'hover:[&_a]:decoration-foreground [&_a]:transition-colors',
 
-  // Lists
-  '[&_ul]:my-4 [&_ul]:ml-6 [&_ul]:list-disc',
-  '[&_ol]:my-4 [&_ol]:ml-6 [&_ol]:list-decimal',
-  '[&_li]:mb-2 [&_li]:leading-7',
+  // Lists - Semantic, indented
+  '[&_ul]:pl-4 [&_ul]:list-disc [&_ul]:space-y-2',
+  '[&_ol]:pl-4 [&_ol]:list-decimal [&_ol]:space-y-2',
+  '[&_li]:leading-7 [&_li]:pl-2 [&_li]:marker:text-foreground/60',
 
-  // Inline code
-  '[&_:not(pre)>code]:rounded [&_:not(pre)>code]:bg-muted [&_:not(pre)>code]:px-1.5 [&_:not(pre)>code]:py-0.5 [&_:not(pre)>code]:text-sm [&_:not(pre)>code]:font-mono',
+  // Inline code - Technical, no background
+  '[&_:not(pre)>code]:font-mono [&_:not(pre)>code]:text-[0.9em] [&_:not(pre)>code]:font-medium',
+  '[&_:not(pre)>code]:before:content-["`"] [&_:not(pre)>code]:after:content-["`"] [&_:not(pre)>code]:before:text-muted-foreground [&_:not(pre)>code]:after:text-muted-foreground',
 
-  // Code blocks
-  '[&_pre]:my-4 [&_pre]:rounded-lg [&_pre]:bg-card [&_pre]:border [&_pre]:border-border [&_pre]:p-4 [&_pre]:overflow-x-auto',
-  '[&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:text-sm',
+  // Code blocks - Indented, borderless
+  '[&_pre]:p-3 [&_pre]:border [&_pre]:border-border/60 [&_pre]:overflow-x-auto',
+  '[&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:text-sm [&_pre_code]:leading-6 [&_pre_code]:font-mono',
 
-  // Blockquotes
-  '[&_blockquote]:border-l-4 [&_blockquote]:border-border [&_blockquote]:pl-4 [&_blockquote]:my-4 [&_blockquote]:text-muted-foreground [&_blockquote]:italic',
-
-  // Strong/emphasis
-  '[&_strong]:font-semibold',
+  // Blockquotes - Simple line
+  '[&_blockquote]:border-l-2 [&_blockquote]:border-foreground [&_blockquote]:pl-6 [&_blockquote]:italic',
 
   // Horizontal rules
-  '[&_hr]:my-8 [&_hr]:border-border',
+  '[&_hr]:border-t [&_hr]:border-border/40',
 
-  // Tables
-  '[&_table]:w-full [&_table]:my-4 [&_table]:border-collapse',
-  '[&_th]:border [&_th]:border-border [&_th]:bg-muted [&_th]:px-4 [&_th]:py-2 [&_th]:text-left [&_th]:font-semibold',
-  '[&_td]:border [&_td]:border-border [&_td]:px-4 [&_td]:py-2',
+  // Tables - Minimal grid
+  '[&_table]:w-full [&_table]:text-sm',
+  '[&_th]:text-left [&_th]:font-medium [&_th]:pb-4 [&_th]:border-b [&_th]:border-border',
+  '[&_td]:py-3 [&_td]:border-b [&_td]:border-border/40',
+  '[&_tr:last-child_td]:border-0',
+
+  // Images
+  '[&_img]:rounded-sm'
 );
 
 export function MDXContent({ children, className }: MDXContentProps) {
-  return <div className={cn(mdxStyles, className)}>{children}</div>;
+  return (
+    <article className={cn(mdxStyles, className)} data-slot="mdx-content">
+      {children}
+    </article>
+  );
 }
