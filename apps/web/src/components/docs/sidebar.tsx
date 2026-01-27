@@ -37,9 +37,10 @@ function SidebarItem({ item }: SidebarItemProps) {
       <Link
         href={item.url}
         className={cn(
-          'text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200',
+          'text-sidebar-foreground hover:bg-sidebar-accent/30 hover:text-sidebar-accent-foreground rounded-lg px-3 py-2 text-sm font-medium transition-[background-color,color] duration-200',
+          'border border-transparent',
           isActive &&
-            'bg-sidebar-accent dark:bg-sidebar-accent/50 text-sidebar-accent-foreground shadow-sm inset-shadow-sm shadow-black/5 inset-shadow-white/10'
+            'bg-sidebar-accent dark:bg-sidebar-accent/50 text-sidebar-accent-foreground border-border shadow-sm'
         )}
       >
         {item.name}
@@ -55,8 +56,9 @@ function SidebarItem({ item }: SidebarItemProps) {
             href={item.index.url}
             className={cn(
               'text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground rounded-lg px-3 py-2 text-sm font-semibold transition-all duration-200',
+              'border border-transparent',
               pathname === item.index.url &&
-                'bg-sidebar-accent text-sidebar-accent-foreground shadow-sm inset-shadow-sm shadow-black/5 inset-shadow-white/10'
+                'bg-sidebar-accent text-sidebar-accent-foreground border-border shadow-sm inset-shadow-sm shadow-black/5 inset-shadow-white/10'
             )}
           >
             {item.name}
@@ -67,7 +69,7 @@ function SidebarItem({ item }: SidebarItemProps) {
           </span>
         )}
         {item.children && item.children.length > 0 && (
-          <div className="border-border/50 ml-2 flex flex-col gap-1 border-l pl-2">
+          <div className="flex flex-col gap-1 pl-2">
             {item.children.map((child, index) => (
               <SidebarItem key={index} item={child} />
             ))}
