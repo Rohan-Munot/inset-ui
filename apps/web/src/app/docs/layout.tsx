@@ -1,5 +1,7 @@
 import { source } from '@/lib/source';
 import { Sidebar } from '@/components/docs/sidebar';
+import { MobileSidebar, MobileSidebarTrigger } from '@/components/docs/mobile-sidebar';
+import { Header } from '@/components/header';
 import type { ReactNode } from 'react';
 
 export default function DocsLayout({ children }: { children: ReactNode }) {

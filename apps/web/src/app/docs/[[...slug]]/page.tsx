@@ -32,7 +32,6 @@ export default async function DocsPage({ params }: PageProps) {
     <div className="relative grid h-full xl:grid-cols-[1fr_240px] xl:gap-8">
       <article className="flex min-w-0 flex-1 flex-col gap-8 py-4">
         <div className="flex flex-col gap-4">
-          <Breadcrumb tree={tree} />
           <h1 className="text-3xl font-bold tracking-tight">{page.data.title}</h1>
           {page.data.description && (
             <p className="text-muted-foreground text-lg">{page.data.description}</p>

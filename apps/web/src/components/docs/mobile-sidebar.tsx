@@ -4,30 +4,73 @@ import type * as PageTree from 'fumadocs-core/page-tree';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@inset/ui/lib/utils';
+import { Drawer, DrawerClose, DrawerContent, DrawerTitle } from '@inset/ui/drawer';
+import * as React from 'react';
+import { Menu } from 'lucide-react';
 
-interface SidebarProps {
-  tree: PageTree.Root;
+const MobileSidebarContext = React.createContext<{
+  open: boolean;
+  setOpen: (open: boolean) => void;
+} | null>(null);
+
+function useMobileSidebar() {
+  const context = React.useContext(MobileSidebarContext);
+  if (!context) {
+    throw new Error('useMobileSidebar must be used within a MobileSidebar component');
+  }
+  return context;
 }
 
-export function Sidebar({ tree }: SidebarProps) {
+interface MobileSidebarProps {
+  tree: PageTree.Root;
+  children?: React.ReactNode;
+}
+
+export function MobileSidebar({ tree, children }: MobileSidebarProps) {
+  const [open, setOpen] = React.useState(false);
+
   return (
-    <aside className="border-sidebar-border sticky top-14 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 border-dashed md:block xl:border-x">
-      <div className="no-scrollbar h-full overflow-y-auto p-4">
-        <nav className="flex flex-col gap-1">
-          {tree.children.map((item, index) => (
-            <SidebarItem key={index} item={item} />
-          ))}
-        </nav>
-      </div>
-    </aside>
+    <MobileSidebarContext.Provider value={{ open, setOpen }}>
+      {children}
+      <Drawer open={open} onOpenChange={setOpen}>
+        <DrawerTitle className="hidden">Nav</DrawerTitle>
+        <DrawerContent>
+          <div className="flex flex-col overflow-hidden">
+            <div className="flex-1 overflow-y-auto p-4 pb-6">
+              <nav className="flex flex-col gap-1">
+                {tree.children.map((item, index) => (
+                  <MobileSidebarItem key={index} item={item} onNavigate={() => setOpen(false)} />
+                ))}
+              </nav>
+            </div>
+          </div>
+        </DrawerContent>
+      </Drawer>
+    </MobileSidebarContext.Provider>
   );
 }
 
-interface SidebarItemProps {
-  item: PageTree.Node;
+export function MobileSidebarTrigger() {
+  const { setOpen } = useMobileSidebar();
+
+  return (
+    <button
+      type="button"
+      onClick={() => setOpen(true)}
+      className="text-foreground hover:bg-accent hover:text-accent-foreground mr-2 inline-flex h-6 w-6 items-center justify-center rounded-md transition-colors md:hidden"
+      aria-label="Open navigation menu"
+    >
+      <Menu className="size-5 sm:size-6" />
+    </button>
+  );
 }
 
-function SidebarItem({ item }: SidebarItemProps) {
+interface MobileSidebarItemProps {
+  item: PageTree.Node;
+  onNavigate: () => void;
+}
+
+function MobileSidebarItem({ item, onNavigate }: MobileSidebarItemProps) {
   const pathname = usePathname();
 
   if (item.type === 'page') {
@@ -36,6 +79,7 @@ function SidebarItem({ item }: SidebarItemProps) {
     return (
       <Link
         href={item.url}
+        onClick={onNavigate}
         className={cn(
           'text-sidebar-foreground hover:bg-sidebar-accent/30 hover:text-sidebar-accent-foreground rounded-xs p-1 px-2 text-sm font-medium transition-[background-color,color] duration-200',
           'border border-transparent',
@@ -54,6 +98,7 @@ function SidebarItem({ item }: SidebarItemProps) {
         {item.index ? (
           <Link
             href={item.index.url}
+            onClick={onNavigate}
             className={cn(
               'text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground rounded-xs px-3 py-2 text-sm font-semibold transition-all duration-200',
               'border border-transparent',
@@ -71,7 +116,7 @@ function SidebarItem({ item }: SidebarItemProps) {
         {item.children && item.children.length > 0 && (
           <div className="flex flex-col gap-1">
             {item.children.map((child, index) => (
-              <SidebarItem key={index} item={child} />
+              <MobileSidebarItem key={index} item={child} onNavigate={onNavigate} />
             ))}
           </div>
         )}

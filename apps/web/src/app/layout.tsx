@@ -5,6 +5,8 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/header';
 import { NextProvider } from 'fumadocs-core/framework/next';
 import type { ReactNode } from 'react';
+import { source } from '@/lib/source';
+import { MobileSidebar, MobileSidebarTrigger } from '@/components/docs/mobile-sidebar';
 
 const urbanist = Urbanist({
   variable: '--font-urbanist',
@@ -21,10 +23,11 @@ export default function RootLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
+  const tree = source.getPageTree();
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${urbanist.variable} bg-background min-h-screen font-sans antialiased pt-14`}
+        className={`${urbanist.variable} bg-background min-h-screen pt-14 font-sans antialiased`}
       >
         <ThemeProvider
           attribute="class"
@@ -33,7 +36,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <NextProvider>
-            <Header />
+            <MobileSidebar tree={tree}>
+              <Header leftSlot={<MobileSidebarTrigger />} />
+            </MobileSidebar>
             {children}
           </NextProvider>
         </ThemeProvider>
