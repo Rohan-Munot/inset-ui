@@ -1,7 +1,7 @@
 "use client";
 
 import { Accordion as AccordionPrimitive } from "@base-ui/react/accordion";
-import { CaretDownIcon } from "@phosphor-icons/react";
+import { IconChevronDown } from "@tabler/icons-react";
 
 import { cn } from "@inset/ui/lib/utils";
 
@@ -39,7 +39,7 @@ function AccordionTrigger({
         {...props}
       >
         {children}
-        <CaretDownIcon className="pointer-events-none size-4 shrink-0 transition-transform duration-200 ease-in-out" />
+        <IconChevronDown className="pointer-events-none size-4 shrink-0 transition-transform duration-200 ease-in-out" />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   );

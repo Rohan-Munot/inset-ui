@@ -1,10 +1,15 @@
 'use client';
-import { MoonIcon, SunIcon } from '@phosphor-icons/react';
+import { IconMoon, IconSun } from '@tabler/icons-react';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const toggleTheme = async () => {
     const newTheme = resolvedTheme === 'dark' ? 'light' : 'dark';
@@ -36,13 +41,25 @@ export function ThemeToggle() {
     );
   };
 
+  // Prevent hydration mismatch by rendering null until mounted
+  if (!mounted) {
+    return (
+      <button
+        aria-label="Toggle Theme"
+        className="[&_svg]:text-foreground cursor-pointer items-start rounded-md p-1 [&_svg]:size-4.5"
+      >
+        <IconSun className="opacity-0" />
+      </button>
+    );
+  }
+
   return (
     <button
       onClick={toggleTheme}
       aria-label="Toggle Theme"
       className="[&_svg]:text-foreground cursor-pointer items-start rounded-md p-1 [&_svg]:size-4.5"
     >
-      {resolvedTheme === 'dark' ? <SunIcon /> : <MoonIcon />}
+      {resolvedTheme === 'dark' ? <IconSun /> : <IconMoon />}
     </button>
   );
 }

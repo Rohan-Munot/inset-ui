@@ -1,6 +1,6 @@
 import { Autocomplete as AutocompletePrimitive } from "@base-ui/react/autocomplete";
 import { cn } from "@inset/ui/lib/utils";
-import { CaretDownIcon, XIcon } from "@phosphor-icons/react";
+import { IconChevronDown, IconX } from "@tabler/icons-react";
 import { Input } from "@inset/ui/input";
 import { ScrollArea } from "@inset/ui/scroll-area";
 
@@ -42,7 +42,7 @@ function AutocompleteInput({
             "transition-all duration-200 ease-in-out"
           )}
         >
-          <CaretDownIcon className="size-4 shrink-0 transition-transform duration-200 ease-in-out" />
+          <IconChevronDown className="size-4 shrink-0 transition-transform duration-200 ease-in-out" />
         </AutocompleteTrigger>
       )}
       {hasClear && (
@@ -54,7 +54,7 @@ function AutocompleteInput({
             "has-[+[data-slot=autocomplete-trigger]]:hidden"
           )}
         >
-          <XIcon className="size-4 shrink-0" />
+          <IconX className="size-4 shrink-0" />
         </AutocompleteClear>
       )}
     </div>

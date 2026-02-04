@@ -1,6 +1,6 @@
 import { Collapsible as CollapsiblePrimitive } from "@base-ui/react/collapsible";
 import { cn } from "@inset/ui/lib/utils";
-import { CaretRightIcon } from "@phosphor-icons/react";
+import { IconChevronRight } from "@tabler/icons-react";
 
 function Collapsible(props: CollapsiblePrimitive.Root.Props) {
   return <CollapsiblePrimitive.Root data-slot="collapsible" {...props} />;
@@ -21,7 +21,7 @@ function CollapsibleTrigger({
       {...props}
     >
       {children}
-      <CaretRightIcon className="pointer-events-none size-4 shrink-0 transition-transform duration-200 ease-in-out " />
+      <IconChevronRight className="pointer-events-none size-4 shrink-0 transition-transform duration-200 ease-in-out" />
     </CollapsiblePrimitive.Trigger>
   );
 }

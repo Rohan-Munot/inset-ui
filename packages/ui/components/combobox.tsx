@@ -3,7 +3,7 @@ import { Combobox as ComboboxPrimitive } from "@base-ui/react/combobox";
 import { cn } from "@inset/ui/lib/utils";
 import { Input } from "@inset/ui/input";
 import { ScrollArea } from "@inset/ui/scroll-area";
-import { CaretUpDownIcon, XIcon, CheckIcon } from "@phosphor-icons/react";
+import { IconCheck, IconChevronUp, IconX } from "@tabler/icons-react";
 import { createContext, useContext, useRef } from "react";
 
 const ComboboxContext = createContext<{
@@ -13,7 +13,7 @@ const ComboboxContext = createContext<{
 });
 
 function Combobox<T, M extends boolean = false>(
-  props: ComboboxPrimitive.Root.Props<T, M>
+  props: ComboboxPrimitive.Root.Props<T, M>,
 ) {
   const chipsRef = useRef<HTMLDivElement | null>(null);
 
@@ -45,7 +45,7 @@ function ComboboxInput({
           "disabled:cursor-not-allowed disabled:opacity-50",
           (trigger || hasClear) &&
             "has-[+[data-slot=combobox-trigger],+[data-slot=combobox-clear]]:*:data-[slot=input]:pe-8",
-          className
+          className,
         )}
         render={<Input />}
         {...props}
@@ -56,10 +56,10 @@ function ComboboxInput({
             "absolute top-1/2 -translate-y-1/2 end-2.5 inline-flex shrink-0 cursor-pointer",
             "opacity-80 hover:opacity-100",
             "has-[+[data-slot=combobox-clear]]:hidden",
-            "transition-all duration-200 ease-in-out"
+            "transition-all duration-200 ease-in-out",
           )}
         >
-          <CaretUpDownIcon className="size-4 shrink-0" />
+          <IconChevronUp className="size-4 shrink-0" />
         </ComboboxTrigger>
       )}
       {hasClear && (
@@ -68,10 +68,10 @@ function ComboboxInput({
             "absolute top-1/2 -translate-y-1/2 end-2.5",
             "transition-all duration-200 ease-in-out",
             "opacity-80 hover:opacity-100",
-            "has-[+[data-slot=combobox-trigger]]:hidden"
+            "has-[+[data-slot=combobox-trigger]]:hidden",
           )}
         >
-          <XIcon className="size-4 shrink-0" />
+          <IconX className="size-4 shrink-0" />
         </ComboboxClear>
       )}
     </div>
@@ -117,7 +117,7 @@ function ComboboxPopup({
               "relative origin-(--transform-origin) rounded-xl border bg-popover bg-clip-padding transition-[scale,opacity] before:pointer-events-none before:shadow-lg has-data-starting-style:scale-20 has-data-starting-style:opacity-0 flex max-h-[min(var(--available-height),23rem)] w-(--anchor-width) flex-col",
               "border-border shadow-inner",
               "dark:shadow-[inset_0_-1px_2px_0_rgba(255,255,255,0.15)]",
-              className
+              className,
             )}
             data-slot="combobox-popup"
             {...props}
@@ -144,14 +144,14 @@ function ComboboxItem({
         "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
         "transition-all duration-200 ease-in-out",
         "opacity-80 hover:opacity-100",
-        className
+        className,
       )}
       data-slot="combobox-item"
       {...props}
     >
       <span className="flex-1 ">{children} </span>
       <ComboboxPrimitive.ItemIndicator>
-        <CheckIcon />
+        <IconCheck />
       </ComboboxPrimitive.ItemIndicator>
     </ComboboxPrimitive.Item>
   );
@@ -187,7 +187,7 @@ function ComboboxGroupLabel({
     <ComboboxPrimitive.GroupLabel
       className={cn(
         "text-xs font-medium text-muted-foreground px-2 py-1",
-        className
+        className,
       )}
       data-slot="combobox-group-label"
       {...props}
@@ -200,7 +200,7 @@ function ComboboxEmpty({ className, ...props }: ComboboxPrimitive.Empty.Props) {
     <ComboboxPrimitive.Empty
       className={cn(
         "text-muted-foreground text-base font-medium text-center not-empty:p-2 sm:text-sm",
-        className
+        className,
       )}
       data-slot="combobox-empty"
       {...props}
@@ -214,7 +214,7 @@ function ComboboxList({ className, ...props }: ComboboxPrimitive.List.Props) {
       <ComboboxPrimitive.List
         className={cn(
           "not-empty:scroll-py-1 not-empty:px-1 not-empty:py-1 in-data-has-overflow-y:pe-3 ",
-          className
+          className,
         )}
         data-slot="combobox-list"
         {...props}
@@ -231,7 +231,7 @@ function ComboboxStatus({
     <ComboboxPrimitive.Status
       className={cn(
         "px-3 py-2 font-medium text-muted-foreground text-xs empty:m-0 empty:p-0",
-        className
+        className,
       )}
       data-slot="combobox-status"
       {...props}
@@ -267,7 +267,7 @@ function ComboboxChips({ className, ...props }: ComboboxPrimitive.Chips.Props) {
       ref={chipsRef}
       className={cn(
         "relative inline-flex flex-wrap gap-1 border border-border bg-background bg-clip-padding",
-        className
+        className,
       )}
       data-slot="combobox-chips"
       {...props}
@@ -296,7 +296,7 @@ function ComboboxChipRemove(props: ComboboxPrimitive.ChipRemove.Props) {
       data-slot="combobox-chip-remove"
       {...props}
     >
-      <XIcon />
+      <IconX />
     </ComboboxPrimitive.ChipRemove>
   );
 }

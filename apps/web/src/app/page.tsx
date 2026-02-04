@@ -1,7 +1,6 @@
 'use client';
 import { useTheme } from 'next-themes';
-import { MoonIcon } from '@phosphor-icons/react';
-import { SunIcon } from '@phosphor-icons/react';
+import { IconMoon, IconSun } from '@tabler/icons-react';
 import { Button } from '@inset/ui/button';
 import { Badge } from '@inset/ui/badge';
 export default function Particle() {

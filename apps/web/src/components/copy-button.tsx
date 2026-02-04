@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { cn } from '@inset/ui/lib/utils';
+import { IconCopy, IconCheck } from '@tabler/icons-react';
 
 interface CopyButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   value: string;
@@ -25,8 +26,10 @@ function CopyButton({ value, src, className, ...props }: CopyButtonProps) {
     <button
       type="button"
       data-slot="copy-button"
+      data-copied={copied ? 'true' : 'false'}
       className={cn(
-        'absolute right-3 top-3 z-10 flex size-7 items-center justify-center rounded-md border bg-background/80 text-muted-foreground backdrop-blur-sm transition-colors hover:bg-muted hover:text-foreground',
+        'bg-background/80 text-muted-foreground hover:bg-muted hover:text-foreground border-border absolute top-2 right-2 z-10 flex size-7 items-center justify-center rounded-md border backdrop-blur-sm transition-colors',
+        'data-[copied=true]:text-green-500',
         className
       )}
       onClick={handleCopy}
@@ -34,34 +37,9 @@ function CopyButton({ value, src, className, ...props }: CopyButtonProps) {
       {...props}
     >
       {copied ? (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="14"
-          height="14"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <polyline points="20 6 9 17 4 12" />
-        </svg>
+        <IconCheck width={14} height={14} stroke={2} />
       ) : (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="14"
-          height="14"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
-          <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
-        </svg>
+        <IconCopy width={14} height={14} stroke={2} />
       )}
     </button>
   );
